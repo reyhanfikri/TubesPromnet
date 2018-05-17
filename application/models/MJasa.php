@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MPart extends CI_Model
+class MJasa extends CI_Model
 {
   public function __construct()
   {
     parent::__construct();
   }
 
-  public function getAllPart()
+  public function getAllJasa()
   {
-    return $this->db->get('t_part');
+    return $this->db->get('t_jasa');
   }
 }

@@ -1,20 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Part extends CI_Controller
+class Jasa extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('MPart');
+		$this->load->model('MJasa');
 	}
 
 	public function index()
 	{
-		$data['part'] = $this->MPart->getAllPart()->result();
+		$data['jasa'] = $this->MJasa->getAllJasa()->result();
 
 		$this->load->view('v_header');
-		$this->load->view('v_part', $data);
+		$this->load->view('v_jasa', $data);
 		$this->load->view('v_footer');
 	}
 }

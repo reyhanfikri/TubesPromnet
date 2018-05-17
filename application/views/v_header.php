@@ -16,22 +16,22 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Pelanggan</a>
+            <a class="nav-link" href="<?php echo site_url();?>Pelanggan">Pelanggan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Mekanik</a>
+            <a class="nav-link" href="<?php echo site_url();?>Mekanik">Mekanik</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Jasa</a>
+            <a class="nav-link" href="<?php echo site_url();?>Jasa">Jasa</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url();?>Part">Part</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Transaksi Part</a>
+            <a class="nav-link" href="<?php echo site_url();?>TransaksiPart">Transaksi Part</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Transaksi Service</a>
+            <a class="nav-link" href="<?php echo site_url();?>TransaksiService">Transaksi Service</a>
           </li>
         </ul>
       </div>

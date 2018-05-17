@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container">
-        <form method="post" action="">
+        <form method="post" action="<?php echo site_url();?>Pelanggan">
             <br><h2 align="center">Login</h2><br>
             <div class="container-form">
                 <label><b>Username</b></label>
@@ -23,4 +23,3 @@
     </div>
 </body>
 </html>
-
