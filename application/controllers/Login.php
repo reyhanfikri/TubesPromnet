@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 
 		if ($this->session->userdata('isLoggedIn')) {
 
-			redirect(site_url('part'));	
+			redirect(site_url('Pelanggan'));
 
 		} else {
 
@@ -47,9 +47,9 @@ class Login extends CI_Controller {
 
 				$this->session->set_userdata($arrSession);
 
-				redirect(site_url('part'));
+				redirect(site_url('Pelanggan'));
 
-			}else {	
+			}else {
 
 				$data['error'] = "Username/Password tidak benar!";
 				$this->load->view('v_login', $data);

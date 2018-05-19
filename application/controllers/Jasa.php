@@ -11,10 +11,11 @@ class Jasa extends CI_Controller
 
 	public function index()
 	{
+		
 		$data['jasa'] = $this->MJasa->getAllJasa()->result();
 
 		$this->load->view('v_header');
-		$this->load->view('v_jasa', $data);
+		$this->load->view('Jasa/v_jasa', $data);
 		$this->load->view('v_footer');
 	}
 }
