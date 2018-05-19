@@ -1,7 +1,6 @@
 <div class="container">
   <center> <h2>Tabel Part</h2> </center>
   <a href="#" class="btn btn-success">Tambah Part</a>
-  <form class="" action="<?php echo site_url();?>Part" method="post">
   <?php echo $links; ?>
   <table class="table table-hover">
     <thead>
