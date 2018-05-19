@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>assets/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8">
     <title>Bengkel Baru</title>
   </head>
@@ -36,7 +37,7 @@
             </li>
           </ul>
           <a href="<?php echo site_url();?>Login/Logout">
-            <button type="button" class="btn btn-danger">Logout</button>
+            <button type="button" class="btn btn-danger">Logout <i class="fa fa-sign-out"></i></button>
           </a>
         </div>
       </div>

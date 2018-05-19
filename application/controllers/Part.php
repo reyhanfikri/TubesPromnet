@@ -51,15 +51,60 @@ class Part extends CI_Controller
 		}
 
 		$data['part'] = $this->MPart->getLimitPart($config['per_page'], $page)->result();
-		$data["links"] = $this->pagination->create_links();
+		$data['links'] = $this->pagination->create_links();
 
 		$this->load->view('v_header');
 		$this->load->view('Part/v_part', $data);
 		$this->load->view('v_footer');
 	}
 
+	public function formTambahPart()
+	{
+		$this->load->view('v_header');
+		$this->load->view('Part/v_insert_part');
+		$this->load->view('v_footer');
+	}
+
 	public function tambahPart()
 	{
-		// code...
+		$data = array(
+			'no_part' => $this->input->post('id_part'),
+			'nama_part' => $this->input->post('nama_part'),
+			'stok_part' => $this->input->post('stok_part'),
+			'harga_part' => $this->input->post('harga_part')
+	 	);
+		$this->MPart->insertPart($data);
+		redirect('Part');
+	}
+
+	public function formEditPart($id)
+	{
+		$where = array('id_part' => $id);
+		$data['part'] = $this->MPart->editPart($where)->result();
+
+		$this->load->view('v_header');
+		$this->load->view('Part/v_edit_part', $data);
+		$this->load->view('v_footer');
+	}
+
+	public function editPart()
+	{
+		$where = array('id_part' => $this->input->post('id_part'));
+		$data = array(
+			'id_part' => $this->input->post('id_part'),
+			'no_part' => $this->input->post('no_part'),
+			'nama_part' => $this->input->post('nama_part'),
+			'stok_part' => $this->input->post('stok_part'),
+			'harga_part' => $this->input->post('harga_part')
+	 	);
+		$this->MPart->updatePart($where, $data);
+		redirect('Part');
+	}
+
+	public function hapusPart($id)
+	{
+		$where = array('id_part' => $id);
+		$this->MPart->deletePart($where);
+		redirect('Part');
 	}
 }

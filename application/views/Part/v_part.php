@@ -1,7 +1,6 @@
 <div class="container">
   <center> <h2>Tabel Part</h2> </center>
-  <a href="#" class="btn btn-success">Tambah Part</a>
-  <?php echo $links; ?>
+  <a href="<?php echo site_url();?>Part/formTambahPart" class="btn btn-success">Tambah Part</a>
   <table class="table table-hover">
     <thead>
       <tr class="table-info">
@@ -22,11 +21,12 @@
           <td><?php echo $val->stok_part; ?></td>
           <td><?php echo $val->harga_part; ?></td>
           <td>
-            <a href="" class="btn btn-warning">Edit</a>
-            <a href="" class="btn btn-danger">Hapus</a>
+            <a href="<?php echo site_url(); ?>Part/formEditPart/<?php echo $val->id_part; ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+            <a href="<?php echo site_url(); ?>Part/hapusPart/<?php echo $val->id_part; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
           </td>
         </tr>
       <?php } ?>
     </tbody>
   </table>
+  <?php echo $links; ?>
 </div>
