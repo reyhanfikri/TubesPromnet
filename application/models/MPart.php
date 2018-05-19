@@ -8,9 +8,9 @@ class MPart extends CI_Model
     parent::__construct();
   }
 
-  public function getLimitPart($num)
+  public function getLimitPart($number, $offset)
   {
-    return $this->db->get('t_part', 100, $num);
+    return $this->db->get('t_part', $number, $offset);
   }
 
   public function getAllPart()

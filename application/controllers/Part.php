@@ -7,17 +7,51 @@ class Part extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('MPart');
+		$this->load->library('pagination');
 	}
 
 	public function index()
 	{
-		$num = 0;
-		if (!empty($_POST["nomor"])) {
-			$num = ($this->input->post('nomor') *100) - 100;
+		$config['base_url'] = site_url().'Part/index';
+		$config['total_rows'] = $this->MPart->getAllPart()->num_rows();
+		$config['per_page'] = 50;
+		$config['uri_segment'] = 3;
+		$choice = $config['total_rows'] / $config['per_page'];
+		$config['num_links'] = floor($choice);
+
+		$config['first_link'] = 'First';
+		$config['last_link'] = 'Last';
+		$config['next_link'] = 'Next';
+		$config['prev_link'] = 'Prev';
+		$config['full_tag_open'] = '<div><ul class="pagination">';
+		$config['full_tag_close'] = '</ul></div>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['attributes'] = array('class' => 'page-link');
+
+
+		$this->pagination->initialize($config);
+		if($this->uri->segment(3))
+		{
+			$page = ($this->uri->segment(3));
+		}
+		else
+		{
+			$page = 0;
 		}
 
-		$data['part'] = $this->MPart->getLimitPart($num)->result();
-		$data['numrows'] = $this->MPart->getAllPart()->num_rows()/100;
+		$data['part'] = $this->MPart->getLimitPart($config['per_page'], $page)->result();
+		$data["links"] = $this->pagination->create_links();
 
 		$this->load->view('v_header');
 		$this->load->view('Part/v_part', $data);
