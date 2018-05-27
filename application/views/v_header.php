@@ -36,10 +36,7 @@
               <a class="nav-link" href="<?php echo site_url();?>TransaksiService">Transaksi Service</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url();?>ReportHarian">Report Harian</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url();?>ReportBulanan">Report Bulanan</a>
+              <a class="nav-link" href="<?php echo site_url();?>ReportBulanan">Report Service</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url();?>ReportBarang">Report Barang</a>
