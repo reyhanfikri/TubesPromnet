@@ -11,6 +11,8 @@ class MMekanik extends CI_Model
 
 	public function getAllMekanik() {
 
+		$query = "ALTER TABLE t_mekanik AUTO_INCREMENT = 1;";
+    	$this->db->query($query);
 		$query = $this->db->get("t_mekanik");
 		return $query;
 
@@ -18,6 +20,8 @@ class MMekanik extends CI_Model
 
 	public function getLimitMekanik($number, $offset) {
 
+		$query = "ALTER TABLE t_mekanik AUTO_INCREMENT = 1;";
+    	$this->db->query($query);
 	    $query = $this->db->get('t_mekanik', $number, $offset);
 	    return $query;
 
@@ -46,6 +50,8 @@ class MMekanik extends CI_Model
 	public function deleteMekanik($where) {
 
 		$this->db->delete('t_mekanik', $where);
-
+		$query = "ALTER TABLE t_mekanik AUTO_INCREMENT = 1;";
+    	$this->db->query($query);
+		
 	}
 }

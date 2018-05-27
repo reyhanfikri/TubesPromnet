@@ -11,6 +11,8 @@ class MPelanggan extends CI_Model
 
 	public function getAllPelanggan() {
 
+		$query = "ALTER TABLE t_pelanggan AUTO_INCREMENT = 1;";
+    	$this->db->query($query);
 		$query = $this->db->get("t_pelanggan");
 		return $query;
 
@@ -18,6 +20,8 @@ class MPelanggan extends CI_Model
 
 	public function getLimitPelanggan($number, $offset) {
 
+		$query = "ALTER TABLE t_pelanggan AUTO_INCREMENT = 1;";
+    	$this->db->query($query);
 	    $query = $this->db->get('t_pelanggan', $number, $offset);
 	    return $query;
 
@@ -46,6 +50,8 @@ class MPelanggan extends CI_Model
 	public function deletePelanggan($where) {
 
 		$this->db->delete('t_pelanggan', $where);
+		$query = "ALTER TABLE t_pelanggan AUTO_INCREMENT = 1;";
+    	$this->db->query($query);
 
 	}
 }
