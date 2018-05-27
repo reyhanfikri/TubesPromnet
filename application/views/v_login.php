@@ -9,12 +9,12 @@
     <div class="container">
         <form method="post" action="<?php site_url('login'); ?>">
             <br><h2 align="center">Login</h2><br>
-            <?php if ($error != "") {
-
-                echo $error;
-
-            } ?>
             <div class="container-form">
+                <?php if ($error != "") { ?>
+                    <div class="alert alert-dismissible alert-danger">
+                      <?php echo $error; ?>
+                    </div>
+                <?php } ?>
                 <label><b>Username</b></label>
                 <input type="text" placeholder="Masukkan username" name="username" required>
 
