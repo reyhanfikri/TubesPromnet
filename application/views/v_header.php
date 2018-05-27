@@ -35,6 +35,15 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url();?>TransaksiService">Transaksi Service</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url();?>ReportHarian">Report Harian</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url();?>ReportBulanan">Report Bulanan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url();?>ReportBarang">Report Barang</a>
+            </li>
           </ul>
           <a href="<?php echo site_url();?>Login/Logout">
             <button type="button" class="btn btn-danger">Logout <i class="fa fa-sign-out"></i></button>
