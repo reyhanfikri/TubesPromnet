@@ -11,8 +11,8 @@ class Pelanggan extends CI_Controller
 
 	}
 
-	public function index()
-	{
+	public function index() {
+
 		$config['base_url'] = site_url().'Pelanggan/index';
 		$config['total_rows'] = $this->MPelanggan->getAllPelanggan()->num_rows();
 		$config['per_page'] = 50;
@@ -59,6 +59,7 @@ class Pelanggan extends CI_Controller
 		$this->load->view('v_header');
 		$this->load->view('Pelanggan/v_pelanggan', $data);
 		$this->load->view('v_footer');
+		
 	}
 
 	public function formTambahPelanggan() {
@@ -90,18 +91,19 @@ class Pelanggan extends CI_Controller
 
 	}
 
-	public function formEditPelanggan($id)
-	{
+	public function formEditPelanggan($id) {
+
 		$id = array('id_pelanggan' => $id);
 		$data['pelanggan'] = $this->MPelanggan->getById($id)->result();
 
 		$this->load->view('v_header');
 		$this->load->view('Pelanggan/v_edit_pelanggan', $data);
 		$this->load->view('v_footer');
+
 	}
 
-	public function editPelanggan()
-	{
+	public function editPelanggan() {
+
 		$where = array('id_pelanggan' => $this->input->post('id_pelanggan'));
 
 		$data = array(
@@ -121,12 +123,14 @@ class Pelanggan extends CI_Controller
 
 		$this->MPelanggan->updatePelanggan($where, $data);
 		redirect('Pelanggan');
+
 	}
 
-	public function hapusPelanggan($id)
-	{
+	public function hapusPelanggan($id) {
+
 		$where = array('id_pelanggan' => $id);
 		$this->MPelanggan->deletePelanggan($where);
 		redirect('Pelanggan');
+
 	}
 }
