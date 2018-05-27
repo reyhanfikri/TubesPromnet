@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MysqlKonek
+ Source Server         : XAMPP
  Source Server Type    : MySQL
  Source Server Version : 100130
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 27/05/2018 14:58:29
+ Date: 27/05/2018 15:48:08
 */
 
 SET NAMES utf8mb4;
@@ -95,7 +95,12 @@ CREATE TABLE `t_mekanik`  (
   `alamat_mekanik` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nomor_telepon` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`id_mekanik`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_mekanik
+-- ----------------------------
+INSERT INTO `t_mekanik` VALUES (1, 'Budi Budianto', 'Geger Kalong', '085111222123');
 
 -- ----------------------------
 -- Table structure for t_part
@@ -1130,7 +1135,12 @@ CREATE TABLE `t_pelanggan`  (
   `nomor_mesin` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `bahan_bakar` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_pelanggan`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_pelanggan
+-- ----------------------------
+INSERT INTO `t_pelanggan` VALUES (1, 'D 1111 ZZ', 'Dudung Ramdani', 'KP Griya Bandung Asri II RT 01 RW 10 blok A 77', 'Honda NF 11B1D M/T', 'Sepeda Motor', '110 CC', 'MH1JBC121A', 'JBC1E21C2C3C', 'Bensin');
 
 -- ----------------------------
 -- Table structure for t_trans_part
