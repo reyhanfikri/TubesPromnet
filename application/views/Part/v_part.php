@@ -1,6 +1,6 @@
 <div class="container">
   <center> <h2>Tabel Part</h2> </center>
-  <a href="<?php echo site_url();?>Part/formTambahPart" class="btn btn-success">Tambah Part</a>
+  <a href="<?php echo site_url();?>Part/formTambahPart" class="btn btn-success"><i class="fa fa-plus-square"></i> Tambah Part</a>
   <table class="table table-hover">
     <thead>
       <tr class="table-info">

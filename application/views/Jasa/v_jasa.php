@@ -1,6 +1,6 @@
 <div class="container">
   <center> <h2>Tabel Jasa</h2> </center>
-  <a href="<?php echo site_url();?>Jasa/formTambahJasa" class="btn btn-success">Tambah Jasa</a>
+  <a href="<?php echo site_url();?>Jasa/formTambahJasa" class="btn btn-success"><i class="fa fa-plus-square"></i> Tambah Jasa</a>
   <table class="table table-hover">
     <thead>
       <tr class="table-info">
