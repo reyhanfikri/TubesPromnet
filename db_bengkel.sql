@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 02/06/2018 12:26:04
+ Date: 02/06/2018 22:44:49
 */
 
 SET NAMES utf8mb4;
@@ -48,7 +48,7 @@ CREATE TABLE `t_detail_trans_part`  (
   INDEX `fkdtp2`(`id_part`) USING BTREE,
   CONSTRAINT `fkdtp1` FOREIGN KEY (`id_trans_part`) REFERENCES `t_trans_part` (`id_trans_part`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkdtp2` FOREIGN KEY (`id_part`) REFERENCES `t_part` (`id_part`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_detail_trans_part
@@ -56,6 +56,8 @@ CREATE TABLE `t_detail_trans_part`  (
 INSERT INTO `t_detail_trans_part` VALUES (1, 1, 2, 2, 166000);
 INSERT INTO `t_detail_trans_part` VALUES (2, 2, 2, 2, 166000);
 INSERT INTO `t_detail_trans_part` VALUES (3, 3, 4, 10, 40000);
+INSERT INTO `t_detail_trans_part` VALUES (4, 3, 9, 1, 1500);
+INSERT INTO `t_detail_trans_part` VALUES (5, 4, 9, 2, 3000);
 
 -- ----------------------------
 -- Table structure for t_detail_trans_service
@@ -71,7 +73,16 @@ CREATE TABLE `t_detail_trans_service`  (
   INDEX `fkdts2`(`id_jasa`) USING BTREE,
   CONSTRAINT `fkdts1` FOREIGN KEY (`id_trans_service`) REFERENCES `t_trans_service` (`id_trans_service`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkdts2` FOREIGN KEY (`id_jasa`) REFERENCES `t_jasa` (`id_jasa`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_detail_trans_service
+-- ----------------------------
+INSERT INTO `t_detail_trans_service` VALUES (1, 1, 4, 950000);
+INSERT INTO `t_detail_trans_service` VALUES (2, 2, 3, 1500000);
+INSERT INTO `t_detail_trans_service` VALUES (3, 3, 3, 1500000);
+INSERT INTO `t_detail_trans_service` VALUES (4, 2, 3, 1500000);
+INSERT INTO `t_detail_trans_service` VALUES (5, 2, 2, 900000);
 
 -- ----------------------------
 -- Table structure for t_jasa
@@ -1160,7 +1171,7 @@ CREATE TABLE `t_trans_part`  (
   PRIMARY KEY (`id_trans_part`) USING BTREE,
   INDEX `fktp1`(`id_pelanggan`) USING BTREE,
   CONSTRAINT `fktp1` FOREIGN KEY (`id_pelanggan`) REFERENCES `t_pelanggan` (`id_pelanggan`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_trans_part
@@ -1168,6 +1179,7 @@ CREATE TABLE `t_trans_part`  (
 INSERT INTO `t_trans_part` VALUES (1, 1, '2018-05-05');
 INSERT INTO `t_trans_part` VALUES (2, 1, '2018-06-01');
 INSERT INTO `t_trans_part` VALUES (3, 1, '2018-05-24');
+INSERT INTO `t_trans_part` VALUES (4, 1, '2018-05-27');
 
 -- ----------------------------
 -- Table structure for t_trans_service
@@ -1183,7 +1195,14 @@ CREATE TABLE `t_trans_service`  (
   INDEX `fkts2`(`id_mekanik`) USING BTREE,
   CONSTRAINT `fkts1` FOREIGN KEY (`id_pelanggan`) REFERENCES `t_pelanggan` (`id_pelanggan`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkts2` FOREIGN KEY (`id_mekanik`) REFERENCES `t_mekanik` (`id_mekanik`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_trans_service
+-- ----------------------------
+INSERT INTO `t_trans_service` VALUES (1, 1, 1, '2018-05-31');
+INSERT INTO `t_trans_service` VALUES (2, 1, 1, '2018-06-01');
+INSERT INTO `t_trans_service` VALUES (3, 1, 1, '2018-06-02');
 
 -- ----------------------------
 -- Table structure for t_user
