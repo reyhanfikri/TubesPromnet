@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+* Referensi pembuatan grafik chart: http://mfikri.com/artikel/Membuat-grafik-atau-chart-menggunakan-codeigniter.html
+*/
+
 class ReportPart extends CI_Controller {
 
 	public function __construct() {
