@@ -61,6 +61,8 @@ class ReportPart extends CI_Controller {
 			$data['reportpart'] = $this->MReportPart->getLimitReportPartByDate($config['per_page'], $page, $from, $to)->result();
 			$data['links'] = $this->pagination->create_links();
 
+			$data['graphicreportpart'] = $this->MReportPart->getGraphReportPartByDate($from, $to)->result();
+
 			$this->load->view('v_header');
 			$this->load->view('Report/v_report_part', $data);
 			$this->load->view('v_footer');
@@ -113,6 +115,8 @@ class ReportPart extends CI_Controller {
 			$data['reportpart'] = $this->MReportPart->getLimitReportPartByMonth($config['per_page'], $page, $month)->result();
 			$data['links'] = $this->pagination->create_links();
 
+			$data['graphicreportpart'] = $this->MReportPart->getGraphReportPartByMonth($month)->result();
+
 			$this->load->view('v_header');
 			$this->load->view('Report/v_report_part', $data);
 			$this->load->view('v_footer');
@@ -161,6 +165,8 @@ class ReportPart extends CI_Controller {
 
 			$data['reportpart'] = $this->MReportPart->getLimitReportPart($config['per_page'], $page)->result();
 			$data['links'] = $this->pagination->create_links();
+
+			$data['graphicreportpart'] = $this->MReportPart->getGraphReportPart()->result();
 
 			$this->load->view('v_header');
 			$this->load->view('Report/v_report_part', $data);
