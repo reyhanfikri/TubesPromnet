@@ -39,7 +39,7 @@
               <a class="nav-link" href="<?php echo site_url();?>ReportService">Report Service</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url();?>ReportBarang">Report Barang</a>
+              <a class="nav-link" href="<?php echo site_url();?>ReportPart">Report Part</a>
             </li>
           </ul>
           <a href="<?php echo site_url();?>Login/Logout">
