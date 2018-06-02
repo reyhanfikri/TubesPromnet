@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 27/05/2018 15:48:08
+ Date: 02/06/2018 12:26:04
 */
 
 SET NAMES utf8mb4;
@@ -48,7 +48,14 @@ CREATE TABLE `t_detail_trans_part`  (
   INDEX `fkdtp2`(`id_part`) USING BTREE,
   CONSTRAINT `fkdtp1` FOREIGN KEY (`id_trans_part`) REFERENCES `t_trans_part` (`id_trans_part`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkdtp2` FOREIGN KEY (`id_part`) REFERENCES `t_part` (`id_part`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_detail_trans_part
+-- ----------------------------
+INSERT INTO `t_detail_trans_part` VALUES (1, 1, 2, 2, 166000);
+INSERT INTO `t_detail_trans_part` VALUES (2, 2, 2, 2, 166000);
+INSERT INTO `t_detail_trans_part` VALUES (3, 3, 4, 10, 40000);
 
 -- ----------------------------
 -- Table structure for t_detail_trans_service
@@ -1149,11 +1156,18 @@ DROP TABLE IF EXISTS `t_trans_part`;
 CREATE TABLE `t_trans_part`  (
   `id_trans_part` int(11) NOT NULL AUTO_INCREMENT,
   `id_pelanggan` int(11) NOT NULL,
-  `tanggal_trans_part` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `tanggal_trans_part` date NOT NULL,
   PRIMARY KEY (`id_trans_part`) USING BTREE,
   INDEX `fktp1`(`id_pelanggan`) USING BTREE,
   CONSTRAINT `fktp1` FOREIGN KEY (`id_pelanggan`) REFERENCES `t_pelanggan` (`id_pelanggan`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_trans_part
+-- ----------------------------
+INSERT INTO `t_trans_part` VALUES (1, 1, '2018-05-05');
+INSERT INTO `t_trans_part` VALUES (2, 1, '2018-06-01');
+INSERT INTO `t_trans_part` VALUES (3, 1, '2018-05-24');
 
 -- ----------------------------
 -- Table structure for t_trans_service
@@ -1163,7 +1177,7 @@ CREATE TABLE `t_trans_service`  (
   `id_trans_service` int(11) NOT NULL AUTO_INCREMENT,
   `id_pelanggan` int(11) NOT NULL,
   `id_mekanik` int(11) NOT NULL,
-  `tanggal_trans_service` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `tanggal_trans_service` date NOT NULL,
   PRIMARY KEY (`id_trans_service`) USING BTREE,
   INDEX `fkts1`(`id_pelanggan`) USING BTREE,
   INDEX `fkts2`(`id_mekanik`) USING BTREE,
