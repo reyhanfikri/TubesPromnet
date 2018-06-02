@@ -1,10 +1,15 @@
 <div class="container">
   <center> <h2>Laporan Penjualan Part</h2> </center><br>
 	  <form class="form-inline" action="ReportPart" method="post">
-	  	<legend>Filter Periode Per Hari</legend>
+	  	<legend>Filter Periode</legend>
 	  	Periode&nbsp;&nbsp;<input class="form-control" type="date" name="from">&nbsp;&nbsp;s/d&nbsp;&nbsp;<input class="form-control" type="date" name="to">&nbsp;&nbsp;
 	  	<input class="btn btn-success" type="submit" name="filter">
 	  </form><br>
+    <form class="form-inline" action="ReportPart" method="post">
+      <legend>Filter Periode Per Bulan</legend>
+      Periode&nbsp;&nbsp;<input class="form-control" type="month" name="month">&nbsp;&nbsp;
+      <input class="btn btn-success" type="submit" name="filterperbulan">
+    </form><br>
   <table class="table table-hover">
     <thead>
       <tr class="table-info">

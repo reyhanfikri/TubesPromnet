@@ -1,7 +1,7 @@
 <div class="container">
   <center> <h2>Laporan Penjualan Service</h2> </center><br>
 	  <form class="form-inline" action="ReportService" method="post">
-	  	<legend>Filter Periode Per Hari</legend>
+	  	<legend>Filter Periode</legend>
 	  	Periode&nbsp;&nbsp;<input class="form-control" type="date" name="from">&nbsp;&nbsp;s/d&nbsp;&nbsp;<input class="form-control" type="date" name="to">&nbsp;&nbsp;
 	  	<input class="btn btn-success" type="submit" name="filter">
 	  </form><br>

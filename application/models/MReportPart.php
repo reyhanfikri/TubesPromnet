@@ -48,4 +48,24 @@ class MReportPart extends CI_Model
 		return $hasil;
 
 	}
+
+	public function getAllReportPartByMonth($month) {
+
+		$query = "SELECT t_trans_part.id_trans_part, t_trans_part.tanggal_trans_part, t_part.nama_part, t_pelanggan.nama_pelanggan, t_detail_trans_part.jumlah_part, t_detail_trans_part.total_harga FROM t_trans_part, t_part, t_pelanggan, t_detail_trans_part WHERE t_trans_part.id_trans_part = t_detail_trans_part.id_trans_part AND t_trans_part.id_pelanggan = t_pelanggan.id_pelanggan AND t_detail_trans_part.id_part = t_part.id_part AND MONTH(t_trans_part.tanggal_trans_part) = MONTH('".$month."') AND YEAR(t_trans_part.tanggal_trans_part) = YEAR('".$month."');";
+
+		$hasil = $this->db->query($query);
+
+		return $hasil;
+
+	}
+
+	public function getLimitReportPartByMonth($number, $offset, $month) {
+
+		$query = "SELECT t_trans_part.id_trans_part, t_trans_part.tanggal_trans_part, t_part.nama_part, t_pelanggan.nama_pelanggan, t_detail_trans_part.jumlah_part, t_detail_trans_part.total_harga FROM t_trans_part, t_part, t_pelanggan, t_detail_trans_part WHERE t_trans_part.id_trans_part = t_detail_trans_part.id_trans_part AND t_trans_part.id_pelanggan = t_pelanggan.id_pelanggan AND t_detail_trans_part.id_part = t_part.id_part AND MONTH(t_trans_part.tanggal_trans_part) = MONTH('".$month."') AND YEAR(t_trans_part.tanggal_trans_part) = YEAR('".$month."')";
+
+		$hasil = $this->db->query($query);
+
+		return $hasil;
+
+	}
 }
