@@ -20,6 +20,8 @@ class ReportService extends CI_Controller {
 
 			$data['reportservice'] = $this->MReportService->getAllReportServiceByDate($from, $to)->result();
 
+			$data['graphicreportservice'] = $this->MReportService->getGraphReportServiceByDate($from, $to)->result();
+
 			$this->load->view('v_header');
 			$this->load->view('Report/v_report_service', $data);
 			$this->load->view('v_footer');
@@ -30,6 +32,8 @@ class ReportService extends CI_Controller {
 			$month .= "-01";
 
 			$data['reportservice'] = $this->MReportService->getAllReportServiceByMonth($month)->result();
+
+			$data['graphicreportservice'] = $this->MReportService->getGraphReportServiceByMonth($month)->result();
 
 			$this->load->view('v_header');
 			$this->load->view('Report/v_report_service', $data);
@@ -79,6 +83,8 @@ class ReportService extends CI_Controller {
 
 			$data['reportservice'] = $this->MReportService->getLimitReportService($config['per_page'], $page)->result();
 			$data['links'] = $this->pagination->create_links();
+
+			$data['graphicreportservice'] = $this->MReportService->getGraphReportService()->result();
 
 			$this->load->view('v_header');
 			$this->load->view('Report/v_report_service', $data);

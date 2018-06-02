@@ -1,15 +1,46 @@
+<?php
+  foreach ($graphicreportservice as $value) {
+    $tanggal_trans_service[] = $value->tanggal_trans_service;
+    $jumlah_service_terjual[] = $value->jumlah_service_terjual;
+  }
+?>
 <div class="container">
   <center> <h2>Laporan Penjualan Service</h2> </center><br>
-	  <form class="form-inline" action="ReportService" method="post">
-	  	<legend>Filter Periode</legend>
-	  	Periode&nbsp;&nbsp;<input class="form-control" type="date" name="from">&nbsp;&nbsp;s/d&nbsp;&nbsp;<input class="form-control" type="date" name="to">&nbsp;&nbsp;
-	  	<input class="btn btn-success" type="submit" name="filter">
-	  </form><br>
-    <form class="form-inline" action="ReportService" method="post">
-      <legend>Filter Periode Per Bulan</legend>
-      Periode&nbsp;&nbsp;<input class="form-control" type="month" name="month">&nbsp;&nbsp;
-      <input class="btn btn-success" type="submit" name="filterperbulan">
-    </form><br>
+  <form class="form-inline" action="ReportService" method="post">
+  	<legend>Filter Periode</legend>
+  	Periode&nbsp;&nbsp;<input class="form-control" type="date" name="from">&nbsp;&nbsp;s/d&nbsp;&nbsp;<input class="form-control" type="date" name="to">&nbsp;&nbsp;
+  	<input class="btn btn-success" type="submit" name="filter">
+  </form><br>
+  <form class="form-inline" action="ReportService" method="post">
+    <legend>Filter Periode Per Bulan</legend>
+    Periode&nbsp;&nbsp;<input class="form-control" type="month" name="month">&nbsp;&nbsp;
+    <input class="btn btn-success" type="submit" name="filterperbulan">
+  </form><br>
+  <canvas id="canvas" width="1000" height="280"></canvas>
+  <script type="text/javascript" src="<?php echo site_url(); ?>assets/js/Chart.js"></script>
+  <script>
+    var myLine = document.getElementById("canvas").getContext("2d"); 
+    var lineChartData = new Chart(myLine, {
+        type: 'line',
+        data: {
+          labels : <?php echo json_encode($tanggal_trans_service);?>,
+          datasets : [
+               
+              {
+                  label: "Jumlah service yang terjual",
+                  backgroundColor: 'rgb(99, 132, 255)',
+                  borderColor: 'rgb(99, 132, 255)',
+                  fill: null,
+                  data : <?php echo json_encode($jumlah_service_terjual);?>
+              }
+
+          ]
+
+        }
+         
+    });
+  </script>
+  <br>
   <table class="table table-hover">
     <thead>
       <tr class="table-info">
