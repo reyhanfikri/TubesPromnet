@@ -24,7 +24,7 @@
     <tbody>
       <?php foreach ($reportservice as $val) { ?>
         <tr>
-          <td><?php echo $val->id_trans_service; ?></td>
+          <td><?php echo $val->id_detail_trans_service; ?></td>
           <td><?php echo $val->tanggal_trans_service; ?></td>
           <td><?php echo $val->nama_jasa; ?></td>
           <td><?php echo $val->nama_mekanik; ?></td>
@@ -34,5 +34,5 @@
       <?php } ?>
     </tbody>
   </table>
-  <?php echo $links; ?>
+  <?php if (isset($links)) { echo $links; } ?>
 </div>
