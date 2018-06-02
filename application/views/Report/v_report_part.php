@@ -1,10 +1,12 @@
 <div class="container">
   <center> <h2>Tabel Laporan Penjualan Part</h2> </center><br>
-  <form class="form-inline" action="ReportPart" method="post">
-  	<legend>Filter Periode Per Hari</legend>
-  	Periode&nbsp;&nbsp;<input class="form-control" type="date" name="from">&nbsp;&nbsp;s/d&nbsp;&nbsp;<input class="form-control" type="date" name="to">&nbsp;&nbsp;
-  	<input class="btn btn-success" type="submit" name="filter">
-  </form><br>
+  <date-util format="yyyy-MM-dd">
+	  <form class="form-inline" action="ReportPart" method="post">
+	  	<legend>Filter Periode Per Hari</legend>
+	  	Periode&nbsp;&nbsp;<input class="form-control" type="date" name="from">&nbsp;&nbsp;s/d&nbsp;&nbsp;<input class="form-control" type="date" name="to">&nbsp;&nbsp;
+	  	<input class="btn btn-success" type="submit" name="filter">
+	  </form><br>
+  </date-util>
   <table class="table table-hover">
     <thead>
       <tr class="table-info">

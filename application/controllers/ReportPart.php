@@ -15,8 +15,11 @@ class ReportPart extends CI_Controller {
 
 		if ($this->input->post('filter') !== null) {
 
+			$from = $this->input->post('from');
+			$to = $this->input->post('to');
+
 			$config['base_url'] = site_url().'ReportPart/index';
-			$config['total_rows'] = $this->MReportPart->getAllReportPartByDate()->num_rows();
+			$config['total_rows'] = $this->MReportPart->getAllReportPartByDate($from, $to)->num_rows();
 			$config['per_page'] = 50;
 			$config['uri_segment'] = 3;
 			$choice = $config['total_rows'] / $config['per_page'];
@@ -55,7 +58,7 @@ class ReportPart extends CI_Controller {
 
 			}
 
-			$data['reportpart'] = $this->MReportPart->getLimitReportPartByDate($config['per_page'], $page)->result();
+			$data['reportpart'] = $this->MReportPart->getLimitReportPartByDate($config['per_page'], $page, $from, $to)->result();
 			$data['links'] = $this->pagination->create_links();
 
 			$this->load->view('v_header');
