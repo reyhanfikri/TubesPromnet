@@ -55,7 +55,7 @@
     <tbody>
       <?php foreach ($reportpart as $val) { ?>
         <tr>
-          <td><?php echo $val->id_trans_part; ?></td>
+          <td><?php echo $val->id_detail_trans_part; ?></td>
           <td><?php echo $val->tanggal_trans_part; ?></td>
           <td><?php echo $val->nama_part; ?></td>
           <td><?php echo $val->nama_pelanggan; ?></td>
@@ -65,5 +65,5 @@
       <?php } ?>
     </tbody>
   </table>
-  <?php echo $links; ?>
+  <?php if (isset($links)) { echo $links; } ?>
 </div>
