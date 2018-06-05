@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : XAMPP
+ Source Server         : MysqlKonek
  Source Server Type    : MySQL
  Source Server Version : 100130
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 02/06/2018 22:44:49
+ Date: 06/06/2018 04:21:29
 */
 
 SET NAMES utf8mb4;
@@ -98,6 +98,7 @@ CREATE TABLE `t_jasa`  (
 -- ----------------------------
 -- Records of t_jasa
 -- ----------------------------
+INSERT INTO `t_jasa` VALUES (1, 'Service A', 70000);
 INSERT INTO `t_jasa` VALUES (2, 'Service B', 899000);
 INSERT INTO `t_jasa` VALUES (3, 'Service C', 1500000);
 INSERT INTO `t_jasa` VALUES (4, 'Service D', 900000);
@@ -1159,6 +1160,34 @@ CREATE TABLE `t_pelanggan`  (
 -- Records of t_pelanggan
 -- ----------------------------
 INSERT INTO `t_pelanggan` VALUES (1, 'D 1111 ZZ', 'Dudung Ramdani', 'KP Griya Bandung Asri II RT 01 RW 10 blok A 77', 'Honda NF 11B1D M/T', 'Sepeda Motor', '110 CC', 'MH1JBC121A', 'JBC1E21C2C3C', 'Bensin');
+
+-- ----------------------------
+-- Table structure for t_temp_trans_part
+-- ----------------------------
+DROP TABLE IF EXISTS `t_temp_trans_part`;
+CREATE TABLE `t_temp_trans_part`  (
+  `id_temp_trans_part` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_pelanggan` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `tanggal` date NULL DEFAULT NULL,
+  `nama_part` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `harga` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  PRIMARY KEY (`id_temp_trans_part`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for t_temp_trans_service
+-- ----------------------------
+DROP TABLE IF EXISTS `t_temp_trans_service`;
+CREATE TABLE `t_temp_trans_service`  (
+  `id_temp_trans_service` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_pelanggan` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `nama_mekanik` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `tanggal` date NULL DEFAULT NULL,
+  `nama_service` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `harga` int(11) NOT NULL,
+  PRIMARY KEY (`id_temp_trans_service`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for t_trans_part
