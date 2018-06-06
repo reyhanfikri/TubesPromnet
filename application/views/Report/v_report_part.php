@@ -19,13 +19,13 @@
   <canvas id="canvas" width="1000" height="280"></canvas>
   <script type="text/javascript" src="<?php echo site_url(); ?>assets/js/Chart.js"></script>
   <script>
-    var myLine = document.getElementById("canvas").getContext("2d"); 
+    var myLine = document.getElementById("canvas").getContext("2d");
     var lineChartData = new Chart(myLine, {
         type: 'line',
         data: {
           labels : <?php echo json_encode($tanggal_trans_part);?>,
           datasets : [
-               
+
               {
                   label: "Jumlah part yang terjual",
                   backgroundColor: 'rgb(255, 99, 132)',
@@ -37,7 +37,7 @@
           ]
 
         }
-         
+
     });
   </script>
   <br>
@@ -49,7 +49,7 @@
         <th scope="col">Nama Part</th>
         <th scope="col">Nama Pelanggan</th>
         <th scope="col">Jumlah Part</th>
-        <th scope="col">Total Harga</th>
+        <th scope="col">Harga</th>
       </tr>
     </thead>
     <tbody>
@@ -60,7 +60,7 @@
           <td><?php echo $val->nama_part; ?></td>
           <td><?php echo $val->nama_pelanggan; ?></td>
           <td><?php echo $val->jumlah_part; ?></td>
-          <td><?php echo $val->total_harga; ?></td>
+          <td><?php echo $val->harga; ?></td>
         </tr>
       <?php } ?>
     </tbody>

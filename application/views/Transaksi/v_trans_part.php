@@ -5,6 +5,7 @@
     <div class="form-group">
       <label class="col-form-label">Pelanggan</label>
       <select name="pelanggan" class="form-control col-sm-3" id="exampleSelect1">
+        <option><?php echo $nama_pelanggan; ?></option>
         <?php foreach ($pelanggan as $value) { ?>
         <option><?php echo $value->nama_pelanggan; ?></option>
         <?php } ?>
@@ -12,7 +13,7 @@
     </div>
     <div class="form-group">
       <label class="col-form-label">Tanggal</label>
-      <input name="tanggal" class="form-control col-sm-3" type="date" value="<?php echo date('d-m-Y'); ?>">
+      <input name="tanggal" class="form-control col-sm-3" type="date" value="<?php echo $tanggal; ?>">
     </div>
     <div class="form-group">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
@@ -47,6 +48,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Tambah</button>
     <a href="<?php echo site_url(); ?>TransaksiPart/clearTempTransPart" class="btn btn-danger">Clear</a>
-    <a href="<?php echo site_url(); ?>TransaksiPart/clearTempTransPart" class="btn btn-success">Selesai</a>
+    <a href="<?php echo site_url(); ?>TransaksiPart/tambahTransPartMain" class="btn btn-success">Selesai</a>
   </form>
 </div>
