@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 07/06/2018 02:52:45
+ Date: 07/06/2018 05:36:36
 */
 
 SET NAMES utf8mb4;
@@ -48,13 +48,16 @@ CREATE TABLE `t_detail_trans_part`  (
   INDEX `fkdtp2`(`id_part`) USING BTREE,
   CONSTRAINT `fkdtp1` FOREIGN KEY (`id_trans_part`) REFERENCES `t_trans_part` (`id_trans_part`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkdtp2` FOREIGN KEY (`id_part`) REFERENCES `t_part` (`id_part`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_detail_trans_part
 -- ----------------------------
 INSERT INTO `t_detail_trans_part` VALUES (1, 1, 5, 3, 6000);
 INSERT INTO `t_detail_trans_part` VALUES (2, 1, 1, 1, 1200000);
+INSERT INTO `t_detail_trans_part` VALUES (3, 3, 6, 5, 12000);
+INSERT INTO `t_detail_trans_part` VALUES (4, 3, 1, 1, 1200000);
+INSERT INTO `t_detail_trans_part` VALUES (5, 4, 1, 2, 1200000);
 
 -- ----------------------------
 -- Table structure for t_detail_trans_service
@@ -132,7 +135,7 @@ CREATE TABLE `t_part`  (
 -- ----------------------------
 -- Records of t_part
 -- ----------------------------
-INSERT INTO `t_part` VALUES (1, '073080MB2020', 'BATTERY CHARGER MF', 20, 1200000);
+INSERT INTO `t_part` VALUES (1, '073080MB2020', 'BATTERY CHARGER MF', 18, 1200000);
 INSERT INTO `t_part` VALUES (2, '16165KEV900', 'HOLDER,NEEDLE JET', 20, 83000);
 INSERT INTO `t_part` VALUES (3, '50410440920', 'PIPE,RR', 20, 1126000);
 INSERT INTO `t_part` VALUES (4, '90113KYJ710', 'SCREW PAN 6X12', 20, 4000);
@@ -1195,13 +1198,15 @@ CREATE TABLE `t_trans_part`  (
   PRIMARY KEY (`id_trans_part`) USING BTREE,
   INDEX `fktp1`(`id_pelanggan`) USING BTREE,
   CONSTRAINT `fktp1` FOREIGN KEY (`id_pelanggan`) REFERENCES `t_pelanggan` (`id_pelanggan`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_trans_part
 -- ----------------------------
 INSERT INTO `t_trans_part` VALUES (1, 1, '2018-06-07');
 INSERT INTO `t_trans_part` VALUES (2, 1, '2018-05-27');
+INSERT INTO `t_trans_part` VALUES (3, 1, '2018-06-30');
+INSERT INTO `t_trans_part` VALUES (4, 1, '2018-06-16');
 
 -- ----------------------------
 -- Table structure for t_trans_service

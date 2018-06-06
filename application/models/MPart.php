@@ -40,6 +40,13 @@ class MPart extends CI_Model
     $this->db->update('t_part', $data);
   }
 
+  public function updateStokPart($data)
+  {
+    $this->db->set('stok_part', $data['stok_part'], FALSE);
+    $this->db->where('id_part', $data['id_part']);
+    $this->db->update('t_part');
+  }
+
   public function deletePart($where)
   {
     $this->db->delete('t_part', $where);

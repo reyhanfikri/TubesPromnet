@@ -105,6 +105,7 @@ class TransaksiPart extends CI_Controller
 
 	public function tambahTransPartDetail()
 	{
+		$dataPart = $this->MPart->getAllPart()->result();
 		$dataTempTransPart = $this->MTransPart->getAllTempTransPart()->result();
 		$dataTransPartMain = $this->MTransPart->getAllTransPartMain()->result();
 
@@ -112,7 +113,7 @@ class TransaksiPart extends CI_Controller
 		{
 			foreach ($dataTempTransPart as $value2)
 			{
-				if ($value1->id_pelanggan == $value2->id_pelanggan && $value1->tanggal_trans_service == $value2->tanggal)
+				if ($value1->id_pelanggan == $value2->id_pelanggan && $value1->tanggal_trans_part == $value2->tanggal)
 				{
 					$dataDetail = array(
 						'id_trans_part' => $value1->id_trans_part,
@@ -120,7 +121,21 @@ class TransaksiPart extends CI_Controller
 						'jumlah_part' => $value2->jumlah,
 						'harga' => $value2->harga
 					);
+
 					$this->MTransPart->insertTransPartDetail($dataDetail);
+				}
+
+				foreach ($dataPart as $value3)
+				{
+					if ($value3->id_part == $value2->id_part)
+					{
+						$data = array(
+							'id_part' => $value3->id_part, 
+							'stok_part' => $value3->stok_part - $value2->jumlah
+						);
+
+						$this->MPart->UpdateStokPArt($data);
+					}
 				}
 			}
 		}
