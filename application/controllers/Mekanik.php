@@ -13,53 +13,61 @@ class Mekanik extends CI_Controller
 
 	public function index() {
 
-		$config['base_url'] = site_url().'Mekanik/index';
-		$config['total_rows'] = $this->MMekanik->getAllMekanik()->num_rows();
-		$config['per_page'] = 50;
-		$config['uri_segment'] = 3;
-		$choice = $config['total_rows'] / $config['per_page'];
-		$config['num_links'] = floor($choice);
+		if ($this->session->userdata('isLoggedIn')) {
 
-		$config['first_link'] = 'First';
-		$config['last_link'] = 'Last';
-		$config['next_link'] = 'Next';
-		$config['prev_link'] = 'Prev';
-		$config['full_tag_open'] = '<div><ul class="pagination">';
-		$config['full_tag_close'] = '</ul></div>';
-		$config['num_tag_open'] = '<li class="page-item">';
-		$config['num_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['next_tag_open'] = '<li class="page-item">';
-		$config['next_tag_close'] = '</li>';
-		$config['prev_tag_open'] = '<li class="page-item">';
-		$config['prev_tag_close'] = '</li>';
-		$config['first_tag_open'] = '<li class="page-item">';
-		$config['first_tag_close'] = '</li>';
-		$config['last_tag_open'] = '<li class="page-item">';
-		$config['last_tag_close'] = '</li>';
-		$config['attributes'] = array('class' => 'page-link');
+			$config['base_url'] = site_url().'Mekanik/index';
+			$config['total_rows'] = $this->MMekanik->getAllMekanik()->num_rows();
+			$config['per_page'] = 50;
+			$config['uri_segment'] = 3;
+			$choice = $config['total_rows'] / $config['per_page'];
+			$config['num_links'] = floor($choice);
+
+			$config['first_link'] = 'First';
+			$config['last_link'] = 'Last';
+			$config['next_link'] = 'Next';
+			$config['prev_link'] = 'Prev';
+			$config['full_tag_open'] = '<div><ul class="pagination">';
+			$config['full_tag_close'] = '</ul></div>';
+			$config['num_tag_open'] = '<li class="page-item">';
+			$config['num_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['next_tag_open'] = '<li class="page-item">';
+			$config['next_tag_close'] = '</li>';
+			$config['prev_tag_open'] = '<li class="page-item">';
+			$config['prev_tag_close'] = '</li>';
+			$config['first_tag_open'] = '<li class="page-item">';
+			$config['first_tag_close'] = '</li>';
+			$config['last_tag_open'] = '<li class="page-item">';
+			$config['last_tag_close'] = '</li>';
+			$config['attributes'] = array('class' => 'page-link');
 
 
-		$this->pagination->initialize($config);
+			$this->pagination->initialize($config);
 
-		if ($this->uri->segment(3)) {
+			if ($this->uri->segment(3)) {
 
-			$page = ($this->uri->segment(3));
+				$page = ($this->uri->segment(3));
+
+			} else {
+
+				$page = 0;
+
+			}
+
+			$data['mekanik'] = $this->MMekanik->getLimitMekanik($config['per_page'], $page)->result();
+			$data['links'] = $this->pagination->create_links();
+
+			$this->load->view('v_header');
+			$this->load->view('Mekanik/v_mekanik', $data);
+			$this->load->view('v_footer');
 
 		} else {
 
-			$page = 0;
+			redirect(site_url('Login'));
 
 		}
 
-		$data['mekanik'] = $this->MMekanik->getLimitMekanik($config['per_page'], $page)->result();
-		$data['links'] = $this->pagination->create_links();
-
-		$this->load->view('v_header');
-		$this->load->view('Mekanik/v_mekanik', $data);
-		$this->load->view('v_footer');
-		
 	}
 
 	public function formTambahMekanik() {

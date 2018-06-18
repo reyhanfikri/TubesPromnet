@@ -14,40 +14,49 @@ class TransaksiService extends CI_Controller
 
 	public function index()
 	{
-		$data['pelanggan'] = $this->MPelanggan->getAllPelanggan()->result();
-		$data['mekanik'] = $this->MMekanik->getAllMekanik()->result();
-		$data['service'] = $this->MJasa->getAllJasa()->result();
-		$data['transService'] = $this->MTransService->getAllTempTableTransService()->result();
 
-		$dataTransService = $this->MTransService->getAllTempTransService()->result();
+		if ($this->session->userdata('isLoggedIn')) {
 
-		$data['nama_pelanggan'] = '';
-		$data['nama_mekanik'] = '';
-		$data['tanggal'] = '';
+			$data['pelanggan'] = $this->MPelanggan->getAllPelanggan()->result();
+			$data['mekanik'] = $this->MMekanik->getAllMekanik()->result();
+			$data['service'] = $this->MJasa->getAllJasa()->result();
+			$data['transService'] = $this->MTransService->getAllTempTableTransService()->result();
 
-		if (count($dataTransService) > 0)
-		{
-			foreach ($dataTransService as $value1)
+			$dataTransService = $this->MTransService->getAllTempTransService()->result();
+
+			$data['nama_pelanggan'] = '';
+			$data['nama_mekanik'] = '';
+			$data['tanggal'] = '';
+
+			if (count($dataTransService) > 0)
 			{
-				foreach ($data['pelanggan'] as $value2)
+				foreach ($dataTransService as $value1)
 				{
-					foreach ($data['mekanik'] as $value3)
+					foreach ($data['pelanggan'] as $value2)
 					{
-						if ($value1->id_pelanggan == $value2->id_pelanggan && $value1->id_mekanik == $value3->id_mekanik)
+						foreach ($data['mekanik'] as $value3)
 						{
-							$data['nama_pelanggan'] = $value2->nama_pelanggan;
-							$data['nama_mekanik'] = $value3->nama_mekanik;
-							$data['tanggal'] = $value1->tanggal;
+							if ($value1->id_pelanggan == $value2->id_pelanggan && $value1->id_mekanik == $value3->id_mekanik)
+							{
+								$data['nama_pelanggan'] = $value2->nama_pelanggan;
+								$data['nama_mekanik'] = $value3->nama_mekanik;
+								$data['tanggal'] = $value1->tanggal;
+							}
 						}
 					}
 				}
 			}
-		}
 
-		$this->load->view('v_header');
-		$this->load->view('Transaksi/v_trans_service', $data);
-		$this->load->view('Transaksi/v_tabel_trans_service', $data);
-		$this->load->view('v_footer');
+			$this->load->view('v_header');
+			$this->load->view('Transaksi/v_trans_service', $data);
+			$this->load->view('Transaksi/v_tabel_trans_service', $data);
+			$this->load->view('v_footer');
+
+		} else {
+
+			redirect(site_url('Login'));
+
+		}
 	}
 
 	public function tambahTempTransService()

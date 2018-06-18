@@ -17,82 +17,90 @@ class ReportPart extends CI_Controller {
 
 	public function index() {
 
-		if ($this->input->post('filter') !== null) {
+		if ($this->session->userdata('isLoggedIn')) {
 
-			$from = $this->input->post('from');
-			$to = $this->input->post('to');
+			if ($this->input->post('filter') !== null) {
 
-			$data['reportpart'] = $this->MReportPart->getAllReportPartByDate($from, $to)->result();
+				$from = $this->input->post('from');
+				$to = $this->input->post('to');
 
-			$data['graphicreportpart'] = $this->MReportPart->getGraphReportPartByDate($from, $to)->result();
+				$data['reportpart'] = $this->MReportPart->getAllReportPartByDate($from, $to)->result();
 
-			$this->load->view('v_header');
-			$this->load->view('Report/v_report_part', $data);
-			$this->load->view('v_footer');
+				$data['graphicreportpart'] = $this->MReportPart->getGraphReportPartByDate($from, $to)->result();
 
-		} else if ($this->input->post('filterperbulan') !== null) {
+				$this->load->view('v_header');
+				$this->load->view('Report/v_report_part', $data);
+				$this->load->view('v_footer');
 
-			$month = $this->input->post('month');
-			$month .= "-01";
+			} else if ($this->input->post('filterperbulan') !== null) {
 
-			$data['reportpart'] = $this->MReportPart->getAllReportPartByMonth($month)->result();
+				$month = $this->input->post('month');
+				$month .= "-01";
 
-			$data['graphicreportpart'] = $this->MReportPart->getGraphReportPartByMonth($month)->result();
+				$data['reportpart'] = $this->MReportPart->getAllReportPartByMonth($month)->result();
 
-			$this->load->view('v_header');
-			$this->load->view('Report/v_report_part', $data);
-			$this->load->view('v_footer');
+				$data['graphicreportpart'] = $this->MReportPart->getGraphReportPartByMonth($month)->result();
 
-		} else {
-
-			$config['base_url'] = site_url().'ReportPart/index';
-			$config['total_rows'] = $this->MReportPart->getAllReportPart()->num_rows();
-			$config['per_page'] = 50;
-			$config['uri_segment'] = 3;
-			$choice = $config['total_rows'] / $config['per_page'];
-			$config['num_links'] = floor($choice);
-
-			$config['first_link'] = 'First';
-			$config['last_link'] = 'Last';
-			$config['next_link'] = 'Next';
-			$config['prev_link'] = 'Prev';
-			$config['full_tag_open'] = '<div><ul class="pagination">';
-			$config['full_tag_close'] = '</ul></div>';
-			$config['num_tag_open'] = '<li class="page-item">';
-			$config['num_tag_close'] = '</li>';
-			$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
-			$config['cur_tag_close'] = '</a></li>';
-			$config['next_tag_open'] = '<li class="page-item">';
-			$config['next_tag_close'] = '</li>';
-			$config['prev_tag_open'] = '<li class="page-item">';
-			$config['prev_tag_close'] = '</li>';
-			$config['first_tag_open'] = '<li class="page-item">';
-			$config['first_tag_close'] = '</li>';
-			$config['last_tag_open'] = '<li class="page-item">';
-			$config['last_tag_close'] = '</li>';
-			$config['attributes'] = array('class' => 'page-link');
-
-
-			$this->pagination->initialize($config);
-
-			if ($this->uri->segment(3)) {
-
-				$page = ($this->uri->segment(3));
+				$this->load->view('v_header');
+				$this->load->view('Report/v_report_part', $data);
+				$this->load->view('v_footer');
 
 			} else {
 
-				$page = 0;
+				$config['base_url'] = site_url().'ReportPart/index';
+				$config['total_rows'] = $this->MReportPart->getAllReportPart()->num_rows();
+				$config['per_page'] = 50;
+				$config['uri_segment'] = 3;
+				$choice = $config['total_rows'] / $config['per_page'];
+				$config['num_links'] = floor($choice);
+
+				$config['first_link'] = 'First';
+				$config['last_link'] = 'Last';
+				$config['next_link'] = 'Next';
+				$config['prev_link'] = 'Prev';
+				$config['full_tag_open'] = '<div><ul class="pagination">';
+				$config['full_tag_close'] = '</ul></div>';
+				$config['num_tag_open'] = '<li class="page-item">';
+				$config['num_tag_close'] = '</li>';
+				$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
+				$config['cur_tag_close'] = '</a></li>';
+				$config['next_tag_open'] = '<li class="page-item">';
+				$config['next_tag_close'] = '</li>';
+				$config['prev_tag_open'] = '<li class="page-item">';
+				$config['prev_tag_close'] = '</li>';
+				$config['first_tag_open'] = '<li class="page-item">';
+				$config['first_tag_close'] = '</li>';
+				$config['last_tag_open'] = '<li class="page-item">';
+				$config['last_tag_close'] = '</li>';
+				$config['attributes'] = array('class' => 'page-link');
+
+
+				$this->pagination->initialize($config);
+
+				if ($this->uri->segment(3)) {
+
+					$page = ($this->uri->segment(3));
+
+				} else {
+
+					$page = 0;
+
+				}
+
+				$data['reportpart'] = $this->MReportPart->getLimitReportPart($config['per_page'], $page)->result();
+				$data['links'] = $this->pagination->create_links();
+
+				$data['graphicreportpart'] = $this->MReportPart->getGraphReportPart()->result();
+
+				$this->load->view('v_header');
+				$this->load->view('Report/v_report_part', $data);
+				$this->load->view('v_footer');
 
 			}
 
-			$data['reportpart'] = $this->MReportPart->getLimitReportPart($config['per_page'], $page)->result();
-			$data['links'] = $this->pagination->create_links();
+		} else {
 
-			$data['graphicreportpart'] = $this->MReportPart->getGraphReportPart()->result();
-
-			$this->load->view('v_header');
-			$this->load->view('Report/v_report_part', $data);
-			$this->load->view('v_footer');
+			redirect(site_url('Login'));
 
 		}
 		

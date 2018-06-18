@@ -13,32 +13,41 @@ class TransaksiPart extends CI_Controller
 
 	public function index()
 	{
-		$data['pelanggan'] = $this->MPelanggan->getAllPelanggan()->result();
-		$data['part'] = $this->MPart->getAllPart()->result();
-		$data['transPart'] = $this->MTransPart->getAllTempTableTransPart()->result();
-		$dataTransPart = $this->MTransPart->getAllTempTransPart()->result();
 
-		$data['nama_pelanggan'] = '';
-		$data['tanggal'] = '';
-		if (count($dataTransPart) > 0)
-		{
-			foreach ($dataTransPart as $value1)
+		if ($this->session->userdata('isLoggedIn')) {
+
+			$data['pelanggan'] = $this->MPelanggan->getAllPelanggan()->result();
+			$data['part'] = $this->MPart->getAllPart()->result();
+			$data['transPart'] = $this->MTransPart->getAllTempTableTransPart()->result();
+			$dataTransPart = $this->MTransPart->getAllTempTransPart()->result();
+
+			$data['nama_pelanggan'] = '';
+			$data['tanggal'] = '';
+			if (count($dataTransPart) > 0)
 			{
-				foreach ($data['pelanggan'] as $value2)
+				foreach ($dataTransPart as $value1)
 				{
-					if ($value1->id_pelanggan == $value2->id_pelanggan)
+					foreach ($data['pelanggan'] as $value2)
 					{
-						$data['nama_pelanggan'] = $value2->nama_pelanggan;
-						$data['tanggal'] = $value1->tanggal;
+						if ($value1->id_pelanggan == $value2->id_pelanggan)
+						{
+							$data['nama_pelanggan'] = $value2->nama_pelanggan;
+							$data['tanggal'] = $value1->tanggal;
+						}
 					}
 				}
 			}
-		}
 
-		$this->load->view('v_header');
-		$this->load->view('Transaksi/v_trans_part', $data);
-		$this->load->view('Transaksi/v_tabel_trans_part', $data);
-		$this->load->view('v_footer');
+			$this->load->view('v_header');
+			$this->load->view('Transaksi/v_trans_part', $data);
+			$this->load->view('Transaksi/v_tabel_trans_part', $data);
+			$this->load->view('v_footer');
+
+		} else {
+
+			redirect(site_url('Login'));
+
+		}
 	}
 
 	public function tambahTempTransPart()
