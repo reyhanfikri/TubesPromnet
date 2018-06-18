@@ -10,13 +10,13 @@
   <div style="padding-top: 20px; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; margin-bottom: 40px; background-color: #e8e8e8;">
     <form class="form-inline" action="ReportPart" method="post">
       <h5>Filter Periode</h5>
-      <input class="form-control" style="margin-left: 100px; margin-right: 20px;" type="date" name="from">s/d
-      <input class="form-control" style="margin-left: 20px; margin-right: 20px;" type="date" name="to">
+      <input class="form-control" style="margin-left: 100px; margin-right: 20px;" type="date" name="from" value="<?php if (isset($from)) { echo $from; } ?>">s/d
+      <input class="form-control" style="margin-left: 20px; margin-right: 20px;" type="date" name="to" value="<?php if (isset($to)) { echo $to; } ?>">
       <input class="btn btn-success" type="submit" name="filter" value="Filter">
     </form><br>
     <form class="form-inline" action="ReportPart" method="post">
       <h5>Filter Periode Per Bulan</h5>
-      <input class="form-control" style="margin-left: 17px; margin-right: 20px;" type="month" name="month">
+      <input class="form-control" style="margin-left: 17px; margin-right: 20px;" type="month" name="month" value="<?php if (isset($month)) { echo $month; } ?>">
       <input class="btn btn-success" type="submit" name="filterperbulan" value="Filter">
     </form>
     <br>

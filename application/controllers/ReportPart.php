@@ -23,10 +23,14 @@ class ReportPart extends CI_Controller {
 
 				$from = $this->input->post('from');
 				$to = $this->input->post('to');
+				
+				$data['from'] = $from;
+				$data['to'] = $to;
 
 				$data['reportpart'] = $this->MReportPart->getAllReportPartByDate($from, $to)->result();
 
 				$data['graphicreportpart'] = $this->MReportPart->getGraphReportPartByDate($from, $to)->result();
+
 
 				$this->load->view('v_header');
 				$this->load->view('Report/v_report_part', $data);
@@ -35,6 +39,7 @@ class ReportPart extends CI_Controller {
 			} else if ($this->input->post('filterperbulan') !== null) {
 
 				$month = $this->input->post('month');
+				$data['month'] = $month;
 				$month .= "-01";
 
 				$data['reportpart'] = $this->MReportPart->getAllReportPartByMonth($month)->result();

@@ -24,6 +24,9 @@ class ReportService extends CI_Controller {
 				$from = $this->input->post('from');
 				$to = $this->input->post('to');
 
+				$data['from'] = $from;
+				$data['to'] = $to;
+
 				$data['reportservice'] = $this->MReportService->getAllReportServiceByDate($from, $to)->result();
 
 				$data['graphicreportservice'] = $this->MReportService->getGraphReportServiceByDate($from, $to)->result();
@@ -35,6 +38,7 @@ class ReportService extends CI_Controller {
 			} else if ($this->input->post('filterperbulan') !== null) {
 
 				$month = $this->input->post('month');
+				$data['month'] = $month;
 				$month .= "-01";
 
 				$data['reportservice'] = $this->MReportService->getAllReportServiceByMonth($month)->result();
