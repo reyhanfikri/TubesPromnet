@@ -5,18 +5,26 @@
   }
 ?>
 <div class="container">
-  <center> <h2>Laporan Penjualan Part</h2> </center><br>
-  <form class="form-inline" action="ReportPart" method="post">
-  	<legend>Filter Periode</legend>
-  	Periode&nbsp;&nbsp;<input class="form-control" type="date" name="from">&nbsp;&nbsp;s/d&nbsp;&nbsp;<input class="form-control" type="date" name="to">&nbsp;&nbsp;
-  	<input class="btn btn-success" type="submit" name="filter">
-  </form><br>
-  <form class="form-inline" action="ReportPart" method="post">
-    <legend>Filter Periode Per Bulan</legend>
-    Periode&nbsp;&nbsp;<input class="form-control" type="month" name="month">&nbsp;&nbsp;
-    <input class="btn btn-success" type="submit" name="filterperbulan">
-  </form><br>
-  <canvas id="canvas" width="1000" height="210"></canvas>
+  <br>
+  <center><h2>Laporan Penjualan Part</h2> </center><br>
+  <div style="padding-top: 20px; padding-bottom: 20px; padding-left: 20px; padding-right: 20px; margin-bottom: 40px; background-color: #e8e8e8;">
+    <form class="form-inline" action="ReportPart" method="post">
+      <h5>Filter Periode</h5>
+      <input class="form-control" style="margin-left: 100px; margin-right: 20px;" type="date" name="from">s/d
+      <input class="form-control" style="margin-left: 20px; margin-right: 20px;" type="date" name="to">
+      <input class="btn btn-success" type="submit" name="filter" value="Filter">
+    </form><br>
+    <form class="form-inline" action="ReportPart" method="post">
+      <h5>Filter Periode Per Bulan</h5>
+      <input class="form-control" style="margin-left: 17px; margin-right: 20px;" type="month" name="month">
+      <input class="btn btn-success" type="submit" name="filterperbulan" value="Filter">
+    </form>
+    <br>
+    <form action="ReportPart" method="post">
+      <input class="btn btn-warning" type="submit" value="Reset Filter">
+    </form>
+  </div>
+  <canvas id="canvas" width="1000" height="220"></canvas>
   <script type="text/javascript" src="<?php echo site_url(); ?>assets/js/Chart.js"></script>
   <script>
     var myLine = document.getElementById("canvas").getContext("2d");
@@ -49,7 +57,7 @@
         }
     });
   </script>
-  <br>
+  <br><br>
   <table class="table table-hover">
     <thead>
       <tr class="table-info">
