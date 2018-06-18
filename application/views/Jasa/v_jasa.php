@@ -5,6 +5,7 @@
     <thead>
       <tr class="table-info">
         <th scope="col">No</th>
+        <th scope="col">Id Jasa</th>
         <th scope="col">Nama Jasa</th>
         <th scope="col">Harga Part</th>
         <th scope="col">Action</th>
@@ -14,6 +15,7 @@
       <?php foreach ($jasa as $val) { ?>
         <tr>
           <td><?php echo $val->id_jasa ?></td>
+          <td><?php echo $val->no_jasa ?></td>
           <td><?php echo $val->nama_jasa; ?></td>
           <td><?php echo $val->harga_jasa; ?></td>
           <td>

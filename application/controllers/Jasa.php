@@ -76,6 +76,7 @@ class Jasa extends CI_Controller
 	public function tambahJasa()
 	{
 		$data = array(
+			'no_jasa' => $this->input->post('no_jasa'),
 			'nama_jasa' => $this->input->post('nama_jasa'),
 			'harga_jasa' => $this->input->post('harga_jasa')
 	 	);
@@ -98,6 +99,7 @@ class Jasa extends CI_Controller
 		$where = array('id_jasa' => $this->input->post('id_jasa'));
 		$data = array(
 			'id_jasa' => $this->input->post('id_jasa'),
+			'no_jasa' => $this->input->post('no_jasa'),
 			'nama_jasa' => $this->input->post('nama_jasa'),
 			'harga_jasa' => $this->input->post('harga_jasa')
 	 	);

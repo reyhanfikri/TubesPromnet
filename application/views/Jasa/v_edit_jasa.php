@@ -5,6 +5,10 @@
       <legend>Mengedit Jasa</legend>
       <input name="id_jasa" type="text" class="form-control col-sm-3" value="<?php echo $val->id_jasa; ?>" hidden>
       <div class="form-group">
+        <label class="col-form-label">Id Jasa</label>
+        <input name="no_jasa" type="text" class="form-control col-sm-3" value="<?php echo $val->no_jasa; ?>">
+      </div>
+      <div class="form-group">
         <label class="col-form-label">Nama Jasa</label>
         <input name="nama_jasa" type="text" class="form-control col-sm-3" value="<?php echo $val->nama_jasa; ?>">
       </div>
