@@ -16,7 +16,7 @@
     Periode&nbsp;&nbsp;<input class="form-control" type="month" name="month">&nbsp;&nbsp;
     <input class="btn btn-success" type="submit" name="filterperbulan">
   </form><br>
-  <canvas id="canvas" width="1000" height="280"></canvas>
+  <canvas id="canvas" width="1000" height="210"></canvas>
   <script type="text/javascript" src="<?php echo site_url(); ?>assets/js/Chart.js"></script>
   <script>
     var myLine = document.getElementById("canvas").getContext("2d"); 
@@ -36,8 +36,17 @@
 
           ]
 
+        },
+        options: {
+          scales: {
+             yAxes: [{
+                 ticks: {
+                     beginAtZero: true,
+                     stepSize: 1,
+                 }
+             }],
+         },
         }
-         
     });
   </script>
   <br>
