@@ -27,4 +27,14 @@ class MLaporanPenjualanPart extends CI_Model {
 
 	}
 
+	public function getLaporanHarian($tanggal) {
+
+		$query = "SELECT DATE_FORMAT(t_trans_part.tanggal_trans_part, '%d/%m/%Y %H:%i:%s') AS 'tanggal_jam',  t_part.no_part AS 'id_part', t_part.nama_part, t_detail_trans_part.jumlah_part AS 'qty', t_part.harga_part AS 'harga', t_detail_trans_part.harga AS 'subtotal', t_user.username AS 'kasir' FROM t_trans_part INNER JOIN t_detail_trans_part ON t_detail_trans_part.id_trans_part = t_trans_part.id_trans_part INNER JOIN t_part ON t_part.id_part = t_detail_trans_part.id_part INNER JOIN t_user ON t_user.id_user = t_trans_part.id_user WHERE DATE(t_trans_part.tanggal_trans_part) = '".$tanggal."' ORDER BY t_trans_part.tanggal_trans_part;";
+
+		$hasil = $this->db->query($query);
+
+		return $hasil->result();
+
+	}
+
 }
