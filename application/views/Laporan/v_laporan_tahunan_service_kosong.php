@@ -1,5 +1,5 @@
   <br>
-  <h5><b>Laporan Penjualan Service -Tahunan- (<?php echo $tahun; ?>)</b></h5>
+  <h5><b>Laporan Pendapatan Service -Tahunan- (<?php echo $tahun; ?>)</b></h5>
   <div class="col-md-6" style="float: left; padding-left: 0px;">
     <table class="table table-hover">
       <thead>
@@ -34,7 +34,7 @@
             datasets : [
 
                 {
-                    label: "Jumlah service yang terjual",
+                    label: "Jumlah pendapatan service",
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
                     fill: null,
@@ -67,7 +67,7 @@
   <div class="col-md-offset-6">&nbsp;</div>
   <br>
   <div style="padding-left: 767px;">
-    <form class="form-inline" method="post" action="<?php echo site_url('LaporanPenjualanTahunan'); ?>">
+    <form class="form-inline" method="post" action="<?php echo site_url('LaporanTahunan'); ?>">
       <h5>Update Laporan: </h5>
       <select name="year" class="form-control" style="width: 90px; margin-left: 9px; margin-right: 10px;">
         <option value="2015" <?php if ($tahun == 2015) { ?> selected <?php } ?>>2015</option>

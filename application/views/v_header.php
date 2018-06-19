@@ -36,9 +36,9 @@
               <a class="nav-link" href="<?php echo site_url();?>TransaksiService">Transaksi Service</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="laporan" data-toggle="dropdown" href="#" aria-expanded="false">Laporan Penjualan</a>
+              <a class="nav-link dropdown-toggle" id="laporan" data-toggle="dropdown" href="#" aria-expanded="false">Laporan</a>
               <div class="dropdown-menu" aria-labelledby="laporan">
-                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPenjualanTahunan">Laporan Tahunan</a>
+                <a class="dropdown-item" href="<?php echo site_url();?>LaporanTahunan">Laporan Tahunan</a>
                 <a class="dropdown-item" href="#">Laporan Bulanan</a>
                 <a class="dropdown-item" href="#">Laporan Harian</a>
               </div>

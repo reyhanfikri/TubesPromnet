@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class LaporanPenjualanTahunan extends CI_Controller
+class LaporanTahunan extends CI_Controller
 {
 
 	private $tahun;
@@ -9,7 +9,7 @@ class LaporanPenjualanTahunan extends CI_Controller
 	public function __construct() {
 
 		parent::__construct();
-		$this->load->model(array('MLaporanPenjualanPart', 'MLaporanPenjualanService'));
+		$this->load->model(array('MLaporanPenjualanPart', 'MLaporanPendapatanService'));
 		$this->tahun = 2018;
 
 	}
@@ -22,12 +22,12 @@ class LaporanPenjualanTahunan extends CI_Controller
 
 				$this->tahun = $this->input->post('year');
 				$data['data'] = $this->MLaporanPenjualanPart->getLaporanTahunan($this->tahun);
-				$data['data2'] = $this->MLaporanPenjualanService->getLaporanTahunan($this->tahun);
+				$data['data2'] = $this->MLaporanPendapatanService->getLaporanTahunan($this->tahun);
 
 			} else {
 
 				$data['data'] = $this->MLaporanPenjualanPart->getLaporanTahunan($this->tahun);
-				$data['data2'] = $this->MLaporanPenjualanService->getLaporanTahunan($this->tahun);
+				$data['data2'] = $this->MLaporanPendapatanService->getLaporanTahunan($this->tahun);
 
 			}
 
