@@ -10,7 +10,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
-        <a class="navbar-brand" href="#">Bengkel Baru</a>
+        <a class="navbar-brand" href="<?php echo site_url();?>Pelanggan">Bengkel Baru</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,11 +35,13 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url();?>TransaksiService">Transaksi Service</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url();?>ReportService">Report Service</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url();?>ReportPart">Report Part</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="laporan" data-toggle="dropdown" href="#" aria-expanded="false">Laporan Penjualan</a>
+              <div class="dropdown-menu" aria-labelledby="laporan">
+                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPenjualanTahunan">Laporan Tahunan</a>
+                <a class="dropdown-item" href="#">Laporan Bulanan</a>
+                <a class="dropdown-item" href="#">Laporan Harian</a>
+              </div>
             </li>
           </ul>
           <a href="<?php echo site_url();?>Login/Logout">
