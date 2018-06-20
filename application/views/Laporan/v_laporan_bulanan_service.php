@@ -1,5 +1,5 @@
   <br>
-  <h5><b>Laporan Pendapatan Service -Harian- (<?php echo $hari; ?>, <?php echo $tanggal; ?>)</b></h5>
+  <h5><b>Laporan Pendapatan Service -Bulanan- (<?php echo $bulan_tahun; ?>)</b></h5>
   <div style="padding-left: 0px;">
     <table class="table table-hover">
       <thead>
@@ -45,9 +45,9 @@
   </div>
   <br>
   <div style="padding-left: 700px;">
-    <form class="form-inline" method="post" action="<?php echo site_url('LaporanHarian'); ?>">
+    <form class="form-inline" method="post" action="<?php echo site_url('LaporanBulanan'); ?>">
       <h5>Update Laporan: </h5>
-      <input class="form-control" style="width: 165px; margin-left: 9px; margin-right: 10px;" type="date" name="tanggal" value="<?php echo $tanggal_raw; ?>">
+      <input class="form-control" style="width: 165px; margin-left: 9px; margin-right: 10px;" type="month" name="bulan_tahun" value="<?php echo $bulan_tahun_raw; ?>">
       <input class="btn btn-primary" type="submit" name="updatelaporan" value="Update">
     </form>
   </div>
