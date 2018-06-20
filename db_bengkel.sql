@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 20/06/2018 10:28:02
+ Date: 20/06/2018 12:19:51
 */
 
 SET NAMES utf8mb4;
@@ -66,24 +66,29 @@ DROP TABLE IF EXISTS `t_detail_trans_service`;
 CREATE TABLE `t_detail_trans_service`  (
   `id_detail_trans_service` int(11) NOT NULL AUTO_INCREMENT,
   `id_trans_service` int(11) NOT NULL,
-  `id_jasa` int(11) NOT NULL,
+  `id_part` int(11) NULL DEFAULT NULL,
+  `id_jasa` int(11) NULL DEFAULT NULL,
+  `qty` int(11) NOT NULL,
   `harga` int(11) NOT NULL,
   PRIMARY KEY (`id_detail_trans_service`) USING BTREE,
   INDEX `fkdts1`(`id_trans_service`) USING BTREE,
   INDEX `fkdts2`(`id_jasa`) USING BTREE,
+  INDEX `fkdts3`(`id_part`) USING BTREE,
   CONSTRAINT `fkdts1` FOREIGN KEY (`id_trans_service`) REFERENCES `t_trans_service` (`id_trans_service`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fkdts2` FOREIGN KEY (`id_jasa`) REFERENCES `t_jasa` (`id_jasa`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+  CONSTRAINT `fkdts2` FOREIGN KEY (`id_jasa`) REFERENCES `t_jasa` (`id_jasa`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fkdts3` FOREIGN KEY (`id_part`) REFERENCES `t_part` (`id_part`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_detail_trans_service
 -- ----------------------------
-INSERT INTO `t_detail_trans_service` VALUES (1, 1, 1, 70000);
-INSERT INTO `t_detail_trans_service` VALUES (2, 2, 2, 899000);
-INSERT INTO `t_detail_trans_service` VALUES (3, 3, 3, 1500000);
-INSERT INTO `t_detail_trans_service` VALUES (4, 4, 4, 900000);
-INSERT INTO `t_detail_trans_service` VALUES (5, 5, 5, 5000000);
-INSERT INTO `t_detail_trans_service` VALUES (6, 6, 1, 70000);
+INSERT INTO `t_detail_trans_service` VALUES (1, 1, NULL, 1, 1, 70000);
+INSERT INTO `t_detail_trans_service` VALUES (2, 2, NULL, 2, 1, 899000);
+INSERT INTO `t_detail_trans_service` VALUES (3, 3, NULL, 3, 1, 1500000);
+INSERT INTO `t_detail_trans_service` VALUES (4, 4, NULL, 4, 1, 900000);
+INSERT INTO `t_detail_trans_service` VALUES (5, 5, NULL, 5, 1, 5000000);
+INSERT INTO `t_detail_trans_service` VALUES (6, 6, NULL, 1, 1, 70000);
+INSERT INTO `t_detail_trans_service` VALUES (7, 6, 2, NULL, 2, 166000);
 
 -- ----------------------------
 -- Table structure for t_jasa
@@ -1229,10 +1234,10 @@ CREATE TABLE `t_trans_service`  (
   `nomor_kwitansi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal_trans_service` datetime(0) NOT NULL,
   PRIMARY KEY (`id_trans_service`) USING BTREE,
+  UNIQUE INDEX `nomor_transaksi`(`nomor_kwitansi`) USING BTREE,
   INDEX `fkts1`(`id_pelanggan`) USING BTREE,
   INDEX `fkts2`(`id_mekanik`) USING BTREE,
   INDEX `fkk2`(`id_user`) USING BTREE,
-  UNIQUE INDEX `nomor_transaksi`(`nomor_kwitansi`) USING BTREE,
   CONSTRAINT `fkk2` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkts1` FOREIGN KEY (`id_pelanggan`) REFERENCES `t_pelanggan` (`id_pelanggan`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkts2` FOREIGN KEY (`id_mekanik`) REFERENCES `t_mekanik` (`id_mekanik`) ON DELETE RESTRICT ON UPDATE RESTRICT
