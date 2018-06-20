@@ -27,11 +27,11 @@
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->subtotal); $total += $val->subtotal; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->kasir; ?></td>
           </tr>
-        <?php } ?>
+        <?php $total_transaksi[] = $val->no_transaksi; } ?>
         <tr class="table-secondary">
             <td style="padding-top: 4px; padding-bottom: 4px;"></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"></b></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo "TOTAL"; ?></td>
+            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php if (isset($total_transaksi)) { echo count(array_count_values($total_transaksi))." Transaksi"; } ?></b></td>
+            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_item; ?></b></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_item." ITEM"; ?></b></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_qty." Pcs"; ?></b></td>
             <td style="padding-top: 4px; padding-bottom: 4px;">-</td>
