@@ -20,18 +20,23 @@ class LaporanBulanan extends CI_Controller
 
 			if ($this->input->post('updatelaporan') !== null) {
 
-				$this->bulan_tahun = $this->input->post('bulan_tahun');
-
-				$data['bulan_tahun_raw'] = $this->bulan_tahun;
+				$this->bulan_tahun = $this->input->post('tahun')."-".$this->input->post('bulan');
 				$this->bulan_tahun .= "-01";
+
+				$bulan_tahun_converted_to_time = strtotime($this->bulan_tahun);
+				$data['bulan'] = date("m", $bulan_tahun_converted_to_time);
+				$data['tahun'] = date("Y", $bulan_tahun_converted_to_time);
 
 				$data['data'] = $this->MLaporanPenjualanPart->getLaporanBulanan($this->bulan_tahun);
 				$data['data2'] = $this->MLaporanPendapatanService->getLaporanBulanan($this->bulan_tahun);
 
 			} else {
 
-				$data['bulan_tahun_raw'] = $this->bulan_tahun;
 				$this->bulan_tahun .= "-01";
+
+				$bulan_tahun_converted_to_time = strtotime($this->bulan_tahun);
+				$data['bulan'] = date("m", $bulan_tahun_converted_to_time);
+				$data['tahun'] = date("Y", $bulan_tahun_converted_to_time);
 
 				$data['data'] = $this->MLaporanPenjualanPart->getLaporanBulanan($this->bulan_tahun);
 				$data['data2'] = $this->MLaporanPendapatanService->getLaporanBulanan($this->bulan_tahun);
