@@ -21,7 +21,9 @@
       <?php foreach ($pelanggan as $val) { ?>
         <tr>
           <td><?php echo $val->id_pelanggan; ?></td>
-          <td><?php echo $val->nomor_polisi; ?></td>
+          <td>
+            <a href="<?php echo site_url(); ?>Pelanggan/formEditPelanggan/<?php echo $val->id_pelanggan; ?>" class=""><?php echo $val->nomor_polisi; ?></a>
+          </td>
           <td><?php echo $val->nama_pelanggan; ?></td>
           <td><?php echo $val->alamat_pelanggan; ?></td>
           <td><?php echo $val->merk_type_kendaraan; ?></td>
