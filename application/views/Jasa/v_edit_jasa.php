@@ -2,21 +2,41 @@
   <?php foreach ($jasa as $val) { ?>
   <form class="" action="<?php echo site_url();?>Jasa/editJasa" method="post">
     <fieldset>
-      <legend>Mengedit Jasa</legend>
-      <input name="id_jasa" type="text" class="form-control col-sm-3" value="<?php echo $val->id_jasa; ?>" hidden>
-      <div class="form-group">
-        <label class="col-form-label">Id Jasa</label>
-        <input name="no_jasa" type="text" class="form-control col-sm-3" value="<?php echo $val->no_jasa; ?>">
+      <input name="id_jasa" type="text" class="form-control" value="<?php echo $val->id_jasa; ?>" hidden>
+      <div class="jumbotron">
+        <center><legend class="display-4">Mengedit Jasa</legend>
+          <br>
+        <div class="row">
+          <div class="col-lg-6">
+
+            <div class="form-group row">
+              <label class="col-form-label">&emsp;&emsp;&emsp; Id Jasa &emsp;&emsp;&emsp;&emsp;</label>
+              <div class="col-sm-6">
+                <input name="no_jasa" type="text" class="form-control" value="<?php echo $val->no_jasa; ?>">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label">&emsp;&emsp;&emsp; Harga Jasa &emsp;&emsp;&nbsp;</label>
+              <div class="col-sm-6">
+                <input name="harga_jasa" type="text" class="form-control" value="<?php echo $val->harga_jasa; ?>">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="form-group row">
+              <label class="col-form-label">&emsp;&emsp;&emsp; Nama Jasa &emsp;&emsp;&nbsp;</label>
+              <div class="col-sm-6">
+                <input name="nama_jasa" type="text" class="form-control" value="<?php echo $val->nama_jasa; ?>">
+              </div>
+            </div>
+
+          </div>
+        </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
       </div>
-      <div class="form-group">
-        <label class="col-form-label">Nama Jasa</label>
-        <input name="nama_jasa" type="text" class="form-control col-sm-3" value="<?php echo $val->nama_jasa; ?>">
-      </div>
-      <div class="form-group">
-        <label class="col-form-label">Harga Jasa</label>
-        <input name="harga_jasa" type="text" class="form-control col-sm-3" value="<?php echo $val->harga_jasa; ?>">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
     </fieldset>
   </form>
 <?php } ?>

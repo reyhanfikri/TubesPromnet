@@ -2,6 +2,7 @@
   <?php foreach ($pelanggan as $val) { ?>
   <form class="" action="<?php echo site_url();?>Pelanggan/editPelanggan" method="post">
     <fieldset>
+      <input name="id_pelanggan" type="text" class="form-control" value="<?php echo $val->id_pelanggan; ?>" hidden>
       <div class="jumbotron">
         <center><legend class="display-4">Mengedit Pelanggan</legend>
           <br>

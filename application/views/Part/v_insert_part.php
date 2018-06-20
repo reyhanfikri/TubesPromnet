@@ -1,24 +1,47 @@
 <div class="container">
   <form class="" action="<?php echo site_url();?>Part/tambahPart" method="post">
     <fieldset>
-      <legend>Menambahkan Part</legend>
-      <div class="form-group">
-        <label class="col-form-label">Id Part</label>
-        <input name="id_part" type="text" class="form-control col-sm-3" placeholder="Id Part">
+      <div class="jumbotron">
+        <center><legend class="display-4">Menambahkan Part</legend>
+          <br>
+        <div class="row">
+          <div class="col-lg-6">
+
+            <div class="form-group row">
+              <label class="col-form-label">&emsp;&emsp;&emsp; Id Part &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
+              <div class="col-sm-6">
+                <input name="id_part" type="text" class="form-control" placeholder="Id Part">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label">&emsp;&emsp;&emsp; Stok Part &emsp;&emsp;&emsp;&emsp;&nbsp;</label>
+              <div class="col-sm-6">
+                <input name="stok_part" type="text" class="form-control" placeholder="Stok Part">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <div class="form-group row">
+              <label class="col-form-label">&emsp;&emsp;&emsp; Nama Part &emsp;&nbsp;&nbsp;&nbsp;</label>
+              <div class="col-sm-6">
+                <input name="nama_part" type="text" class="form-control" placeholder="Nama Part">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label">&emsp;&emsp;&emsp; Harga Part &emsp;&nbsp;&nbsp;&nbsp;</label>
+              <div class="col-sm-6">
+                <input name="harga_part" type="text" class="form-control" placeholder="Harga Part">
+              </div>
+            </div>
+          </div>
+        </div>
+          <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
-      <div class="form-group">
-        <label class="col-form-label">Nama Part</label>
-        <input name="nama_part" type="text" class="form-control col-sm-3" placeholder="Nama Part">
-      </div>
-      <div class="form-group">
-        <label class="col-form-label">Stok Part</label>
-        <input name="stok_part" type="text" class="form-control col-sm-3" placeholder="Stok Part">
-      </div>
-      <div class="form-group">
-        <label class="col-form-label">Harga Part</label>
-        <input name="harga_part" type="text" class="form-control col-sm-3" placeholder="Harga Part">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
     </fieldset>
   </form>
 </div>
