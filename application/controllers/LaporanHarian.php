@@ -31,6 +31,7 @@ class LaporanHarian extends CI_Controller
 
 			}
 
+			$data['tanggal_raw'] = $this->tanggal;
 			$data['tanggal'] = date_create($this->tanggal)->format('d/m/Y');
 			$temp_hari = date_create($this->tanggal)->format('l');
 
