@@ -11,7 +11,7 @@ class MLaporanPendapatanService extends CI_Model {
 
 	public function getLaporanTahunan($tahun) {
 
-		$query = "SELECT DATE_FORMAT(t_trans_service.tanggal_trans_service, '%m/%Y') AS 'bulan_tahun', YEAR(t_trans_service.tanggal_trans_service) AS 'tahun' , MONTH(t_trans_service.tanggal_trans_service) AS 'bulan', COUNT(t_detail_trans_service.id_jasa) AS 'jumlah_service', SUM(t_detail_trans_service.harga) AS 'total_harga' FROM t_trans_service, t_detail_trans_service WHERE t_detail_trans_service.id_trans_service = t_trans_service.id_trans_service AND YEAR(t_trans_service.tanggal_trans_service) = '".$tahun."' GROUP BY DATE_FORMAT(t_trans_service.tanggal_trans_service, '%m/%Y') ORDER BY DATE_FORMAT(t_trans_service.tanggal_trans_service, '%m/%Y');";
+		$query = "SELECT DATE_FORMAT(t_trans_service.tanggal_trans_service, '%m/%Y') AS 'bulan_tahun', YEAR(t_trans_service.tanggal_trans_service) AS 'tahun' , MONTH(t_trans_service.tanggal_trans_service) AS 'bulan', SUM(t_detail_trans_service.qty) AS 'jumlah_service', SUM(t_detail_trans_service.harga) AS 'total_harga' FROM t_trans_service, t_detail_trans_service WHERE t_detail_trans_service.id_trans_service = t_trans_service.id_trans_service AND YEAR(t_trans_service.tanggal_trans_service) = '".$tahun."' GROUP BY DATE_FORMAT(t_trans_service.tanggal_trans_service, '%m/%Y') ORDER BY DATE_FORMAT(t_trans_service.tanggal_trans_service, '%m/%Y');";
 
 		$hasil = $this->db->query($query);
 

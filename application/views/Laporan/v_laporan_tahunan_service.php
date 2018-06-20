@@ -6,7 +6,7 @@
         <tr class="table-info">
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">No</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Bulan/Tahun</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Jumlah Service</th>
+          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Jumlah Part/Service</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Total Harga</th>
         </tr>
       </thead>
@@ -89,7 +89,7 @@
       });
     </script><br>
   </div>
-  <div style="float: left; padding-left: 283px;"><b>TOTAL</b></div>
+  <div style="float: left; padding-left: 303px;"><b>TOTAL</b></div>
   <div style="float: left; padding-left: 70px;"><b><?php echo number_format($total); ?></b></div>
   <div class="col-md-offset-6">&nbsp;</div>
   <br>
