@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 19/06/2018 21:02:41
+ Date: 20/06/2018 10:28:02
 */
 
 SET NAMES utf8mb4;
@@ -1226,11 +1226,13 @@ CREATE TABLE `t_trans_service`  (
   `id_pelanggan` int(11) NOT NULL,
   `id_mekanik` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `nomor_kwitansi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal_trans_service` datetime(0) NOT NULL,
   PRIMARY KEY (`id_trans_service`) USING BTREE,
   INDEX `fkts1`(`id_pelanggan`) USING BTREE,
   INDEX `fkts2`(`id_mekanik`) USING BTREE,
   INDEX `fkk2`(`id_user`) USING BTREE,
+  UNIQUE INDEX `nomor_transaksi`(`nomor_kwitansi`) USING BTREE,
   CONSTRAINT `fkk2` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkts1` FOREIGN KEY (`id_pelanggan`) REFERENCES `t_pelanggan` (`id_pelanggan`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkts2` FOREIGN KEY (`id_mekanik`) REFERENCES `t_mekanik` (`id_mekanik`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -1239,12 +1241,12 @@ CREATE TABLE `t_trans_service`  (
 -- ----------------------------
 -- Records of t_trans_service
 -- ----------------------------
-INSERT INTO `t_trans_service` VALUES (1, 1, 1, 1, '2018-06-19 17:53:52');
-INSERT INTO `t_trans_service` VALUES (2, 1, 1, 1, '2018-06-30 17:54:07');
-INSERT INTO `t_trans_service` VALUES (3, 1, 1, 1, '2018-11-19 17:54:31');
-INSERT INTO `t_trans_service` VALUES (4, 1, 1, 1, '2018-12-07 17:54:43');
-INSERT INTO `t_trans_service` VALUES (5, 1, 1, 1, '2019-02-19 17:55:02');
-INSERT INTO `t_trans_service` VALUES (6, 1, 1, 1, '2019-10-22 17:55:28');
+INSERT INTO `t_trans_service` VALUES (1, 1, 1, 1, 'T0001', '2018-06-19 17:53:52');
+INSERT INTO `t_trans_service` VALUES (2, 1, 1, 1, 'T0002', '2018-06-30 17:54:07');
+INSERT INTO `t_trans_service` VALUES (3, 1, 1, 1, 'T0003', '2018-11-19 17:54:31');
+INSERT INTO `t_trans_service` VALUES (4, 1, 1, 1, 'T0004', '2018-12-07 17:54:43');
+INSERT INTO `t_trans_service` VALUES (5, 1, 1, 1, 'T0005', '2019-02-19 17:55:02');
+INSERT INTO `t_trans_service` VALUES (6, 1, 1, 1, 'T0006', '2019-10-22 17:55:28');
 
 -- ----------------------------
 -- Table structure for t_user
