@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 21/06/2018 20:14:33
+ Date: 21/06/2018 21:02:42
 */
 
 SET NAMES utf8mb4;
@@ -48,7 +48,7 @@ CREATE TABLE `t_detail_trans_part`  (
   INDEX `fkdtp2`(`id_part`) USING BTREE,
   CONSTRAINT `fkdtp1` FOREIGN KEY (`id_trans_part`) REFERENCES `t_trans_part` (`id_trans_part`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkdtp2` FOREIGN KEY (`id_part`) REFERENCES `t_part` (`id_part`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_detail_trans_part
@@ -58,6 +58,8 @@ INSERT INTO `t_detail_trans_part` VALUES (2, 2, 48, 2, 249000);
 INSERT INTO `t_detail_trans_part` VALUES (3, 3, 150, 5, 1000);
 INSERT INTO `t_detail_trans_part` VALUES (4, 4, 161, 1, 66500);
 INSERT INTO `t_detail_trans_part` VALUES (5, 4, 540, 1, 111000);
+INSERT INTO `t_detail_trans_part` VALUES (6, 5, 112, 1, 330000);
+INSERT INTO `t_detail_trans_part` VALUES (7, 5, 11, 1, 24100);
 
 -- ----------------------------
 -- Table structure for t_detail_trans_service
@@ -157,7 +159,7 @@ INSERT INTO `t_part` VALUES (7, 'SP000007', '88120KTM000FMB', 20, 45000);
 INSERT INTO `t_part` VALUES (8, 'SP000008', 'STRIPE RED L', 20, 100000);
 INSERT INTO `t_part` VALUES (9, 'SP000009', 'SPG,DRUM STOPPER', 20, 1500);
 INSERT INTO `t_part` VALUES (10, 'SP000010', 'CYLDR.SB.AS.FR.BK.MT', 19, 853500);
-INSERT INTO `t_part` VALUES (11, 'SP000011', 'BOLT,STUD CYLN', 20, 24100);
+INSERT INTO `t_part` VALUES (11, 'SP000011', 'BOLT,STUD CYLN', 19, 24100);
 INSERT INTO `t_part` VALUES (12, 'SP000012', 'RING SET (0.25)', 20, 238000);
 INSERT INTO `t_part` VALUES (13, 'SP000013', 'HEAD CYLINDER ASSY', 20, 490000);
 INSERT INTO `t_part` VALUES (14, 'SP000014', 'MUDGUARD RR', 20, 10000);
@@ -258,7 +260,7 @@ INSERT INTO `t_part` VALUES (108, 'SP000108', 'KEY SEAT LOCK', 20, 55000);
 INSERT INTO `t_part` VALUES (109, 'SP000109', 'WASHER SEALING', 20, 14200);
 INSERT INTO `t_part` VALUES (110, 'SP000110', 'SPROCKET CAM', 20, 15000);
 INSERT INTO `t_part` VALUES (111, 'SP000111', 'CHAMBER SET, FLOAT', 20, 535000);
-INSERT INTO `t_part` VALUES (112, 'SP000112', 'MOTOR ASSY START', 20, 330000);
+INSERT INTO `t_part` VALUES (112, 'SP000112', 'MOTOR ASSY START', 19, 330000);
 INSERT INTO `t_part` VALUES (113, 'SP000113', 'HORN COMP (LOW)', 20, 38000);
 INSERT INTO `t_part` VALUES (114, 'SP000114', 'SWINGARM SUB ASSY,RR', 20, 1535000);
 INSERT INTO `t_part` VALUES (115, 'SP000115', 'WINKER ASSY', 20, 31000);
@@ -1177,6 +1179,7 @@ INSERT INTO `t_pelanggan` VALUES (1, 'D 1111 ZZ', 'Dudung Ramdani', 'KP Griya Ba
 DROP TABLE IF EXISTS `t_temp_trans_part`;
 CREATE TABLE `t_temp_trans_part`  (
   `id_temp_trans_part` int(11) NOT NULL AUTO_INCREMENT,
+  `no_part` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime(0) NOT NULL,
   `id_part` int(11) NOT NULL,
   `harga` int(11) NOT NULL,
@@ -1209,7 +1212,7 @@ CREATE TABLE `t_trans_part`  (
   PRIMARY KEY (`id_trans_part`) USING BTREE,
   INDEX `fkk1`(`id_user`) USING BTREE,
   CONSTRAINT `fkk1` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_trans_part
@@ -1218,6 +1221,7 @@ INSERT INTO `t_trans_part` VALUES (1, 1, '2018-06-19 17:27:43');
 INSERT INTO `t_trans_part` VALUES (2, 1, '2018-06-21 15:03:07');
 INSERT INTO `t_trans_part` VALUES (3, 1, '2018-06-21 15:06:31');
 INSERT INTO `t_trans_part` VALUES (4, 1, '2018-06-21 15:11:51');
+INSERT INTO `t_trans_part` VALUES (5, 1, '2018-06-21 16:01:49');
 
 -- ----------------------------
 -- Table structure for t_trans_service
