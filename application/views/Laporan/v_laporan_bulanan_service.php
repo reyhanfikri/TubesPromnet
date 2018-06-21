@@ -71,4 +71,5 @@
       <input class="btn btn-primary" type="submit" name="updatelaporan" value="Update">
     </form>
   </div>
+  <br><br>
 </div>

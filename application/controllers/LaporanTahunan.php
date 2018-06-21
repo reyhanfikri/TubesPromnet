@@ -10,7 +10,7 @@ class LaporanTahunan extends CI_Controller
 
 		parent::__construct();
 		$this->load->model(array('MLaporanPenjualanPart', 'MLaporanPendapatanService'));
-		$this->tahun = 2018;
+		$this->tahun = date('Y');
 
 	}
 
