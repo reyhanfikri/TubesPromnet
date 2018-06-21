@@ -32,7 +32,6 @@ class TransaksiPart extends CI_Controller
 
 	public function tambahTempTransPart()
 	{
-		$tanggal = date('d-m-Y');
 		$part = $this->input->post('part');
 		$jumlah = $this->input->post('jumlah');
 
@@ -47,7 +46,7 @@ class TransaksiPart extends CI_Controller
 			if ($value1->no_part == $no_part && $value1->stok_part >= $jumlah)
 			{
 				$data = array(
-					'tanggal' => $tanggal,
+					'tanggal' => date('Y-m-d H:i:s'),
 					'id_part' => $value1->id_part,
 					'harga' => $value1->harga_part,
 					'jumlah' => $jumlah
@@ -73,13 +72,13 @@ class TransaksiPart extends CI_Controller
 
 	public function tambahTransPartMain()
 	{
-		$dataTempTransPart = $this->MTransPart->getAllTempTransPart()->row();
+		$dataTempTransPart = $this->MTransPart->getAllTempTransPart()->last_row();
 
 		if (isset($dataTempTransPart))
 		{
 			$dataMain = array(
-				'id_pelanggan' => $dataTempTransPart->id_pelanggan,
-				'tanggal_trans_part' => $dataTempTransPart->tanggal
+				'id_user' => 1,
+				'tanggal_trans_part' => date('Y-m-d H:i:s', strtotime($dataTempTransPart->tanggal))
 			);
 			$this->MTransPart->insertTransPartMain($dataMain);
 		}
@@ -96,7 +95,7 @@ class TransaksiPart extends CI_Controller
 		{
 			foreach ($dataTempTransPart as $value2)
 			{
-				if ($value1->id_pelanggan == $value2->id_pelanggan && $value1->tanggal_trans_part == $value2->tanggal)
+				if ($value1->tanggal_trans_part >= $value2->tanggal)
 				{
 					$dataDetail = array(
 						'id_trans_part' => $value1->id_trans_part,
