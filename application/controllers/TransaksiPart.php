@@ -16,30 +16,10 @@ class TransaksiPart extends CI_Controller
 
 		if ($this->session->userdata('isLoggedIn')) {
 
-			$data['pelanggan'] = $this->MPelanggan->getAllPelanggan()->result();
-			$data['part'] = $this->MPart->getAllPart()->result();
 			$data['transPart'] = $this->MTransPart->getAllTempTableTransPart()->result();
-			$dataTransPart = $this->MTransPart->getAllTempTransPart()->result();
-
-			$data['nama_pelanggan'] = '';
-			$data['tanggal'] = '';
-			if (count($dataTransPart) > 0)
-			{
-				foreach ($dataTransPart as $value1)
-				{
-					foreach ($data['pelanggan'] as $value2)
-					{
-						if ($value1->id_pelanggan == $value2->id_pelanggan)
-						{
-							$data['nama_pelanggan'] = $value2->nama_pelanggan;
-							$data['tanggal'] = $value1->tanggal;
-						}
-					}
-				}
-			}
 
 			$this->load->view('v_header');
-			$this->load->view('Transaksi/v_trans_part', $data);
+			$this->load->view('Transaksi/v_trans_part');
 			$this->load->view('Transaksi/v_tabel_trans_part', $data);
 			$this->load->view('v_footer');
 
@@ -52,33 +32,27 @@ class TransaksiPart extends CI_Controller
 
 	public function tambahTempTransPart()
 	{
-		$dataPelanggan = $this->MPelanggan->getAllPelanggan()->result();
-		$dataPart = $this->MPart->getAllPart()->result();
-
-		$nama_pelanggan = $this->input->post('pelanggan');
-		$tanggal = $this->input->post('tanggal');
-		$nama_part = $this->input->post('barang');
-		$harga = $this->input->post('harga');
+		$tanggal = date('d-m-Y');
+		$part = $this->input->post('part');
 		$jumlah = $this->input->post('jumlah');
+
+		$no_part = substr($part, 0, 8);
+		$where = array('no_part' => $no_part);
+
+		$dataPart = $this->MPart->editPart($where)->result();
+
 
 		foreach ($dataPart as $value1)
 		{
-			foreach ($dataPelanggan as $value2)
+			if ($value1->no_part == $no_part && $value1->stok_part >= $jumlah)
 			{
-				if ($value1->nama_part == $nama_part && $value1->stok_part >= $this->input->post('jumlah'))
-				{
-					if ($value2->nama_pelanggan == $nama_pelanggan)
-					{
-						$data = array(
-							'id_pelanggan' => $value2->id_pelanggan,
-							'tanggal' => $tanggal,
-							'id_part' => $value1->id_part,
-							'harga' => $harga,
-							'jumlah' => $jumlah
-					 	);
-						$this->MTransPart->insertTempTransPart($data);
-					}
-				}
+				$data = array(
+					'tanggal' => $tanggal,
+					'id_part' => $value1->id_part,
+					'harga' => $value1->harga_part,
+					'jumlah' => $jumlah
+			 	);
+				$this->MTransPart->insertTempTransPart($data);
 			}
 		}
 		redirect('TransaksiPart');
@@ -139,7 +113,7 @@ class TransaksiPart extends CI_Controller
 					if ($value3->id_part == $value2->id_part)
 					{
 						$data = array(
-							'id_part' => $value3->id_part, 
+							'id_part' => $value3->id_part,
 							'stok_part' => $value3->stok_part - $value2->jumlah
 						);
 

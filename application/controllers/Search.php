@@ -20,10 +20,10 @@ class Search extends CI_Controller {
 
 	            foreach ($result as $row) {
 
-	            	$arr_result[] = $row->no_part." - ".$row->nama_part." - ".$row->harga_part." - ".$row->stok_part;
+	            	$arr_result[] = $row->no_part." | ".$row->nama_part." | ".$row->harga_part." | ".$row->stok_part;
 
 	            }
-                
+
                 echo json_encode($arr_result);
 
             }
