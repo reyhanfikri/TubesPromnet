@@ -1,4 +1,13 @@
 <div class="container">
+  <div class="row">
+      <form method="post" action="<?php echo site_url(); ?>search/test">
+           <div class="form-group">
+              <label>Part</label>
+              <input type="text" class="form-control" name="part" id="search_part" placeholder="Cari Part" style="width:500px;">
+              <input type="submit" name="submit">
+            </div>
+      </form>
+  </div>
   <center> <h2>Transaksi Part</h2> </center><br>
 	<legend>Data Transaksi</legend>
   <form class="" action="<?php echo site_url();?>TransaksiPart/tambahTempTransPart" method="post">
