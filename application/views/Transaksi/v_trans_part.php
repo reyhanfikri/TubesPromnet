@@ -14,8 +14,5 @@
 
           <button type="submit" class="btn btn-primary">Tambah</button>
         </div>
-
-      <a href="<?php echo site_url(); ?>TransaksiPart/clearTempTransPart" class="btn btn-danger">Clear</a>
-      <a href="<?php echo site_url(); ?>TransaksiPart/tambahTransPartMain" class="btn btn-success">Selesai</a>
     </form>
 </div>

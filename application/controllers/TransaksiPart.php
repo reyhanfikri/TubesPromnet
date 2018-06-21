@@ -46,6 +46,7 @@ class TransaksiPart extends CI_Controller
 			if ($value1->no_part == $no_part && $value1->stok_part >= $jumlah)
 			{
 				$data = array(
+					'no_part' => $no_part,
 					'tanggal' => date('Y-m-d H:i:s'),
 					'id_part' => $value1->id_part,
 					'harga' => $value1->harga_part,

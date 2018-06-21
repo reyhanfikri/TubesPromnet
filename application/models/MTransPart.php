@@ -21,8 +21,8 @@ class MTransPart extends CI_Model
   public function getAllTempTableTransPart()
   {
     $query = "SELECT t_temp_trans_part.id_temp_trans_part,
-    t_part.nama_part, t_part.harga_part,
-    t_temp_trans_part.jumlah
+    t_part.no_part, t_part.nama_part,
+    t_part.harga_part, t_temp_trans_part.jumlah
     FROM t_part, t_temp_trans_part
     WHERE t_part.id_part = t_temp_trans_part.id_part;";
 
