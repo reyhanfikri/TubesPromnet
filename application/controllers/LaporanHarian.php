@@ -10,7 +10,7 @@ class LaporanHarian extends CI_Controller
 
 		parent::__construct();
 		$this->load->model(array('MLaporanPenjualanPart', 'MLaporanPendapatanService'));
-		$this->tanggal = '2018-06-19';
+		$this->tanggal = date('Y-m-d');
 
 	}
 
