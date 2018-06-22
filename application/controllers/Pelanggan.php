@@ -67,7 +67,7 @@ class Pelanggan extends CI_Controller
 			redirect(site_url('Login'));
 
 		}
-		
+
 	}
 
 	public function formTambahPelanggan() {
@@ -140,5 +140,15 @@ class Pelanggan extends CI_Controller
 		$this->MPelanggan->deletePelanggan($where);
 		redirect('Pelanggan');
 
+	}
+
+	public function tampilanDetail($id)
+	{
+		$id = array('id_pelanggan' => $id);
+		$data['pelanggan'] = $this->MPelanggan->getById($id)->result();
+
+		$this->load->view('v_header');
+		$this->load->view('Pelanggan/v_detail_pelanggan', $data);
+		$this->load->view('v_footer');
 	}
 }
