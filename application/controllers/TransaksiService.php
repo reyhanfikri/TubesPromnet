@@ -12,40 +12,16 @@ class TransaksiService extends CI_Controller
 		$this->load->model('MTransService');
 	}
 
-	public function index()
+	public function service($id)
 	{
 
 		if ($this->session->userdata('isLoggedIn')) {
 
-			$data['pelanggan'] = $this->MPelanggan->getAllPelanggan()->result();
-			$data['mekanik'] = $this->MMekanik->getAllMekanik()->result();
+			$id = array('id_pelanggan' => $id);
+			$data['pelanggan'] = $this->MPelanggan->getById($id)->result();
+
 			$data['service'] = $this->MJasa->getAllJasa()->result();
 			$data['transService'] = $this->MTransService->getAllTempTableTransService()->result();
-
-			$dataTransService = $this->MTransService->getAllTempTransService()->result();
-
-			$data['nama_pelanggan'] = '';
-			$data['nama_mekanik'] = '';
-			$data['tanggal'] = '';
-
-			if (count($dataTransService) > 0)
-			{
-				foreach ($dataTransService as $value1)
-				{
-					foreach ($data['pelanggan'] as $value2)
-					{
-						foreach ($data['mekanik'] as $value3)
-						{
-							if ($value1->id_pelanggan == $value2->id_pelanggan && $value1->id_mekanik == $value3->id_mekanik)
-							{
-								$data['nama_pelanggan'] = $value2->nama_pelanggan;
-								$data['nama_mekanik'] = $value3->nama_mekanik;
-								$data['tanggal'] = $value1->tanggal;
-							}
-						}
-					}
-				}
-			}
 
 			$this->load->view('v_header');
 			$this->load->view('Transaksi/v_trans_service', $data);

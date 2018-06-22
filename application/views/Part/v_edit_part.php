@@ -46,5 +46,5 @@
       </div>
     </fieldset>
   </form>
-<?php } ?>
+  <?php } ?>
 </div>
