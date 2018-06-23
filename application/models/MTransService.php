@@ -20,10 +20,18 @@ class MTransService extends CI_Model
 
   public function getAllTempTableTransService()
   {
-    $query = "SELECT t_temp_trans_service.id_temp_trans_service,
-    t_jasa.nama_jasa, t_jasa.harga_jasa
-    FROM t_jasa, t_temp_trans_service
-    WHERE t_jasa.id_jasa = t_temp_trans_service.id_jasa;";
+    $query = "SELECT
+    t_temp_trans_service.id_temp_trans_service,
+    t_part.no_part,
+    t_jasa.no_jasa,
+    t_part.nama_part,
+    t_jasa.nama_jasa,
+    t_temp_trans_service.jumlah,
+    t_temp_trans_service.harga
+    FROM
+    t_temp_trans_service
+    LEFT JOIN t_jasa ON t_temp_trans_service.id_jasa = t_jasa.id_jasa
+    LEFT JOIN t_part ON t_temp_trans_service.id_part = t_part.id_part;";
 
     return $this->db->query($query);
   }

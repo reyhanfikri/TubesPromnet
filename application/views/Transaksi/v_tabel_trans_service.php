@@ -1,11 +1,10 @@
 <div class="container">
   <div class="jumbotron">
-    <legend>Work Order</legend>
+    <legend>Work Order (<?php echo $noKwitansi; ?>)</legend>
     <hr>
     <?php foreach ($pelanggan as $val) { ?>
     <form class="" action="<?php echo site_url();?>Pelanggan/editPelanggan" method="post">
       <fieldset>
-        <input name="id_pelanggan" type="text" class="form-control" value="<?php echo $val->id_pelanggan; ?>" hidden>
 
         <div class="row">
           <div class="col-lg-6">
@@ -95,31 +94,33 @@
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">No</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Id Part/Id Jasa</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Nama Part/Nama Jasa</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Harga(Rp)</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Qty</th>
+          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Harga(Rp)</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Subtotal(Rp)</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Action</th>
         </tr>
       </thead>
       <tbody>
-      <?php $totalHarga = 0; foreach ($transService as $val) { ?>
+      <?php $i = 1; $totalHarga = 0; $totalJumlah = 0; foreach ($transService as $val) { ?>
         <tr>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->id_temp_trans_service; ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_jasa; ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->harga_jasa; ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->harga_jasa; $totalHarga = $totalHarga + ($val->harga_jasa); ?></td>
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $i++; ?></td>
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php if ($val->no_jasa != null) { echo $val->no_jasa; } else { echo $val->no_part; } ?></td>
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php if ($val->nama_jasa != null) { echo $val->nama_jasa; } else { echo $val->nama_part; } ?></td>
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->jumlah; $totalJumlah = $totalJumlah + $val->jumlah; ?></td>
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga); ?></td>
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga*$val->jumlah); $totalHarga = $totalHarga + ($val->harga*$val->jumlah); ?></td>
           <td style="padding-top: 4px; padding-bottom: 4px;">
-            <a href="<?php echo site_url(); ?>TransaksiService/hapusTempTransService/<?php echo $val->id_temp_trans_service; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            <a href="<?php echo site_url(); ?>TransaksiService/hapusTempTransService/<?php echo $id_pelanggan; ?>/<?php echo $val->id_temp_trans_service; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
           </td>
         </tr>
         <?php } ?>
         <tr class="table-active">
           <td style="padding-top: 4px; padding-bottom: 4px;"></td>
           <td style="padding-top: 4px; padding-bottom: 4px;"></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"></td>
+          <td style="padding-top: 4px; padding-bottom: 4px;">Total Qty:</td>
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $totalJumlah; ?></td>
           <td style="padding-top: 4px; padding-bottom: 4px;">Grand Total(Rp.):</td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $totalHarga; ?></td>
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($totalHarga); ?></td>
           <td style="padding-top: 4px; padding-bottom: 4px;"></td>
         </tr>
       </tbody>
