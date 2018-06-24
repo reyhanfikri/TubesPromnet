@@ -30,7 +30,7 @@ class MLaporanPendapatanService extends CI_Model {
 	public function getLaporanHarian($tanggal) {
 
 		$query = "SELECT
-					t_trans_service.tanggal_trans_service AS 'tanggal_jam',
+					DATE_FORMAT(t_trans_service.tanggal_trans_service, '%d/%m/%Y %H:%i:%s') AS 'tanggal_jam',
 					t_trans_service.nomor_kwitansi AS 'no_kuitansi',
 					t_jasa.no_jasa AS 'id_jasa',
 					t_jasa.nama_jasa,
@@ -61,7 +61,7 @@ class MLaporanPendapatanService extends CI_Model {
 	public function getLaporanBulanan($bulan_tahun) {
 
 		$query = "SELECT
-					t_trans_service.tanggal_trans_service AS 'tanggal_jam',
+					DATE_FORMAT(t_trans_service.tanggal_trans_service, '%d/%m/%Y %H:%i:%s') AS 'tanggal_jam',
 					t_trans_service.nomor_kwitansi AS 'no_kuitansi',
 					t_jasa.no_jasa AS 'id_jasa',
 					t_jasa.nama_jasa,
