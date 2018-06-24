@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 23/06/2018 21:30:38
+ Date: 24/06/2018 18:31:43
 */
 
 SET NAMES utf8mb4;
@@ -79,14 +79,16 @@ CREATE TABLE `t_detail_trans_service`  (
   CONSTRAINT `fkdts1` FOREIGN KEY (`id_trans_service`) REFERENCES `t_trans_service` (`id_trans_service`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkdts2` FOREIGN KEY (`id_jasa`) REFERENCES `t_jasa` (`id_jasa`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkdts3` FOREIGN KEY (`id_part`) REFERENCES `t_part` (`id_part`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_detail_trans_service
 -- ----------------------------
 INSERT INTO `t_detail_trans_service` VALUES (1, 1, NULL, 1, 1, 70000);
-INSERT INTO `t_detail_trans_service` VALUES (2, 2, NULL, 4, 1, 900000);
-INSERT INTO `t_detail_trans_service` VALUES (3, 2, 80, NULL, 5, 40000);
+INSERT INTO `t_detail_trans_service` VALUES (2, 2, NULL, 2, 1, 899000);
+INSERT INTO `t_detail_trans_service` VALUES (3, 2, 22, NULL, 1, 57500);
+INSERT INTO `t_detail_trans_service` VALUES (4, 3, NULL, 6, 1, 300000);
+INSERT INTO `t_detail_trans_service` VALUES (5, 3, 5, NULL, 1, 6000);
 
 -- ----------------------------
 -- Table structure for t_jasa
@@ -1235,13 +1237,14 @@ CREATE TABLE `t_trans_service`  (
   INDEX `fkk2`(`id_user`) USING BTREE,
   CONSTRAINT `fkk2` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkts1` FOREIGN KEY (`id_pelanggan`) REFERENCES `t_pelanggan` (`id_pelanggan`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_trans_service
 -- ----------------------------
 INSERT INTO `t_trans_service` VALUES (1, 1, 1, 'T0001', '2018-06-19 17:53:52');
-INSERT INTO `t_trans_service` VALUES (2, 1, 1, '1', '2018-06-23 16:21:56');
+INSERT INTO `t_trans_service` VALUES (2, 1, 1, 'T0002', '2018-06-24 13:29:34');
+INSERT INTO `t_trans_service` VALUES (3, 1, 1, 'T0003', '2018-06-24 13:30:56');
 
 -- ----------------------------
 -- Table structure for t_user

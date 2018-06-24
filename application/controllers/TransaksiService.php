@@ -156,6 +156,6 @@ class TransaksiService extends CI_Controller
 				}
 			}
 		}
-		redirect('TransaksiService/clearTempTransService');
+		redirect('TransaksiService/cancelTempTransService');
 	}
 }
