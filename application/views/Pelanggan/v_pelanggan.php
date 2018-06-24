@@ -22,7 +22,7 @@
         <tr>
           <td><?php echo $val->id_pelanggan; ?></td>
           <td>
-            <a href="<?php echo site_url(); ?>TransaksiService/service/<?php echo $val->id_pelanggan; ?>" class=""><?php echo $val->nomor_polisi; ?></a>
+            <a data-toggle="tooltip" data-placement="bottom" title="Klik untuk service motor"  href="<?php echo site_url(); ?>TransaksiService/service/<?php echo $val->id_pelanggan; ?>" class=""><?php echo $val->nomor_polisi; ?></a>
           </td>
           <td><?php echo $val->nama_pelanggan; ?></td>
           <td><?php echo $val->alamat_pelanggan; ?></td>

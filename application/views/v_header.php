@@ -27,15 +27,16 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url();?>Jasa">Jasa</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url();?>Part">Part</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="laporan" data-toggle="dropdown" href="#" aria-expanded="false">Part</a>
+                <div class="dropdown-menu" aria-labelledby="laporan">
+                  <a class="dropdown-item" href="<?php echo site_url();?>Part">Data Part</a>
+                  <a class="dropdown-item" href="<?php echo site_url();?>TransaksiPart">Transaksi Part</a>
+                </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url();?>TransaksiPart">Transaksi Part</a>
-            </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url();?>TransaksiService">Transaksi Service</a>
-            </li>
+            </li> -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="laporan" data-toggle="dropdown" href="#" aria-expanded="false">Laporan</a>
               <div class="dropdown-menu" aria-labelledby="laporan">

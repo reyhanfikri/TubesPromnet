@@ -105,7 +105,13 @@ class TransaksiService extends CI_Controller
 		redirect('TransaksiService/service/' . $id_pelanggan);
 	}
 
-	public function clearTempTransService()
+	public function clearTempTransService($id_pelanggan)
+	{
+		$this->MTransService->truncatTempTransService();
+		redirect('TransaksiService/service/' . $id_pelanggan);
+	}
+
+	public function cancelTempTransService()
 	{
 		$this->MTransService->truncatTempTransService();
 		redirect('Pelanggan');

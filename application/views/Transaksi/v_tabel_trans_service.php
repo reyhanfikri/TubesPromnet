@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-lg-6">
 
-            <div class="form-group row">
+            <div class="row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Nomor Polisi &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
               <label class="col-form-label">:</label>
               <div class="col-sm-6">
@@ -17,15 +17,15 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Alamat Pelanggan &emsp;&emsp;&emsp;</label>
               <label class="col-form-label">:</label>
               <div class="col-sm-6">
-                <textarea name="alamat_pelanggan" rows="3" cols="40" class="form-control-plaintext" placeholder="Alamat Pelanggan" readonly><?php echo $val->alamat_pelanggan; ?></textarea>
+                <textarea name="alamat_pelanggan" rows="2" cols="40" class="form-control-plaintext" placeholder="Alamat Pelanggan" readonly><?php echo $val->alamat_pelanggan; ?></textarea>
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Merk Type Kendaraan &emsp;&nbsp;</label>
               <label class="col-form-label">:</label>
               <div class="col-sm-6">
@@ -33,7 +33,7 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Isi Silinder &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;</label>
               <label class="col-form-label">:</label>
               <div class="col-sm-3">
@@ -43,7 +43,7 @@
           </div>
 
           <div class="col-lg-6">
-            <div class="form-group row">
+            <div class="row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Nama Pelanggan &emsp;&nbsp;&nbsp;&nbsp;</label>
               <label class="col-form-label">:</label>
               <div class="col-sm-6">
@@ -51,7 +51,7 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Jenis Kendaraan &emsp;&nbsp;&nbsp;&nbsp;</label>
               <label class="col-form-label">:</label>
               <div class="col-sm-6">
@@ -59,7 +59,7 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Nomor Rangka &emsp;&emsp;&nbsp;</label>
               <label class="col-form-label">:</label>
               <div class="col-sm-6">
@@ -67,7 +67,7 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Bahan Bakar &emsp;&emsp;&emsp;&nbsp;</label>
               <label class="col-form-label">:</label>
               <div class="col-sm-6">
@@ -75,7 +75,7 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Nomor Mesin &emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
               <label class="col-form-label">:</label>
               <div class="col-sm-6">
@@ -128,7 +128,8 @@
 
     <center>
     <div class="">
-      <a href="<?php echo site_url(); ?>TransaksiService/clearTempTransService" class="btn btn-danger">Clear</a>
+      <a href="<?php echo site_url(); ?>TransaksiService/cancelTempTransService" class="btn btn-danger">Batal</a>
+      <a href="<?php echo site_url(); ?>TransaksiService/clearTempTransService/<?php echo $id_pelanggan; ?>" class="btn btn-secondary">Clear</a>
       <a href="<?php echo site_url(); ?>TransaksiService/tambahTransServicetMain" class="btn btn-success">Selesai</a>
     </div>
     </center>
