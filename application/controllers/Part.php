@@ -77,10 +77,11 @@ class Part extends CI_Controller
 	public function tambahPart()
 	{
 		$data = array(
-			'no_part' => $this->input->post('id_part'),
-			'nama_part' => $this->input->post('nama_part'),
+			'no_part_jasa' => $this->input->post('id_part'),
+			'nama_part_jasa' => $this->input->post('nama_part'),
 			'stok_part' => $this->input->post('stok_part'),
-			'harga_part' => $this->input->post('harga_part')
+			'harga_jual_part_jasa' => $this->input->post('harga_part'),
+			'tipe' => "Sparepart"
 	 	);
 		$this->MPart->insertPart($data);
 		redirect('Part');
@@ -88,7 +89,7 @@ class Part extends CI_Controller
 
 	public function formEditPart($id)
 	{
-		$where = array('id_part' => $id);
+		$where = array('id_part_jasa' => $id);
 		$data['part'] = $this->MPart->editPart($where)->result();
 
 		$this->load->view('v_header');
@@ -98,13 +99,14 @@ class Part extends CI_Controller
 
 	public function editPart()
 	{
-		$where = array('id_part' => $this->input->post('id_part'));
+		$where = array('id_part_jasa' => $this->input->post('id_part'));
 		$data = array(
-			'id_part' => $this->input->post('id_part'),
-			'no_part' => $this->input->post('no_part'),
-			'nama_part' => $this->input->post('nama_part'),
+			'id_part_jasa' => $this->input->post('id_part'),
+			'no_part_jasa' => $this->input->post('no_part'),
+			'nama_part_jasa' => $this->input->post('nama_part'),
 			'stok_part' => $this->input->post('stok_part'),
-			'harga_part' => $this->input->post('harga_part')
+			'harga_jual_part_jasa' => $this->input->post('harga_part'),
+			'tipe' => "Sparepart"
 	 	);
 		$this->MPart->updatePart($where, $data);
 		redirect('Part');
@@ -112,7 +114,7 @@ class Part extends CI_Controller
 
 	public function hapusPart($id)
 	{
-		$where = array('id_part' => $id);
+		$where = array('id_part_jasa' => $id);
 		$this->MPart->deletePart($where);
 		redirect('Part');
 	}

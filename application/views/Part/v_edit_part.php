@@ -2,7 +2,7 @@
   <?php foreach ($part as $val) { ?>
   <form class="" action="<?php echo site_url();?>Part/editPart" method="post">
     <fieldset>
-      <input name="id_part" type="text" class="form-control" value="<?php echo $val->id_part; ?>" hidden>
+      <input name="id_part" type="text" class="form-control" value="<?php echo $val->id_part_jasa; ?>" hidden>
       <div class="jumbotron">
         <center><legend class="display-4">Mengedit Part</legend>
           <br>
@@ -12,7 +12,7 @@
             <div class="form-group row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Id Part &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</label>
               <div class="col-sm-6">
-                <input name="no_part" type="text" class="form-control" value="<?php echo $val->no_part; ?>">
+                <input name="no_part" type="text" class="form-control" value="<?php echo $val->no_part_jasa; ?>">
               </div>
             </div>
 
@@ -29,14 +29,14 @@
             <div class="form-group row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Nama Part &emsp;&nbsp;&nbsp;&nbsp;</label>
               <div class="col-sm-6">
-                <input name="nama_part" type="text" class="form-control" value="<?php echo $val->nama_part; ?>">
+                <input name="nama_part" type="text" class="form-control" value="<?php echo $val->nama_part_jasa; ?>">
               </div>
             </div>
 
             <div class="form-group row">
               <label class="col-form-label">&emsp;&emsp;&emsp; Harga Part &emsp;&nbsp;&nbsp;&nbsp;</label>
               <div class="col-sm-6">
-                <input name="harga_part" type="text" class="form-control" value="<?php echo $val->harga_part; ?>">
+                <input name="harga_part" type="text" class="form-control" value="<?php echo $val->harga_jual_part_jasa; ?>">
               </div>
             </div>
           </div>
