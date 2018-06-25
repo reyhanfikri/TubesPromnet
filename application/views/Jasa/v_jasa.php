@@ -7,20 +7,20 @@
         <th scope="col">No</th>
         <th scope="col">Id Jasa</th>
         <th scope="col">Nama Jasa</th>
-        <th scope="col">Harga Part</th>
+        <th scope="col">Harga Jasa</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($jasa as $val) { ?>
+      <?php $i = 1; foreach ($jasa as $val) { ?>
         <tr>
-          <td><?php echo $val->id_jasa ?></td>
-          <td><?php echo $val->no_jasa ?></td>
-          <td><?php echo $val->nama_jasa; ?></td>
-          <td><?php echo $val->harga_jasa; ?></td>
+          <td><?php echo $i++; ?></td>
+          <td><?php echo $val->no_part_jasa ?></td>
+          <td><?php echo $val->nama_part_jasa; ?></td>
+          <td><?php echo $val->harga_jual_part_jasa; ?></td>
           <td>
-            <a href="<?php echo site_url(); ?>Jasa/formEditJasa/<?php echo $val->id_jasa; ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-            <a href="<?php echo site_url(); ?>Jasa/hapusJasa/<?php echo $val->id_jasa; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            <a href="<?php echo site_url(); ?>Jasa/formEditJasa/<?php echo $val->id_part_jasa; ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+            <a href="<?php echo site_url(); ?>Jasa/hapusJasa/<?php echo $val->id_part_jasa; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
           </td>
         </tr>
       <?php } ?>

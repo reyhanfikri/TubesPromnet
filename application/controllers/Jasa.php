@@ -76,9 +76,10 @@ class Jasa extends CI_Controller
 	public function tambahJasa()
 	{
 		$data = array(
-			'no_jasa' => $this->input->post('no_jasa'),
-			'nama_jasa' => $this->input->post('nama_jasa'),
-			'harga_jasa' => $this->input->post('harga_jasa')
+			'no_part_jasa' => $this->input->post('no_jasa'),
+			'nama_part_jasa' => $this->input->post('nama_jasa'),
+			'harga_jual_part_jasa' => $this->input->post('harga_jasa'),
+			'tipe' => "Jasa"
 	 	);
 		$this->MJasa->insertJasa($data);
 		redirect('Jasa');
@@ -86,7 +87,7 @@ class Jasa extends CI_Controller
 
 	public function formEditJasa($id)
 	{
-		$where = array('id_jasa' => $id);
+		$where = array('id_part_jasa' => $id);
 		$data['jasa'] = $this->MJasa->editJasa($where)->result();
 
 		$this->load->view('v_header');
@@ -96,12 +97,13 @@ class Jasa extends CI_Controller
 
 	public function editJasa()
 	{
-		$where = array('id_jasa' => $this->input->post('id_jasa'));
+		$where = array('id_part_jasa' => $this->input->post('id_jasa'));
 		$data = array(
-			'id_jasa' => $this->input->post('id_jasa'),
-			'no_jasa' => $this->input->post('no_jasa'),
-			'nama_jasa' => $this->input->post('nama_jasa'),
-			'harga_jasa' => $this->input->post('harga_jasa')
+			'id_part_jasa' => $this->input->post('id_jasa'),
+			'no_part_jasa' => $this->input->post('no_jasa'),
+			'nama_part_jasa' => $this->input->post('nama_jasa'),
+			'harga_jual_part_jasa' => $this->input->post('harga_jasa'),
+			'tipe' => "Jasa"
 	 	);
 		$this->MJasa->updateJasa($where, $data);
 		redirect('Jasa');
@@ -109,7 +111,7 @@ class Jasa extends CI_Controller
 
 	public function hapusJasa($id)
 	{
-		$where = array('id_jasa' => $id);
+		$where = array('id_part_jasa' => $id);
 		$this->MJasa->deleteJasa($where);
 		redirect('Jasa');
 	}
