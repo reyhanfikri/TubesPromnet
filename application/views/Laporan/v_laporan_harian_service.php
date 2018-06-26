@@ -21,10 +21,10 @@
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $i++; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->tanggal_jam; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->no_kuitansi; $total_transaksi[] = $val->no_kuitansi; ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php if ($val->id_jasa != null) { echo $val->id_jasa; $total_service++; } else { echo $val->id_part; $total_item++; } ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php if ($val->nama_jasa != null) { echo $val->nama_jasa; } else { echo $val->nama_part; } ?></td>
+            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->id_part_jasa; ?></td>
+            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part_jasa; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->qty; $total_qty += $val->qty; ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php if ($val->harga_jasa != null) { echo number_format($val->harga_jasa); } else { echo number_format($val->harga_part); } ?></td>
+            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga); ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->subtotal); $total += $val->subtotal; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->kasir; ?></td>
           </tr>
