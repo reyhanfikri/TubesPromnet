@@ -19,7 +19,9 @@
         <?php $i = 1; $total_item = 0; $total_qty = 0; $total = 0; foreach ($data as $val) { ?>
           <tr>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $i++; $total_item++; ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->tanggal_jam; ?></td>
+            <td style="padding-top: 4px; padding-bottom: 4px;">
+              <a target="_blank" href="<?php echo site_url(); ?>NotaTransPart/nota/<?php echo $val->no_transaksi; ?>" class=""><?php echo $val->tanggal_jam; ?></a>
+            </td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->id_part; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->qty." Pcs"; $total_qty += $val->qty; ?></td>
