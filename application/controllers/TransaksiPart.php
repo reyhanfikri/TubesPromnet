@@ -36,20 +36,20 @@ class TransaksiPart extends CI_Controller
 		$jumlah = $this->input->post('jumlah');
 
 		$no_part = substr($part, 0, 8);
-		$where = array('no_part' => $no_part);
+		$where = array('no_part_jasa' => $no_part);
 
 		$dataPart = $this->MPart->editPart($where)->result();
 
 
 		foreach ($dataPart as $value1)
 		{
-			if ($value1->no_part == $no_part && $value1->stok_part >= $jumlah)
+			if ($value1->no_part_jasa == $no_part && $value1->stok_part >= $jumlah)
 			{
 				$data = array(
 					'no_part' => $no_part,
 					'tanggal' => date('Y-m-d H:i:s'),
-					'id_part' => $value1->id_part,
-					'harga' => $value1->harga_part,
+					'id_part_jasa' => $value1->id_part_jasa,
+					'harga' => $value1->harga_jual_part_jasa,
 					'jumlah' => $jumlah
 			 	);
 				$this->MTransPart->insertTempTransPart($data);
@@ -100,7 +100,7 @@ class TransaksiPart extends CI_Controller
 				{
 					$dataDetail = array(
 						'id_trans_part' => $value1->id_trans_part,
-						'id_part' => $value2->id_part,
+						'id_part_jasa' => $value2->id_part_jasa,
 						'jumlah_part' => $value2->jumlah,
 						'harga' => $value2->harga
 					);

@@ -5,7 +5,7 @@
 
         <div class="form-group row">
           <div class="col-sm-6">
-                <input type="text" class="form-control" name="part" id="search_part" placeholder="Cari Part">
+              <input type="text" class="form-control" name="part" id="search_part" placeholder="Cari Part">
           </div>
 
           <div class="col-sm-1">

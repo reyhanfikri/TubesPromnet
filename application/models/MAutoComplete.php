@@ -11,14 +11,14 @@ class MAutoComplete extends CI_Model {
 
 	function search ($part){
 
-        $this->db->like('nama_part', $part , 'both');
-        $this->db->or_like('no_part', $part , 'both');
+        $this->db->like('nama_part_jasa', $part , 'both');
+        $this->db->or_like('no_part_jasa', $part , 'both');
         // $this->db->or_like('harga_part', $part , 'both');
         // $this->db->or_like('stok_part', $part , 'both');
-        $this->db->order_by('no_part', 'ASC');
+        $this->db->order_by('no_part_jasa', 'ASC');
         $this->db->limit(10);
 
-        return $this->db->get('t_part')->result();
+        return $this->db->get('t_part_jasa')->result();
 
     }
 

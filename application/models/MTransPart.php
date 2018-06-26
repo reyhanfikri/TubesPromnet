@@ -18,13 +18,18 @@ class MTransPart extends CI_Model
     return $this->db->get('t_trans_part');
   }
 
+  public function getAllTransPartDetail()
+  {
+    return $this->db->get('t_detail_trans_part');
+  }
+
   public function getAllTempTableTransPart()
   {
     $query = "SELECT t_temp_trans_part.id_temp_trans_part,
-    t_part.no_part, t_part.nama_part,
-    t_part.harga_part, t_temp_trans_part.jumlah
-    FROM t_part, t_temp_trans_part
-    WHERE t_part.id_part = t_temp_trans_part.id_part;";
+    t_part_jasa.no_part_jasa, t_part_jasa.nama_part_jasa,
+    t_part_jasa.harga_jual_part_jasa, t_temp_trans_part.jumlah
+    FROM t_part_jasa, t_temp_trans_part
+    WHERE t_part_jasa.id_part_jasa = t_temp_trans_part.id_part_jasa;";
 
     return $this->db->query($query);
   }
