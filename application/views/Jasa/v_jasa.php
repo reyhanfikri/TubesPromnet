@@ -7,8 +7,8 @@
         <th scope="col">No</th>
         <th scope="col">Id Jasa</th>
         <th scope="col">Nama Jasa</th>
-        <th scope="col">Harga Jasa</th>
-        <th scope="col">Action</th>
+        <th scope="col" align="center">Harga Jasa</th>
+        <th scope="col" align="center">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -17,8 +17,8 @@
           <td><?php echo $i++; ?></td>
           <td><?php echo $val->no_part_jasa ?></td>
           <td><?php echo $val->nama_part_jasa; ?></td>
-          <td><?php echo $val->harga_jual_part_jasa; ?></td>
-          <td>
+          <td align="right" width="120px"><?php echo number_format($val->harga_jual_part_jasa); ?></td>
+          <td align="center">
             <a href="<?php echo site_url(); ?>Jasa/formEditJasa/<?php echo $val->id_part_jasa; ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
             <a href="<?php echo site_url(); ?>Jasa/hapusJasa/<?php echo $val->id_part_jasa; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
           </td>
