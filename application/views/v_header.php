@@ -43,9 +43,7 @@
                 <a class="dropdown-item" href="<?php echo site_url();?>LaporanPendapatanTahunan">Laporan Pendapatan Tahunan</a>
                 <a class="dropdown-item" href="<?php echo site_url();?>LaporanPendapatanBulanan">Laporan Pendapatan Bulanan</a>
                 <a class="dropdown-item" href="<?php echo site_url();?>LaporanPendapatanHarian">Laporan Pendapatan Harian</a>
-                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPembelianPartTahunan">Laporan Pembelian Part Tahunan</a>
-                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPembelianPartBulanan">Laporan Pembelian Part Bulanan</a>
-                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPembelianPartHarian">Laporan Pembelian Part Harian</a>
+                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPembelianPart">Laporan Pembelian Part</a>
               </div>
             </li>
           </ul>
