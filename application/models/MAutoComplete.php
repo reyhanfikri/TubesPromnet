@@ -18,7 +18,7 @@ class MAutoComplete extends CI_Model {
         $this->db->order_by('no_part_jasa', 'ASC');
         $this->db->limit(10);
 
-        return $this->db->get('t_part_jasa')->result();
+        return $this->db->get_where('t_part_jasa', array('tipe' => "Sparepart"))->result();
 
     }
 
