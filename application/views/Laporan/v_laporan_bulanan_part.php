@@ -9,9 +9,9 @@
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Tanggal/Jam</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Id Part</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Nama Part</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Qty</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Harga</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Subtotal</th>
+          <th align="center" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Qty</th>
+          <th align="center" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Harga</th>
+          <th align="center" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Subtotal</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Kasir</th>
         </tr>
       </thead>
@@ -24,9 +24,9 @@
             </td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->id_part; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part; ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->qty." Pcs"; $total_qty += $val->qty; ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga); ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->subtotal); $total += $val->subtotal; ?></td>
+            <td align="right" width="65" style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->qty." Pcs"; $total_qty += $val->qty; ?></td>
+            <td align="right" width="120" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga); ?></td>
+            <td align="right" width="120" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->subtotal); $total += $val->subtotal; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->kasir; ?></td>
           </tr>
         <?php $total_transaksi[] = $val->no_transaksi; } ?>
@@ -35,9 +35,9 @@
             <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php if (isset($total_transaksi)) { echo count(array_count_values($total_transaksi))." Transaksi"; } ?></b></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_item; ?></b></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_item." ITEM"; ?></b></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_qty." Pcs"; ?></b></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;">-</td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo number_format($total); ?></b></td>
+            <td align="right" width="65" style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_qty." Pcs"; ?></b></td>
+            <td align="right" width="120" style="padding-top: 4px; padding-bottom: 4px;">-</td>
+            <td align="right" width="120" style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo number_format($total); ?></b></td>
             <td style="padding-top: 4px; padding-bottom: 4px;">-</td>
           </tr>
       </tbody>

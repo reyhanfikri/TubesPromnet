@@ -6,8 +6,8 @@
         <tr class="table-info">
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">No</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Bulan/Tahun</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Jumlah Part/Service</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Total Harga</th>
+          <th align="center" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Jumlah Part/Service</th>
+          <th align="center" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Total Harga</th>
         </tr>
       </thead>
       <tbody>
@@ -15,15 +15,15 @@
         <tr>
           <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $i; ?></td>
           <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo sprintf("%02d", $i)."/".$tahun; $graph_bulan_tahun[] = sprintf("%02d", $i)."/".$tahun; ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo 0; $graph_jumlah_service[] = 0; ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo 0; ?></td>
+          <td width="170" align="right" style="padding-top: 4px; padding-bottom: 4px;"><?php echo 0; $graph_jumlah_service[] = 0; ?></td>
+          <td width="170" align="right" style="padding-top: 4px; padding-bottom: 4px;"><?php echo 0; ?></td>
         </tr>
       <?php } ?>
       </tbody>
     </table>
   </div>
   <div class="col-md-6" style="float: left;">
-    <canvas id="canvas2" width="400" height="315"></canvas>
+    <canvas id="canvas2" width="400" height="310"></canvas>
     <script type="text/javascript" src="<?php echo site_url(); ?>assets/js/Chart.js"></script>
     <script>
       var myLine = document.getElementById("canvas2").getContext("2d");
@@ -62,8 +62,16 @@
       });
     </script><br>
   </div>
-  <div style="float: left; padding-left: 303px;"><b>TOTAL</b></div>
-  <div style="float: left; padding-left: 70px;"><b><?php echo 0; ?></b></div>
+  <div class="col-md-6" style="float: left;">
+    <table class="table table-hover">
+      <tr>
+        <td style="padding-top: 4px; padding-bottom: 4px;"> </td>
+        <td style="padding-top: 4px; padding-bottom: 4px;"> </td>
+        <td width="170" align="right" style="padding-top: 4px; padding-bottom: 4px;"><b>TOTAL</b></td>
+        <td width="170" align="right" style="padding-top: 4px; padding-bottom: 4px;"><b>0</b></td>
+      </tr>
+    </table>
+  </div>
   <div class="col-md-offset-6">&nbsp;</div>
   <br>
   <div style="padding-left: 767px;">
