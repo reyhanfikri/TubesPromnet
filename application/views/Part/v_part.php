@@ -18,7 +18,7 @@
           <td><?php echo $i++; ?></td>
           <td><?php echo $val->no_part_jasa; ?></td>
           <td><?php echo $val->nama_part_jasa; ?></td>
-          <td align="center"><?php echo $val->stok_part; ?></td>
+          <td align="right"><?php echo $val->stok_part; ?></td>
           <td align="right"><?php echo number_format($val->harga_jual_part_jasa); ?> &emsp;&emsp;&emsp;</td>
           <td>
             <a href="<?php echo site_url(); ?>Part/formEditPart/<?php echo $val->id_part_jasa; ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
