@@ -40,9 +40,12 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="laporan" data-toggle="dropdown" href="#" aria-expanded="false">Laporan</a>
               <div class="dropdown-menu" aria-labelledby="laporan">
-                <a class="dropdown-item" href="<?php echo site_url();?>LaporanTahunan">Laporan Tahunan</a>
-                <a class="dropdown-item" href="<?php echo site_url();?>LaporanBulanan">Laporan Bulanan</a>
-                <a class="dropdown-item" href="<?php echo site_url();?>LaporanHarian">Laporan Harian</a>
+                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPendapatanTahunan">Laporan Pendapatan Tahunan</a>
+                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPendapatanBulanan">Laporan Pendapatan Bulanan</a>
+                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPendapatanHarian">Laporan Pendapatan Harian</a>
+                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPembelianPartTahunan">Laporan Pembelian Part Tahunan</a>
+                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPembelianPartBulanan">Laporan Pembelian Part Bulanan</a>
+                <a class="dropdown-item" href="<?php echo site_url();?>LaporanPembelianPartHarian">Laporan Pembelian Part Harian</a>
               </div>
             </li>
           </ul>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class LaporanHarian extends CI_Controller
+class LaporanPendapatanHarian extends CI_Controller
 {
 
 	private $tanggal;

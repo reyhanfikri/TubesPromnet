@@ -45,8 +45,8 @@
   </div>
   <br>
   <div style="padding-left: 695px;">
-    <form class="form-inline" method="post" action="<?php echo site_url('LaporanBulanan'); ?>">
-      <h5>Update Laporan: </h5>
+    <form class="form-inline" method="post" action="<?php echo site_url('LaporanPendapatanBulanan'); ?>">
+      <h5>Filter Laporan: </h5>
       <select name="bulan" class="form-control" style="width: 70px; margin-left: 9px; margin-right: 1px;">
         <option value="01" <?php if ($bulan == 1) { ?> selected <?php } ?>>01</option>
         <option value="02" <?php if ($bulan == 2) { ?> selected <?php } ?>>02</option>
@@ -68,7 +68,7 @@
         <option value="2018" <?php if ($tahun == 2018) { ?> selected <?php } ?>>2018</option>
         <option value="2019" <?php if ($tahun == 2019) { ?> selected <?php } ?>>2019</option>
       </select>
-      <input class="btn btn-primary" type="submit" name="updatelaporan" value="Update">
+      <input class="btn btn-primary" type="submit" name="updatelaporan" value="Filter">
     </form>
   </div>
   <br><br>

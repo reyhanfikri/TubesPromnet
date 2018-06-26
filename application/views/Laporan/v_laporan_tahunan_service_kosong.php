@@ -67,8 +67,8 @@
   <div class="col-md-offset-6">&nbsp;</div>
   <br>
   <div style="padding-left: 767px;">
-    <form class="form-inline" method="post" action="<?php echo site_url('LaporanTahunan'); ?>">
-      <h5>Update Laporan: </h5>
+    <form class="form-inline" method="post" action="<?php echo site_url('LaporanPendapatanTahunan'); ?>">
+      <h5>Filter Laporan: </h5>
       <select name="year" class="form-control" style="width: 90px; margin-left: 9px; margin-right: 10px;">
         <option value="2015" <?php if ($tahun == 2015) { ?> selected <?php } ?>>2015</option>
         <option value="2016" <?php if ($tahun == 2016) { ?> selected <?php } ?>>2016</option>
@@ -76,7 +76,7 @@
         <option value="2018" <?php if ($tahun == 2018) { ?> selected <?php } ?>>2018</option>
         <option value="2019" <?php if ($tahun == 2019) { ?> selected <?php } ?>>2019</option>
       </select>
-      <input class="btn btn-primary" type="submit" name="updatelaporan" value="Update">
+      <input class="btn btn-primary" type="submit" name="updatelaporan" value="Filter">
     </form>
   </div>
 </div>

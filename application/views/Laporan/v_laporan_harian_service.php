@@ -45,10 +45,10 @@
   </div>
   <br>
   <div style="padding-left: 700px;">
-    <form class="form-inline" method="post" action="<?php echo site_url('LaporanHarian'); ?>">
-      <h5>Update Laporan: </h5>
+    <form class="form-inline" method="post" action="<?php echo site_url('LaporanPendapatanHarian'); ?>">
+      <h5>Filter Laporan: </h5>
       <input class="form-control" style="width: 165px; margin-left: 9px; margin-right: 10px;" type="date" name="tanggal" value="<?php echo $tanggal_raw; ?>">
-      <input class="btn btn-primary" type="submit" name="updatelaporan" value="Update">
+      <input class="btn btn-primary" type="submit" name="updatelaporan" value="Filter">
     </form>
   </div>
   <br><br>
