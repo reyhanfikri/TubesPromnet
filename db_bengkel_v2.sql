@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost_3306
+ Source Server         : MysqlKonek
  Source Server Type    : MySQL
  Source Server Version : 100130
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 25/06/2018 20:05:47
+ Date: 26/06/2018 10:35:32
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `t_detail_trans_part`  (
   INDEX `fkdtp2`(`id_part_jasa`) USING BTREE,
   CONSTRAINT `fkdtp1` FOREIGN KEY (`id_trans_part`) REFERENCES `t_trans_part` (`id_trans_part`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkdtp2` FOREIGN KEY (`id_part_jasa`) REFERENCES `t_part_jasa` (`id_part_jasa`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for t_detail_trans_service
@@ -49,7 +49,13 @@ CREATE TABLE `t_detail_trans_service`  (
   INDEX `fkdts2`(`id_part_jasa`) USING BTREE,
   CONSTRAINT `fkdts1` FOREIGN KEY (`id_trans_service`) REFERENCES `t_trans_service` (`id_trans_service`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkdts2` FOREIGN KEY (`id_part_jasa`) REFERENCES `t_part_jasa` (`id_part_jasa`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_detail_trans_service
+-- ----------------------------
+INSERT INTO `t_detail_trans_service` VALUES (1, 1, 1002, 1, 899000);
+INSERT INTO `t_detail_trans_service` VALUES (2, 1, 314, 5, 12000);
 
 -- ----------------------------
 -- Table structure for t_mekanik
@@ -1086,7 +1092,7 @@ INSERT INTO `t_part_jasa` VALUES (997, 'SP000997', 'CUSHION ASSY RR', 285000, 25
 INSERT INTO `t_part_jasa` VALUES (998, 'SP000998', 'Fan Cover Pol. Pnk', 73000, 65700, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (999, 'SP000999', 'COVER L M/P SD(DG SL MT)', 382000, 343800, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (1000, 'SP001000', 'BULB W BASE (T10 12V1.7W)', 3000, 2700, 20, 'Sparepart');
-INSERT INTO `t_part_jasa` VALUES (1001, 'JS001', 'Service A', 100000, NULL, NULL, 'Jasa');
+INSERT INTO `t_part_jasa` VALUES (1001, 'JS001', 'Service A', 1000000, NULL, NULL, 'Jasa');
 INSERT INTO `t_part_jasa` VALUES (1002, 'JS002', 'Service B', 899000, NULL, NULL, 'Jasa');
 INSERT INTO `t_part_jasa` VALUES (1003, 'JS003', 'Service C', 450000, NULL, NULL, 'Jasa');
 INSERT INTO `t_part_jasa` VALUES (1004, 'JS004', 'Service D', 420000, NULL, NULL, 'Jasa');
@@ -1125,10 +1131,15 @@ CREATE TABLE `t_temp_trans_part`  (
   `no_part` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime(0) NOT NULL,
   `id_part_jasa` int(11) NOT NULL,
-  `harga` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
   PRIMARY KEY (`id_temp_trans_part`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_temp_trans_part
+-- ----------------------------
+INSERT INTO `t_temp_trans_part` VALUES (1, 'SP000057', '2018-06-26 04:47:51', 57, 1, 534000);
 
 -- ----------------------------
 -- Table structure for t_temp_trans_service
@@ -1156,7 +1167,12 @@ CREATE TABLE `t_trans_part`  (
   PRIMARY KEY (`id_trans_part`) USING BTREE,
   INDEX `fkk1`(`id_user`) USING BTREE,
   CONSTRAINT `fkk1` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_trans_part
+-- ----------------------------
+INSERT INTO `t_trans_part` VALUES (1, 1, '2018-06-26 07:29:23');
 
 -- ----------------------------
 -- Table structure for t_trans_service
@@ -1174,7 +1190,12 @@ CREATE TABLE `t_trans_service`  (
   INDEX `fkk2`(`id_user`) USING BTREE,
   CONSTRAINT `fkk2` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fkts1` FOREIGN KEY (`id_pelanggan`) REFERENCES `t_pelanggan` (`id_pelanggan`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_trans_service
+-- ----------------------------
+INSERT INTO `t_trans_service` VALUES (1, 1, 1, 'T0001', '2018-06-26 05:28:47');
 
 -- ----------------------------
 -- Table structure for t_user

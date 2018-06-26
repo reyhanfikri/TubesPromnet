@@ -95,21 +95,21 @@
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Id Part/Id Jasa</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Nama Part/Nama Jasa</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Qty</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Harga(Rp)</th>
+          <th scope="col" align="center" style="padding-top: 4px; padding-bottom: 4px;">Harga(Rp)</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Subtotal(Rp)</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Action</th>
+          <th scope="col" align="center" style="padding-top: 4px; padding-bottom: 4px;">Action</th>
         </tr>
       </thead>
       <tbody>
       <?php $i = 1; $totalHarga = 0; $totalJumlah = 0; foreach ($transService as $val) { ?>
         <tr>
           <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $i++; ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php if ($val->no_jasa != null) { echo $val->no_jasa; } else { echo $val->no_part; } ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php if ($val->nama_jasa != null) { echo $val->nama_jasa; } else { echo $val->nama_part; } ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->jumlah; $totalJumlah = $totalJumlah + $val->jumlah; ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga); ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga*$val->jumlah); $totalHarga = $totalHarga + ($val->harga*$val->jumlah); ?></td>
-          <td style="padding-top: 4px; padding-bottom: 4px;">
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->no_part_jasa; ?></td>
+          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part_jasa; ?></td>
+          <td align="right" width="70px" style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->jumlah; $totalJumlah = $totalJumlah + $val->jumlah; ?></td>
+          <td align="right" width="200px" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga); ?></td>
+          <td align="right" width="120px" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga*$val->jumlah); $totalHarga = $totalHarga + ($val->harga*$val->jumlah); ?></td>
+          <td align="center" style="padding-top: 4px; padding-bottom: 4px;">
             <a href="<?php echo site_url(); ?>TransaksiService/hapusTempTransService/<?php echo $id_pelanggan; ?>/<?php echo $val->id_temp_trans_service; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
           </td>
         </tr>
@@ -118,9 +118,9 @@
           <td style="padding-top: 4px; padding-bottom: 4px;"></td>
           <td style="padding-top: 4px; padding-bottom: 4px;"></td>
           <td style="padding-top: 4px; padding-bottom: 4px;">Total Qty:</td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $totalJumlah; ?></td>
+          <td align="right" style="padding-top: 4px; padding-bottom: 4px;"><?php echo $totalJumlah; ?></td>
           <td style="padding-top: 4px; padding-bottom: 4px;">Grand Total(Rp.):</td>
-          <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($totalHarga); ?></td>
+          <td align="right" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($totalHarga); ?></td>
           <td style="padding-top: 4px; padding-bottom: 4px;"></td>
         </tr>
       </tbody>

@@ -110,10 +110,10 @@ class TransaksiPart extends CI_Controller
 
 				foreach ($dataPart as $value3)
 				{
-					if ($value3->id_part == $value2->id_part)
+					if ($value3->id_part_jasa == $value2->id_part_jasa)
 					{
 						$data = array(
-							'id_part' => $value3->id_part,
+							'id_part_jasa' => $value3->id_part_jasa,
 							'stok_part' => $value3->stok_part - $value2->jumlah
 						);
 

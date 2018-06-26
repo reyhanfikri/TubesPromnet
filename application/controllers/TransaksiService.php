@@ -31,6 +31,10 @@ class TransaksiService extends CI_Controller
 				substr($data['dataService']->nomor_kwitansi++, -4);
 				$data['noKwitansi'] = $data['dataService']->nomor_kwitansi;
 			}
+			else
+			{
+				$data['noKwitansi'] = "T0001";
+			}
 
 			$this->load->view('v_header');
 			$this->load->view('Transaksi/v_trans_service', $data);
@@ -53,15 +57,15 @@ class TransaksiService extends CI_Controller
 
 		foreach ($dataService as $value1)
 		{
-			if ($value1->nama_jasa == $nama_service)
+			if ($value1->nama_part_jasa == $nama_service)
 			{
 				$data = array(
 					'nomor_kwitansi' => $this->input->post('nomor_kwitansi'),
 					'id_pelanggan' => $id_pelanggan,
 					'tanggal' => date('Y-m-d H:i:s'),
-					'id_jasa' => $value1->id_jasa,
+					'id_part_jasa' => $value1->id_part_jasa,
 					'jumlah' => 1,
-					'harga' => $value1->harga_jasa
+					'harga' => $value1->harga_jual_part_jasa
 			 	);
 				$this->MTransService->insertTempTransService($data);
 			}
@@ -76,21 +80,21 @@ class TransaksiService extends CI_Controller
 		$jumlah = $this->input->post('jumlah');
 
 		$no_part = substr($part, 0, 8);
-		$where = array('no_part' => $no_part);
+		$where = array('no_part_jasa' => $no_part);
 
 		$dataPart = $this->MPart->editPart($where)->result();
 
 		foreach ($dataPart as $value1)
 		{
-			if ($value1->no_part == $no_part && $value1->stok_part >= $jumlah)
+			if ($value1->no_part_jasa == $no_part && $value1->stok_part >= $jumlah)
 			{
 				$data = array(
 					'nomor_kwitansi' => $this->input->post('nomor_kwitansi'),
 					'id_pelanggan' => $id_pelanggan,
 					'tanggal' => date('Y-m-d H:i:s'),
-					'id_part' => $value1->id_part,
+					'id_part_jasa' => $value1->id_part_jasa,
 					'jumlah' => $jumlah,
-					'harga' => $value1->harga_part
+					'harga' => $value1->harga_jual_part_jasa
 			 	);
 				$this->MTransService->insertTempTransService($data);
 			}
@@ -136,6 +140,7 @@ class TransaksiService extends CI_Controller
 
 	public function tambahTransServiceDetail()
 	{
+		$dataPart = $this->MPart->getAllPart()->result();
 		$dataTempTransService = $this->MTransService->getAllTempTransService()->result();
 		$dataTransServiceMain = $this->MTransService->getAllTransServiceMain()->result();
 
@@ -147,12 +152,24 @@ class TransaksiService extends CI_Controller
 				{
 					$dataDetail = array(
 						'id_trans_service' => $value1->id_trans_service,
-						'id_part' => $value2->id_part,
-						'id_jasa' => $value2->id_jasa,
+						'id_part_jasa' => $value2->id_part_jasa,
 						'qty' => $value2->jumlah,
 						'harga' => $value2->harga
 					);
 					$this->MTransService->insertTransServiceDetail($dataDetail);
+				}
+			}
+
+			foreach ($dataPart as $value3)
+			{
+				if ($value3->id_part_jasa == $value2->id_part_jasa)
+				{
+					$data = array(
+						'id_part_jasa' => $value3->id_part_jasa,
+						'stok_part' => $value3->stok_part - $value2->jumlah
+					);
+
+					$this->MPart->UpdateStokPArt($data);
 				}
 			}
 		}

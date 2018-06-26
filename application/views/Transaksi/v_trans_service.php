@@ -13,7 +13,7 @@
         <select name="service" class="form-control" id="service">
           <option>-- Pilih Sevice --</option>
           <?php foreach ($service as $value) { ?>
-            <option><?php echo $value->nama_jasa; ?></option>
+            <option><?php echo $value->nama_part_jasa; ?></option>
           <?php } ?>
         </select>
       </div>
@@ -30,7 +30,7 @@
     <input name="nomor_kwitansi" type="text" class="form-control" value="<?php echo $noKwitansi; ?>" hidden>
 
     <div class="form-group row">
-      &emsp;&emsp; 
+      &emsp;&emsp;
       <div class="col-sm-6">
             <input type="text" class="form-control" name="part" id="search_part" placeholder="Cari Part">
       </div>

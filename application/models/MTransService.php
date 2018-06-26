@@ -22,16 +22,13 @@ class MTransService extends CI_Model
   {
     $query = "SELECT
     t_temp_trans_service.id_temp_trans_service,
-    t_part.no_part,
-    t_jasa.no_jasa,
-    t_part.nama_part,
-    t_jasa.nama_jasa,
+    t_part_jasa.no_part_jasa,
+    t_part_jasa.nama_part_jasa,
     t_temp_trans_service.jumlah,
     t_temp_trans_service.harga
     FROM
     t_temp_trans_service
-    LEFT JOIN t_jasa ON t_temp_trans_service.id_jasa = t_jasa.id_jasa
-    LEFT JOIN t_part ON t_temp_trans_service.id_part = t_part.id_part;";
+    LEFT JOIN t_part_jasa ON t_temp_trans_service.id_part_jasa = t_part_jasa.id_part_jasa;";
 
     return $this->db->query($query);
   }
