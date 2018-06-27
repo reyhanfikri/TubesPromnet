@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 27/06/2018 17:11:13
+ Date: 27/06/2018 21:14:22
 */
 
 SET NAMES utf8mb4;
@@ -25,6 +25,7 @@ CREATE TABLE `t_detail_pembelian_part`  (
   `id_detail_pembelian_part` int(11) NOT NULL AUTO_INCREMENT,
   `id_pembelian_part` int(11) NOT NULL,
   `id_part_jasa` int(11) NOT NULL,
+  `qty_awal` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `harga_beli` int(11) NOT NULL,
   PRIMARY KEY (`id_detail_pembelian_part`) USING BTREE,
@@ -32,17 +33,14 @@ CREATE TABLE `t_detail_pembelian_part`  (
   INDEX `fk_dpp2`(`id_part_jasa`) USING BTREE,
   CONSTRAINT `fk_dpp` FOREIGN KEY (`id_pembelian_part`) REFERENCES `t_pembelian_part` (`id_pembelian_part`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_dpp2` FOREIGN KEY (`id_part_jasa`) REFERENCES `t_part_jasa` (`id_part_jasa`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_detail_pembelian_part
 -- ----------------------------
-INSERT INTO `t_detail_pembelian_part` VALUES (1, 1, 7, 2, 40500);
-INSERT INTO `t_detail_pembelian_part` VALUES (2, 1, 9, 5, 1350);
-INSERT INTO `t_detail_pembelian_part` VALUES (3, 1, 44, 8, 23400);
-INSERT INTO `t_detail_pembelian_part` VALUES (4, 2, 33, 2, 105300);
-INSERT INTO `t_detail_pembelian_part` VALUES (5, 3, 994, 1, 108000);
-INSERT INTO `t_detail_pembelian_part` VALUES (6, 3, 2, 100, 74700);
+INSERT INTO `t_detail_pembelian_part` VALUES (1, 1, 9, 20, 1, 1350);
+INSERT INTO `t_detail_pembelian_part` VALUES (2, 1, 33, 20, 1, 105300);
+INSERT INTO `t_detail_pembelian_part` VALUES (3, 1, 21, 20, 5, 16560);
 
 -- ----------------------------
 -- Table structure for t_detail_trans_part
@@ -133,7 +131,7 @@ INSERT INTO `t_part_jasa` VALUES (5, 'SP000005', 'STAY RADIATOR LOWER', 6000, 54
 INSERT INTO `t_part_jasa` VALUES (6, 'SP000006', 'BOLT ADAPTOR', 12000, 10800, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (7, 'SP000007', '88120KTM000FMB', 45000, 40500, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (8, 'SP000008', 'STRIPE RED L', 100000, 90000, 20, 'Sparepart');
-INSERT INTO `t_part_jasa` VALUES (9, 'SP000009', 'SPG,DRUM STOPPER', 1500, 1350, 20, 'Sparepart');
+INSERT INTO `t_part_jasa` VALUES (9, 'SP000009', 'SPG,DRUM STOPPER', 1500, 1350, 21, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (10, 'SP000010', 'CYLDR.SB.AS.FR.BK.MT', 853500, 768150, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (11, 'SP000011', 'BOLT,STUD CYLN', 24100, 21690, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (12, 'SP000012', 'RING SET (0.25)', 238000, 214200, 20, 'Sparepart');
@@ -145,7 +143,7 @@ INSERT INTO `t_part_jasa` VALUES (17, 'SP000017', 'SWITCH,LIGHT', 1005000, 90450
 INSERT INTO `t_part_jasa` VALUES (18, 'SP000018', 'SOCKET HEADLIGHT ASSY', 48000, 43200, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (19, 'SP000019', 'HEADLIGHT ASSY', 165000, 148500, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (20, 'SP000020', '53205KPH730FMB', 72300, 65070, 20, 'Sparepart');
-INSERT INTO `t_part_jasa` VALUES (21, 'SP000021', 'CABLE,FR BRAKE', 18400, 16560, 20, 'Sparepart');
+INSERT INTO `t_part_jasa` VALUES (21, 'SP000021', 'CABLE,FR BRAKE', 18400, 16560, 25, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (22, 'SP000022', 'COVER L RR ASSY', 57500, 51750, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (23, 'SP000023', 'HOLDER,L STEP', 139000, 125100, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (24, 'SP000024', 'SWINGARM RR ASSY', 370000, 333000, 20, 'Sparepart');
@@ -157,7 +155,7 @@ INSERT INTO `t_part_jasa` VALUES (29, 'SP000029', 'CAP L. COVER', 9500, 8550, 20
 INSERT INTO `t_part_jasa` VALUES (30, 'SP000030', 'PAD SPRING', 32000, 28800, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (31, 'SP000031', 'CAP,RR GRIP', 800, 720, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (32, 'SP000032', 'FLNG.CM.FINAL', 415000, 373500, 20, 'Sparepart');
-INSERT INTO `t_part_jasa` VALUES (33, 'SP000033', 'COVER UNDER R SD(BLK)', 117000, 105300, 20, 'Sparepart');
+INSERT INTO `t_part_jasa` VALUES (33, 'SP000033', 'COVER UNDER R SD(BLK)', 117000, 105300, 21, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (34, 'SP000034', 'HORN COMP,R', 600000, 540000, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (35, 'SP000035', 'FENDER A FR(IL SV MT)', 124000, 111600, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (36, 'SP000036', 'T SHIRT BEAT BIRU HIJAU', 40000, 36000, 20, 'Sparepart');
@@ -1168,14 +1166,12 @@ CREATE TABLE `t_pembelian_part`  (
   UNIQUE INDEX `unique_1`(`nomor_invoice`) USING BTREE,
   INDEX `fk_tpp`(`id_user`) USING BTREE,
   CONSTRAINT `fk_tpp` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_pembelian_part
 -- ----------------------------
-INSERT INTO `t_pembelian_part` VALUES (1, 1, '26061801', '2018-06-26 12:46:05');
-INSERT INTO `t_pembelian_part` VALUES (2, 1, '27061801', '2018-06-27 10:54:29');
-INSERT INTO `t_pembelian_part` VALUES (3, 1, '27061802', '2018-06-27 12:07:52');
+INSERT INTO `t_pembelian_part` VALUES (1, 1, '27061801', '2018-06-27 16:11:24');
 
 -- ----------------------------
 -- Table structure for t_temp_pembelian_part
@@ -1186,6 +1182,7 @@ CREATE TABLE `t_temp_pembelian_part`  (
   `no_part` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime(0) NOT NULL,
   `id_part_jasa` int(11) NOT NULL,
+  `qty_awal` int(11) NOT NULL,
   `qty_tambah` int(11) NOT NULL,
   `harga_beli` int(11) NOT NULL,
   PRIMARY KEY (`id_temp_pembelian_part`) USING BTREE
