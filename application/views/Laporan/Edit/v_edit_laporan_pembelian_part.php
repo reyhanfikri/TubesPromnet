@@ -59,6 +59,8 @@
             <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->subtotal); $total += $val->subtotal; ?></td>
           </tr>
           <input type="hidden" name="kode_<?php echo $no; ?>" value="<?php echo $val->kode; ?>">
+          <input type="hidden" name="kode2_<?php echo $no; ?>" value="<?php echo $val->kode2; ?>">
+          <input type="hidden" name="stok_part_<?php echo $no; ?>" value="<?php echo $val->qty_awal; ?>">
         <?php } ?>
           <tr>
             <td style="padding-top: 4px; padding-bottom: 4px;"></td>

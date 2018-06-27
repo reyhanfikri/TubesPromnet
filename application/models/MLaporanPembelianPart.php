@@ -12,7 +12,8 @@ class MLaporanPembelianPart extends CI_Model {
 	public function getDetailLaporan($nomor_invoice) {
 
 		$query = "SELECT
-					t_detail_pembelian_part.id_detail_pembelian_part AS 'kode',
+					t_detail_pembelian_part.id_detail_pembelian_part AS 'kode',				
+					t_detail_pembelian_part.id_part_jasa AS 'kode2',
 					t_part_jasa.no_part_jasa AS 'id_part',
 					t_part_jasa.nama_part_jasa AS 'nama_part',
 					t_detail_pembelian_part.qty_awal AS 'qty_awal',
