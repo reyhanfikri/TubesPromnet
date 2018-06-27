@@ -54,7 +54,7 @@
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->id_part; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part; ?></td>
             <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->qty_awal." Pcs"; ?></td>
-            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><input style="padding-left: 5px; width: 50px; border-radius: 5px;" type="number" name="qty_tambah_<?php echo $no; ?>" value="<?php echo $val->qty_tambah; $total_qty_tambah += $val->qty_tambah; ?>"> Pcs</td>
+            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><input style="padding-left: 5px; width: 50px; border-radius: 5px;" type="number" min="1" name="qty_tambah_<?php echo $no; ?>" value="<?php echo $val->qty_tambah; $total_qty_tambah += $val->qty_tambah; ?>"> Pcs</td>
             <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga_beli); ?></td>
             <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->subtotal); $total += $val->subtotal; ?></td>
           </tr>
