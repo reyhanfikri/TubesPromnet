@@ -9,6 +9,7 @@ class TransaksiPart extends CI_Controller
 		$this->load->model('MPelanggan');
 		$this->load->model('MPart');
 		$this->load->model('MTransPart');
+		$this->load->model('MNotaTransPart');
 	}
 
 	public function index()
@@ -104,7 +105,7 @@ class TransaksiPart extends CI_Controller
 						'jumlah_part' => $value2->jumlah,
 						'harga' => $value2->harga
 					);
-
+					$id = $value1->id_trans_part;
 					$this->MTransPart->insertTransPartDetail($dataDetail);
 				}
 
@@ -117,12 +118,70 @@ class TransaksiPart extends CI_Controller
 							'stok_part' => $value3->stok_part - $value2->jumlah
 						);
 
-						$this->MPart->UpdateStokPArt($data);
+						$this->MPart->updateStokPart($data);
 					}
 				}
 			}
 		}
-		redirect('TransaksiPart/clearTempTransPart');
+		$this->MTransPart->truncatTempTransPart();
+		redirect('NotaTransPart/nota/'.$id);
+	}
+
+	function detailTransPart($id)
+	{
+		$data['transPartMain'] = $this->MNotaTransPart->getNota($id)->last_row();
+		$data['transPart'] = $this->MNotaTransPart->getNota($id)->result();
+
+		$this->load->view('v_header');
+		$this->load->view('Transaksi/v_detail_trans_part', $data);
+		$this->load->view('v_footer');
+	}
+
+	function formEditTransPart($id)
+	{
+		$this->MTransPart->truncatTempTransPart();
+		$dataTransPart = $this->MNotaTransPart->getNota($id)->result();
+
+		foreach ($dataTransPart as $value1)
+		{
+			if ($value1->no_transaksi == $id)
+			{
+				$data = array(
+					'no_part' => $value1->id_part,
+					'tanggal' => date('Y-m-d H:i:s'),
+					'id_part_jasa' => $value1->id_part_jasa,
+					'harga' => $value1->harga,
+					'jumlah' => $value1->qty
+			 	);
+				$this->MTransPart->insertTempTransPart($data);
+			}
+		}
+		$data['id'] = $id;
+		$data['transPart'] = $this->MTransPart->getAllTempTableTransPart()->result();
+
+		$this->load->view('v_header');
+		$this->load->view('Transaksi/v_edit_trans_part', $data);
+		$this->load->view('v_footer');
+	}
+
+	function editTransPart($id)
+	{
+		$post = $this->input->post();
+		$dataTransPart = $this->MTransPart->getAllTempTransPart()->result();
+
+		foreach ($dataTransPart as $key => $value)
+		{
+			$where = array('id_trans_part' => $id, 'id_part_jasa' => $value->id_part_jasa);
+			$data = array(
+				'id_trans_part' => $id,
+				'id_part_jasa' => $value->id_part_jasa,
+				'jumlah_part' => $post['jumlah'][$key],
+				'harga' => $value->harga
+			);
+			$this->MTransPart->updateTransPartDetail($where, $data);
+		}
+		$this->MTransPart->truncatTempTransPart();
+		redirect('TransaksiPart/detailTransPart/'.$id);
 	}
 
 }

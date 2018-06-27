@@ -75,6 +75,18 @@ class Jasa extends CI_Controller
 
 	public function tambahJasa()
 	{
+		$dataPart = $this->MPart->getAllPart()->last_row();
+
+		if (isset($dataPart))
+		{
+			substr($dataPart->no_part_jasa++, -6);
+			$id_part = $dataPart->no_part_jasa;
+		}
+		else
+		{
+			$id_part = "JS001";
+		}
+
 		$data = array(
 			'no_part_jasa' => $this->input->post('no_jasa'),
 			'nama_part_jasa' => $this->input->post('nama_jasa'),
