@@ -15,7 +15,7 @@ class MLaporanPembelianPart extends CI_Model {
 					t_detail_pembelian_part.id_detail_pembelian_part AS 'kode',
 					t_part_jasa.no_part_jasa AS 'id_part',
 					t_part_jasa.nama_part_jasa AS 'nama_part',
-					t_part_jasa.stok_part AS 'qty_awal',
+					t_detail_pembelian_part.qty_awal AS 'qty_awal',
 					t_detail_pembelian_part.qty AS 'qty_tambah',
 					t_detail_pembelian_part.harga_beli,
 					t_detail_pembelian_part.qty * t_detail_pembelian_part.harga_beli AS 'subtotal'

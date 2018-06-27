@@ -34,7 +34,10 @@ class PembelianPart extends CI_Controller
 		$part = $this->input->post('part');
 		$jumlah = $this->input->post('jumlah');
 
+		preg_match_all('!\d+!', $part, $matches);
+
 		$no_part = substr($part, 0, 8);
+		$qty_awal = $matches[0][3];
 		$where = array('no_part_jasa' => $no_part);
 
 		$dataPart = $this->MPart->editPart($where)->result();
@@ -48,6 +51,7 @@ class PembelianPart extends CI_Controller
 					'tanggal' => date('Y-m-d H:i:s'),
 					'id_part_jasa' => $value1->id_part_jasa,
 					'harga_beli' => $value1->harga_beli_part,
+					'qty_awal' => $qty_awal,
 					'qty_tambah' => $jumlah
 			 	);
 				$this->MPembelianPart->insertTempPembelianPart($data);
@@ -105,6 +109,7 @@ class PembelianPart extends CI_Controller
 					$dataDetail = array(
 						'id_pembelian_part' => $value1->id_pembelian_part,
 						'id_part_jasa' => $value2->id_part_jasa,
+						'qty_awal' => $value2->qty_awal,
 						'qty' => $value2->qty_tambah,
 						'harga_beli' => $value2->harga_beli
 					);
