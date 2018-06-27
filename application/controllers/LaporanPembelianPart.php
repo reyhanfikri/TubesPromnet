@@ -43,20 +43,31 @@ class LaporanPembelianPart extends CI_Controller
 
 			}
 
-			$i = 1;
+			$this->load->view('v_header');
 
-			foreach ($data['data'] as $value) {
+			if ($data['data'] != null) {
 
-				$data_detail[$i] = $this->MLaporanPembelianPart->getDetailLaporan($value->nomor_invoice);
-				$i++;
+				$i = 1;
+
+				foreach ($data['data'] as $value) {
+
+					$data_detail[$i] = $this->MLaporanPembelianPart->getDetailLaporan($value->nomor_invoice);
+					$i++;
+
+				}
+
+				$data['data_detail'] = $data_detail;
+				$data['bulan_tahun'] = date_create($this->bulan_tahun)->format('m/Y');
+				
+				$this->load->view('Laporan/v_pembelian_part', $data);
+
+			} else {
+
+				$data['bulan_tahun'] = date_create($this->bulan_tahun)->format('m/Y');
+				$this->load->view('Laporan/v_pembelian_part_kosong', $data);
 
 			}
-
-			$data['data_detail'] = $data_detail;
-			$data['bulan_tahun'] = date_create($this->bulan_tahun)->format('m/Y');
-
-			$this->load->view('v_header');
-			$this->load->view('Laporan/v_pembelian_part', $data);
+			
 			$this->load->view('v_footer');
 
 		} else {
