@@ -29,6 +29,7 @@ class LaporanPembelianPart extends CI_Controller
 
 				$data['data'] = $this->MLaporanPembelianPart->getDetailLaporan($this->bulan_tahun);
 				$data['data2'] = $this->MLaporanPembelianPart->getTotalTransaksidanNilai($this->bulan_tahun);
+				$data['data3'] = $this->MLaporanPembelianPart->getGroupByNomorInvoice($this->bulan_tahun);
 
 			} else {
 
@@ -40,6 +41,7 @@ class LaporanPembelianPart extends CI_Controller
 
 				$data['data'] = $this->MLaporanPembelianPart->getDetailLaporan($this->bulan_tahun);
 				$data['data2'] = $this->MLaporanPembelianPart->getTotalTransaksidanNilai($this->bulan_tahun);
+				$data['data3'] = $this->MLaporanPembelianPart->getGroupByNomorInvoice($this->bulan_tahun);
 
 			}
 

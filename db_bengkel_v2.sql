@@ -11,11 +11,36 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 26/06/2018 11:24:15
+ Date: 27/06/2018 11:41:11
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for t_detail_pembelian_part
+-- ----------------------------
+DROP TABLE IF EXISTS `t_detail_pembelian_part`;
+CREATE TABLE `t_detail_pembelian_part`  (
+  `id_detail_pembelian_part` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pembelian_part` int(11) NOT NULL,
+  `id_part_jasa` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `harga_beli` int(11) NOT NULL,
+  PRIMARY KEY (`id_detail_pembelian_part`) USING BTREE,
+  INDEX `fk_dpp`(`id_pembelian_part`) USING BTREE,
+  INDEX `fk_dpp2`(`id_part_jasa`) USING BTREE,
+  CONSTRAINT `fk_dpp` FOREIGN KEY (`id_pembelian_part`) REFERENCES `t_pembelian_part` (`id_pembelian_part`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_dpp2` FOREIGN KEY (`id_part_jasa`) REFERENCES `t_part_jasa` (`id_part_jasa`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_detail_pembelian_part
+-- ----------------------------
+INSERT INTO `t_detail_pembelian_part` VALUES (1, 1, 7, 2, 40500);
+INSERT INTO `t_detail_pembelian_part` VALUES (2, 1, 9, 5, 1350);
+INSERT INTO `t_detail_pembelian_part` VALUES (3, 1, 44, 8, 23400);
+INSERT INTO `t_detail_pembelian_part` VALUES (4, 2, 33, 2, 105300);
 
 -- ----------------------------
 -- Table structure for t_detail_trans_part
@@ -1127,6 +1152,27 @@ CREATE TABLE `t_pelanggan`  (
 -- Records of t_pelanggan
 -- ----------------------------
 INSERT INTO `t_pelanggan` VALUES (1, 'D 1111 ZZ', 'Dudung Ramdani', 'KP Griya Bandung Asri II RT 01 RW 10 blok A 77', 'Honda NF 11B1D M/T', 'Sepeda Motor', '110 CC', 'MH1JBC121A', 'JBC1E21C2C3C', 'Bensin');
+
+-- ----------------------------
+-- Table structure for t_pembelian_part
+-- ----------------------------
+DROP TABLE IF EXISTS `t_pembelian_part`;
+CREATE TABLE `t_pembelian_part`  (
+  `id_pembelian_part` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `nomor_invoice` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `tanggal_pembelian` datetime(0) NOT NULL,
+  PRIMARY KEY (`id_pembelian_part`) USING BTREE,
+  UNIQUE INDEX `unique_1`(`nomor_invoice`) USING BTREE,
+  INDEX `fk_tpp`(`id_user`) USING BTREE,
+  CONSTRAINT `fk_tpp` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of t_pembelian_part
+-- ----------------------------
+INSERT INTO `t_pembelian_part` VALUES (1, 1, '26061801', '2018-06-26 12:46:05');
+INSERT INTO `t_pembelian_part` VALUES (2, 1, '27061801', '2018-06-27 10:54:29');
 
 -- ----------------------------
 -- Table structure for t_temp_trans_part

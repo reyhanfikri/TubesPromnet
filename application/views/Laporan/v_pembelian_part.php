@@ -1,6 +1,43 @@
 <div class="container">
   <br>
-  <h5><b>Laporan Pembelian Part -Bulanan- (Bulan: <?php echo $bulan_tahun; ?>)&nbsp;|&nbsp;Jumlah Transaksi Pembelian: [<?php echo $data2->total_transaksi_pembelian ?>], Total Nilai Pembelian: [<?php echo number_format($data2->total_nilai_pembelian) ?>]&nbsp;|</b></h5>
+  <h5 style="padding-bottom: 10px;"><b>Laporan Pembelian Part -Bulanan- (Bulan: <?php echo $bulan_tahun; ?>)&nbsp;|&nbsp;Jumlah Transaksi Pembelian: [<?php echo $data2->total_transaksi_pembelian ?>], Total Nilai Pembelian: [<?php echo number_format($data2->total_nilai_pembelian) ?>]&nbsp;|</b></h5>
+  <?php foreach ($data3 as $value) { ?>
+    <div style="padding-left: 7px; background-color: #e5e5e5;">
+      <div style="font-size: 20px; color: red;"><b>No. INVOICE: <?php echo $value->nomor_invoice; ?></b></div>
+      <div style="font-size: 18px;"><b>
+        <?php if ($value->hari == "Monday") {
+
+          echo "Senin";
+
+        } else if ($value->hari == "Tuesday") {
+
+          echo "Selasa";
+
+        } else if ($value->hari == "Wednesday") {
+
+          echo "Rabu";
+
+        } else if ($value->hari == "Thursday") {
+
+          echo "Kamis";
+
+        } else if ($value->hari == "Friday") {
+
+          echo "Jumat";
+
+        } else if ($value->hari == "Saturday") {
+
+          echo "Sabtu";
+
+        } else if ($value->hari == "Sunday") {
+
+          echo "Minggu";
+
+        } echo ", ".$value->tanggal_pembelian; ?>
+      </b></div>
+    </div>
+    <br>
+  <?php } ?>
   <div style="padding-left: 0px;">
     <table class="table table-hover">
       <thead>
