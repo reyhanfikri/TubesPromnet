@@ -14,6 +14,7 @@ class MNotaTransPart extends CI_Model
 					t_trans_part.id_trans_part AS 'no_transaksi',
 					DATE_FORMAT( t_trans_part.tanggal_trans_part, '%d/%m/%Y %H:%i:%s' ) AS 'tanggal_jam',
 					t_part_jasa.no_part_jasa AS 'id_part',
+					t_part_jasa.id_part_jasa,
 					t_part_jasa.nama_part_jasa AS 'nama_part',
 					t_detail_trans_part.jumlah_part AS 'qty',
 					t_detail_trans_part.harga,

@@ -20,7 +20,7 @@ Class NotaTransPart extends CI_Controller{
       // mencetak string
       $pdf->Cell(190,7,'BENGKEL BARU',0,1,'C');
       $pdf->SetFont('Arial','B',12);
-      $pdf->Cell(190,7,'NOTA SPERPART',0,1,'C');
+      $pdf->Cell(190,7,'NOTA SPAREPART',0,1,'C');
       // Memberikan space kebawah agar tidak terlalu rapat
 
       $transPartMain = $this->MNotaTransPart->getNota($id)->last_row();

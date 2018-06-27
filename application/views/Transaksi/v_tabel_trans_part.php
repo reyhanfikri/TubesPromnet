@@ -41,7 +41,7 @@
   <center>
   <div class="">
     <a href="<?php echo site_url(); ?>TransaksiPart/clearTempTransPart" class="btn btn-danger">Batal</a>
-    <a href="<?php echo site_url(); ?>TransaksiPart/tambahTransPartMain" class="btn btn-success">Selesai</a>
+    <a target="_blank" href="<?php echo site_url(); ?>TransaksiPart/tambahTransPartMain" class="btn btn-success">Selesai</a>
   </div>
   </center>
 </div>

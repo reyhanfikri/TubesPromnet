@@ -60,6 +60,12 @@ class MTransPart extends CI_Model
     $this->db->update('t_temp_trans_part', $data);
   }
 
+  public function updateTransPartDetail($where, $data)
+  {
+    $this->db->where($where);
+    $this->db->update('t_detail_trans_part', $data);
+  }
+
   public function deleteTempTransPart($where)
   {
     $this->db->delete('t_temp_trans_part', $where);

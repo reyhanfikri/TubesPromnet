@@ -20,7 +20,7 @@
           <tr>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $i++; $total_item++; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;">
-              <a target="_blank" href="<?php echo site_url(); ?>NotaTransPart/nota/<?php echo $val->no_transaksi; ?>" class=""><?php echo $val->tanggal_jam; ?></a>
+              <a target="_blank" href="<?php echo site_url(); ?>TransaksiPart/detailTransPart/<?php echo $val->no_transaksi; ?>" class=""><?php echo $val->tanggal_jam; ?></a>
             </td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->id_part; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part; ?></td>

@@ -3,7 +3,6 @@
     <legend>Work Order (<?php echo $noKwitansi; ?>)</legend>
     <hr>
     <?php foreach ($pelanggan as $val) { ?>
-    <form class="" action="<?php echo site_url();?>Pelanggan/editPelanggan" method="post">
       <fieldset>
 
         <div class="row">
@@ -85,7 +84,6 @@
           </div>
         </div>
       </fieldset>
-    </form>
     <?php } ?>
 
     <table class="table table-hover">

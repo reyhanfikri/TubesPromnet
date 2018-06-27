@@ -76,8 +76,20 @@ class Part extends CI_Controller
 
 	public function tambahPart()
 	{
+		$dataPart = $this->MPart->getAllPart()->last_row();
+
+		if (isset($dataPart))
+		{
+			substr($dataPart->no_part_jasa++, -6);
+			$id_part = $dataPart->no_part_jasa;
+		}
+		else
+		{
+			$id_part = "SP000001";
+		}
+
 		$data = array(
-			'no_part_jasa' => $this->input->post('id_part'),
+			'no_part_jasa' => $id_part,
 			'nama_part_jasa' => $this->input->post('nama_part'),
 			'stok_part' => $this->input->post('stok_part'),
 			'harga_jual_part_jasa' => $this->input->post('harga_part'),
