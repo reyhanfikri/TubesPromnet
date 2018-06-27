@@ -1,8 +1,8 @@
 <div class="container">
   <br>
   <h5 style="padding-bottom: 10px;"><b>Laporan Pembelian Part -Bulanan- (Bulan: <?php echo $bulan_tahun; ?>)&nbsp;|&nbsp;Jumlah Transaksi Pembelian: [<?php echo $data2->total_transaksi_pembelian ?>], Total Nilai Pembelian: [<?php echo number_format($data2->total_nilai_pembelian) ?>]&nbsp;|</b></h5>
-  <?php foreach ($data3 as $value) { ?>
-    <div style="padding-left: 7px; background-color: #e5e5e5;">
+  <?php $i = 1; foreach ($data as $value) { ?>
+    <div style="padding-left: 7px; padding-right: 7px; background-color: #f2f2f2;">
       <div style="font-size: 20px; color: red;"><b>No. INVOICE: <?php echo $value->nomor_invoice; ?></b></div>
       <div style="font-size: 18px;"><b>
         <?php if ($value->hari == "Monday") {
@@ -35,54 +35,51 @@
 
         } echo ", ".$value->tanggal_pembelian; ?>
       </b></div>
-    </div>
-    <br>
-  <?php } ?>
-  <div style="padding-left: 0px;">
-    <table class="table table-hover">
+      <br>
+      <table class="table table-hover">
       <thead>
         <tr class="table-info">
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">No</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Tanggal/Jam</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Id Part</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Nama Part</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Qty</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Harga</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Subtotal</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Kasir</th>
+          <th align="right" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Qty Awal</th>
+          <th align="right" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Qty Tambah</th>
+          <th align="right" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Harga Beli</th>
+          <th align="right" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Subtotal</th>
         </tr>
       </thead>
       <tbody>
-        <?php $i = 1; $total_item = 0; $total_qty = 0; $total = 0; foreach ($data as $val) { ?>
+        <?php $no = 1; $total_item = 0; $total_qty_tambah = 0; $total = 0; foreach ($data_detail[$i] as $val) { ?>
           <tr>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $i++; $total_item++; ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;">
-              <a target="_blank"  href="<?php echo site_url(); ?>NotaTransPart/nota/<?php echo $val->no_transaksi; ?>" class=""><?php echo $val->tanggal_jam; ?></a>
-            </td>
+            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $no++; $total_item++; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->id_part; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part; ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->qty." Pcs"; $total_qty += $val->qty; ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga); ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->subtotal); $total += $val->subtotal; ?></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->kasir; ?></td>
+            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->qty_awal." Pcs"; ?></td>
+            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->qty_tambah." Pcs"; $total_qty_tambah += $val->qty_tambah; ?></td>
+            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->harga_beli); ?></td>
+            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($val->subtotal); $total += $val->subtotal; ?></td>
           </tr>
-        <?php $total_transaksi[] = $val->no_transaksi; } ?>
-        <tr class="table-secondary">
+        <?php } ?>
+        <tr>
             <td style="padding-top: 4px; padding-bottom: 4px;"></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php if (isset($total_transaksi)) { echo count(array_count_values($total_transaksi))." Transaksi"; } ?></b></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_item; ?></b></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_item." ITEM"; ?></b></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo $total_qty." Pcs"; ?></b></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;">-</td>
-            <td style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo number_format($total); ?></b></td>
-            <td style="padding-top: 4px; padding-bottom: 4px;">-</td>
+            <td style="padding-top: 4px; padding-bottom: 4px;"></td>
+            <td style="padding-top: 4px; padding-bottom: 4px;"><b></b></td>
+            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo "ITEM: [".$total_item."]"; ?></b></td>
+            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo "QTY: [".$total_qty_tambah."]"; ?></b></td>
+            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><b>TOTAL</b></td>
+            <td align="right" width="150" style="padding-top: 4px; padding-bottom: 4px;"><b><?php echo number_format($total); ?></b></td>
           </tr>
       </tbody>
     </table>
-  </div>
+    <hr>
+    <div align="right" style="padding-bottom: 30px; padding-right: 100px;">Dibuat oleh:</div>
+    <div align="right" style="padding-bottom: 5px; padding-right: 120px;">(<?php echo $value->kasir; ?>)</div>
+    </div>
+    <br>
+  <?php $i++; } ?>
   <br>
   <div style="padding-left: 695px;">
-      <form class="form-inline" method="post" action="<?php echo site_url('LaporanPendapatanBulanan'); ?>">
+      <form class="form-inline" method="post" action="<?php echo site_url('LaporanPembelianPart'); ?>">
         <h5>Filter Laporan: </h5>
         <select name="bulan" class="form-control" style="width: 70px; margin-left: 9px; margin-right: 1px;">
           <option value="01" <?php if ($bulan == 1) { ?> selected <?php } ?>>01</option>

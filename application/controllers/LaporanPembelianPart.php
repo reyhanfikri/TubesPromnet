@@ -27,9 +27,8 @@ class LaporanPembelianPart extends CI_Controller
 				$data['bulan'] = date("m", $bulan_tahun_converted_to_time);
 				$data['tahun'] = date("Y", $bulan_tahun_converted_to_time);
 
-				$data['data'] = $this->MLaporanPembelianPart->getDetailLaporan($this->bulan_tahun);
+				$data['data'] = $this->MLaporanPembelianPart->getGroupByNomorInvoice($this->bulan_tahun);
 				$data['data2'] = $this->MLaporanPembelianPart->getTotalTransaksidanNilai($this->bulan_tahun);
-				$data['data3'] = $this->MLaporanPembelianPart->getGroupByNomorInvoice($this->bulan_tahun);
 
 			} else {
 
@@ -39,12 +38,21 @@ class LaporanPembelianPart extends CI_Controller
 				$data['bulan'] = date("m", $bulan_tahun_converted_to_time);
 				$data['tahun'] = date("Y", $bulan_tahun_converted_to_time);
 
-				$data['data'] = $this->MLaporanPembelianPart->getDetailLaporan($this->bulan_tahun);
+				$data['data'] = $this->MLaporanPembelianPart->getGroupByNomorInvoice($this->bulan_tahun);
 				$data['data2'] = $this->MLaporanPembelianPart->getTotalTransaksidanNilai($this->bulan_tahun);
-				$data['data3'] = $this->MLaporanPembelianPart->getGroupByNomorInvoice($this->bulan_tahun);
 
 			}
 
+			$i = 1;
+
+			foreach ($data['data'] as $value) {
+
+				$data_detail[$i] = $this->MLaporanPembelianPart->getDetailLaporan($value->nomor_invoice);
+				$i++;
+
+			}
+
+			$data['data_detail'] = $data_detail;
 			$data['bulan_tahun'] = date_create($this->bulan_tahun)->format('m/Y');
 
 			$this->load->view('v_header');
