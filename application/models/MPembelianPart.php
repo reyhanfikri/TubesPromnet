@@ -100,9 +100,9 @@ class MPembelianPart extends CI_Model
 
   public function updatePembelianPartById($id, $qty_tambah)
   {
-    $query = "UPDATE t_detail_pembelian_part SET qty_tambah = ".$qty_tambah." WHERE id_detail_pembelian_part = '".$id."';";
+    $query = "UPDATE t_detail_pembelian_part SET qty = '".$qty_tambah."' WHERE id_detail_pembelian_part = '".$id."';";
 
-    return $this->db->query($query);
+    $this->db->query($query);
   }
 
 }

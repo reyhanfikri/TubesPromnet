@@ -9,7 +9,7 @@ class LaporanPembelianPart extends CI_Controller
 	public function __construct() {
 
 		parent::__construct();
-		$this->load->model(array('MLaporanPembelianPart'));
+		$this->load->model(array('MLaporanPembelianPart', 'MPembelianPart'));
 		$this->bulan_tahun = date('Y-m');
 
 	}
@@ -106,7 +106,7 @@ class LaporanPembelianPart extends CI_Controller
 				$qty_tambah = $this->input->post('qty_tambah_'.$i);
 				$kode = $this->input->post('kode_'.$i);
 
-				$this->MLaporanPembelianPart->updatePembelianPartById($kode, $qty_tambah);
+				$this->MPembelianPart->updatePembelianPartById($kode, $qty_tambah);
 
 			}
 
