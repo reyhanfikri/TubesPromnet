@@ -32,13 +32,25 @@ class Search extends CI_Controller {
 
 	}
 
-	public function test() {
+	public function pembelian_part() {
 
-		if ($this->input->post('submit') !== null) {
+		if ($this->input->get('term') !== null) {
 
-			echo $this->input->post('part');
+            $result = $this->MAutoComplete->search_pembelian_part($_GET['term']);
 
-		}
+            if (count($result) > 0) {
+
+	            foreach ($result as $row) {
+
+	            	$arr_result[] = $row->no_part_jasa." | ".$row->nama_part_jasa." | Harga Beli: ".number_format($row->harga_beli_part)." | Stok: ".$row->stok_part;
+
+	            }
+
+                echo json_encode($arr_result);
+
+            }
+
+        }
 
 	}
 

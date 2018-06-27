@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 27/06/2018 11:41:11
+ Date: 27/06/2018 17:11:13
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `t_detail_pembelian_part`  (
   INDEX `fk_dpp2`(`id_part_jasa`) USING BTREE,
   CONSTRAINT `fk_dpp` FOREIGN KEY (`id_pembelian_part`) REFERENCES `t_pembelian_part` (`id_pembelian_part`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_dpp2` FOREIGN KEY (`id_part_jasa`) REFERENCES `t_part_jasa` (`id_part_jasa`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_detail_pembelian_part
@@ -41,6 +41,8 @@ INSERT INTO `t_detail_pembelian_part` VALUES (1, 1, 7, 2, 40500);
 INSERT INTO `t_detail_pembelian_part` VALUES (2, 1, 9, 5, 1350);
 INSERT INTO `t_detail_pembelian_part` VALUES (3, 1, 44, 8, 23400);
 INSERT INTO `t_detail_pembelian_part` VALUES (4, 2, 33, 2, 105300);
+INSERT INTO `t_detail_pembelian_part` VALUES (5, 3, 994, 1, 108000);
+INSERT INTO `t_detail_pembelian_part` VALUES (6, 3, 2, 100, 74700);
 
 -- ----------------------------
 -- Table structure for t_detail_trans_part
@@ -124,7 +126,7 @@ CREATE TABLE `t_part_jasa`  (
 -- Records of t_part_jasa
 -- ----------------------------
 INSERT INTO `t_part_jasa` VALUES (1, 'SP000001', 'BATTERY CHARGER MF', 1200000, 1080000, 20, 'Sparepart');
-INSERT INTO `t_part_jasa` VALUES (2, 'SP000002', 'HOLDER,NEEDLE JET', 83000, 74700, 20, 'Sparepart');
+INSERT INTO `t_part_jasa` VALUES (2, 'SP000002', 'HOLDER,NEEDLE JET', 83000, 74700, 100, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (3, 'SP000003', 'PIPE,RR', 1126000, 1013400, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (4, 'SP000004', 'SCREW PAN 6X12', 4000, 3600, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (5, 'SP000005', 'STAY RADIATOR LOWER', 6000, 5400, 20, 'Sparepart');
@@ -1116,7 +1118,7 @@ INSERT INTO `t_part_jasa` VALUES (990, 'SP000990', 'BAJU PEML PRIA B (S)', 15000
 INSERT INTO `t_part_jasa` VALUES (991, 'SP000991', 'WINKER ASSY L FR', 35000, 31500, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (992, 'SP000992', 'SPRING, KICK RETURN', 5000, 4500, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (993, 'SP000993', 'BOLT A STUD 7X193.5', 8000, 7200, 20, 'Sparepart');
-INSERT INTO `t_part_jasa` VALUES (994, 'SP000994', 'STRIPE SILVER L & R', 120000, 108000, 20, 'Sparepart');
+INSERT INTO `t_part_jasa` VALUES (994, 'SP000994', 'STRIPE SILVER L & R', 120000, 108000, 21, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (995, 'SP000995', 'LOUVER R', 53000, 47700, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (996, 'SP000996', 'ELEMENT,CLEANER', 85000, 76500, 20, 'Sparepart');
 INSERT INTO `t_part_jasa` VALUES (997, 'SP000997', 'CUSHION ASSY RR', 285000, 256500, 20, 'Sparepart');
@@ -1166,13 +1168,28 @@ CREATE TABLE `t_pembelian_part`  (
   UNIQUE INDEX `unique_1`(`nomor_invoice`) USING BTREE,
   INDEX `fk_tpp`(`id_user`) USING BTREE,
   CONSTRAINT `fk_tpp` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of t_pembelian_part
 -- ----------------------------
 INSERT INTO `t_pembelian_part` VALUES (1, 1, '26061801', '2018-06-26 12:46:05');
 INSERT INTO `t_pembelian_part` VALUES (2, 1, '27061801', '2018-06-27 10:54:29');
+INSERT INTO `t_pembelian_part` VALUES (3, 1, '27061802', '2018-06-27 12:07:52');
+
+-- ----------------------------
+-- Table structure for t_temp_pembelian_part
+-- ----------------------------
+DROP TABLE IF EXISTS `t_temp_pembelian_part`;
+CREATE TABLE `t_temp_pembelian_part`  (
+  `id_temp_pembelian_part` int(11) NOT NULL AUTO_INCREMENT,
+  `no_part` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `tanggal` datetime(0) NOT NULL,
+  `id_part_jasa` int(11) NOT NULL,
+  `qty_tambah` int(11) NOT NULL,
+  `harga_beli` int(11) NOT NULL,
+  PRIMARY KEY (`id_temp_pembelian_part`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for t_temp_trans_part

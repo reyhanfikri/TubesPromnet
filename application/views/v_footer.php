@@ -6,6 +6,9 @@
             $( "#search_part" ).autocomplete({
               source: "<?php echo site_url().'search/?';?>"
             });
+            $( "#search_pembelian_part" ).autocomplete({
+              source: "<?php echo site_url().'search/pembelian_part/?';?>"
+            });
         });
     </script>
   </body>

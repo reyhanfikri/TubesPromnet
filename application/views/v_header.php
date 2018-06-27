@@ -32,6 +32,7 @@
                 <div class="dropdown-menu" aria-labelledby="laporan">
                   <a class="dropdown-item" href="<?php echo site_url();?>Part">Data Part</a>
                   <a class="dropdown-item" href="<?php echo site_url();?>TransaksiPart">Transaksi Part</a>
+                  <a class="dropdown-item" href="<?php echo site_url();?>PembelianPart">Pembelian Part</a>
                 </div>
             </li>
             <!-- <li class="nav-item">

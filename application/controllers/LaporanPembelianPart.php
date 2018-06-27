@@ -58,13 +58,13 @@ class LaporanPembelianPart extends CI_Controller
 
 				$data['data_detail'] = $data_detail;
 				$data['bulan_tahun'] = date_create($this->bulan_tahun)->format('m/Y');
-				
-				$this->load->view('Laporan/v_pembelian_part', $data);
+
+				$this->load->view('Laporan/v_laporan_pembelian_part', $data);
 
 			} else {
 
 				$data['bulan_tahun'] = date_create($this->bulan_tahun)->format('m/Y');
-				$this->load->view('Laporan/v_pembelian_part_kosong', $data);
+				$this->load->view('Laporan/v_laporan_pembelian_part_kosong', $data);
 
 			}
 			
