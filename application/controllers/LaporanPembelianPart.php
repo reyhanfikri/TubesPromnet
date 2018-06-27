@@ -78,4 +78,46 @@ class LaporanPembelianPart extends CI_Controller
 		
 	}
 
+	public function editLaporan($nomor_invoice) {
+
+		if ($this->session->userdata('isLoggedIn')) {
+
+			$data['data'] = $this->MLaporanPembelianPart->getOneGroupByNomorInvoice($nomor_invoice);
+			$data['data_detail'] = $this->MLaporanPembelianPart->getDetailLaporan($nomor_invoice);
+
+			$this->load->view('v_header');
+			$this->load->view('Laporan/Edit/v_edit_laporan_pembelian_part', $data);
+			$this->load->view('v_footer');
+
+		} else {
+
+			redirect(site_url('Login'));
+
+		}
+
+	}
+
+	public function updateLaporan() {
+
+		if ($this->input->post('submit') !== null) {
+
+			for ($i = 1; $i <= $this->input->post('no'); $i++) { 
+				
+				$qty_tambah = $this->input->post('qty_tambah_'.$i);
+				$kode = $this->input->post('kode_'.$i);
+
+				$this->MLaporanPembelianPart->updatePembelianPartById($kode, $qty_tambah);
+
+			}
+
+			redirect(site_url('LaporanPembelianPart'));
+
+		} else {
+
+			redirect(site_url('LaporanPembelianPart'));
+
+		}
+
+	}
+
 }

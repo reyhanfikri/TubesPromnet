@@ -3,7 +3,8 @@
   <h5 style="padding-bottom: 10px;"><b>Laporan Pembelian Part -Bulanan- (Bulan: <?php echo $bulan_tahun; ?>)&nbsp;|&nbsp;Jumlah Transaksi Pembelian: [<?php echo $data2->total_transaksi_pembelian ?>], Total Nilai Pembelian: [<?php echo number_format($data2->total_nilai_pembelian) ?>]&nbsp;|</b></h5>
   <?php $i = 1; foreach ($data as $value) { ?>
     <div style="padding-left: 7px; padding-right: 7px; background-color: #f2f2f2;">
-      <div style="font-size: 20px; color: red;"><b>No. INVOICE: <?php echo $value->nomor_invoice; ?></b></div>
+      <div style="float: left; font-size: 20px; color: red;"><b>No. INVOICE: <?php echo $value->nomor_invoice; ?></b></div>
+      <div style="padding-top: 5px; height: 30px;" align="right"><a href="<?php echo site_url(); ?>LaporanPembelianPart/editLaporan/<?php echo $value->nomor_invoice; ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a></div>
       <div style="font-size: 18px;"><b>
         <?php if ($value->hari == "Monday") {
 
