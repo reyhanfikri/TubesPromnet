@@ -137,13 +137,41 @@ class TransaksiPart extends CI_Controller
 		$this->load->view('v_footer');
 	}
 
+	public function tambahTempEditTransPart()
+	{
+		$id = $this->input->post('id_trans_part');
+		$part = $this->input->post('part');
+		$jumlah = $this->input->post('jumlah');
+
+		$no_part = substr($part, 0, 8);
+		$where = array('no_part_jasa' => $no_part);
+
+		$dataPart = $this->MPart->editPart($where)->result();
+
+		foreach ($dataPart as $value1)
+		{
+			if ($value1->no_part_jasa == $no_part && $value1->stok_part >= $jumlah)
+			{
+				$data = array(
+					'no_part' => $no_part,
+					'tanggal' => date('Y-m-d H:i:s'),
+					'id_part_jasa' => $value1->id_part_jasa,
+					'harga' => $value1->harga_jual_part_jasa,
+					'jumlah' => $jumlah
+			 	);
+				$this->MTransPart->insertTempTransPart($data);
+			}
+		}
+		redirect('TransaksiPart/formEditTransPart/'.$id);
+	}
+
 	function formEditTransPart($id)
 	{
-		$this->MTransPart->truncatTempTransPart();
 		$dataTransPart = $this->MNotaTransPart->getNota($id)->result();
 
 		foreach ($dataTransPart as $value1)
 		{
+			$this->MTransPart->truncatTempTransPart();
 			if ($value1->no_transaksi == $id)
 			{
 				$data = array(
@@ -182,18 +210,18 @@ class TransaksiPart extends CI_Controller
 			$dataPart = $this->MPart->editPart(array('id_part_jasa' => $value->id_part_jasa ))->result();
 			foreach ($dataPart as $value1)
 			{
-				if ($value->jumlah <= $post['jumlah'][$key])
-				{
-					$dataPart = array(
-						'id_part_jasa' => $value->id_part_jasa,
-						'stok_part' => $value1->stok_part + ($post['jumlah'][$key] - $value->jumlah)
-					);
-				}
-				else
+				if ($value->jumlah >= $post['jumlah'][$key])
 				{
 					$dataPart = array(
 						'id_part_jasa' => $value->id_part_jasa,
 						'stok_part' => $value1->stok_part - ($post['jumlah'][$key] - $value->jumlah)
+					);
+				}
+				elseif ($value->jumlah <= $post['jumlah'][$key])
+				{
+					$dataPart = array(
+						'id_part_jasa' => $value->id_part_jasa,
+						'stok_part' => $value1->stok_part + ($post['jumlah'][$key] - $value->jumlah)
 					);
 				}
 				$this->MPart->updateStokPart($dataPart);

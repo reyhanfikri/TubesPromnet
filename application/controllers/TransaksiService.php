@@ -247,18 +247,18 @@ class TransaksiService extends CI_Controller
 				$dataPart = $this->MPart->editPart(array('id_part_jasa' => $value->id_part_jasa ))->result();
 				foreach ($dataPart as $value1)
 				{
-					if ($value->jumlah <= $post['jumlah'][$key])
-					{
-						$dataPart = array(
-							'id_part_jasa' => $value->id_part_jasa,
-							'stok_part' => $value1->stok_part + ($post['jumlah'][$key] - $value->jumlah)
-						);
-					}
-					else
+					if ($value->jumlah >= $post['jumlah'][$key])
 					{
 						$dataPart = array(
 							'id_part_jasa' => $value->id_part_jasa,
 							'stok_part' => $value1->stok_part - ($post['jumlah'][$key] - $value->jumlah)
+						);
+					}
+					elseif ($value->jumlah <= $post['jumlah'][$key])
+					{
+						$dataPart = array(
+							'id_part_jasa' => $value->id_part_jasa,
+							'stok_part' => $value1->stok_part + ($post['jumlah'][$key] - $value->jumlah)
 						);
 					}
 					$this->MPart->updateStokPart($dataPart);
