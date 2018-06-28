@@ -104,15 +104,16 @@ class LaporanPembelianPart extends CI_Controller
 			for ($i = 1; $i <= $this->input->post('no'); $i++) { 
 				
 				$stok_part = $this->input->post('stok_part_'.$i);
-				$qty_tambah = $this->input->post('qty_tambah_'.$i);
+				$qty_tambah_after = $this->input->post('qty_tambah_after_'.$i);
+				$qty_tambah_before = $this->input->post('qty_tambah_before_'.$i);
 				$kode = $this->input->post('kode_'.$i);
 				$kode2 = $this->input->post('kode2_'.$i);
 
-				$this->MPembelianPart->updatePembelianPartById($kode, $qty_tambah);
+				$this->MPembelianPart->updatePembelianPartById($kode, $qty_tambah_after);
 
 				$data = array(
 					'id_part_jasa' => $kode2,
-					'stok_part' => $stok_part + $qty_tambah
+					'stok_part' => $stok_part - $qty_tambah_before +$qty_tambah_after
 				);
 
 				$this->MPart->updateStokPart($data);
