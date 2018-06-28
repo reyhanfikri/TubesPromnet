@@ -19,7 +19,8 @@ class MLaporanPembelianPart extends CI_Model {
 					t_detail_pembelian_part.qty_awal AS 'qty_awal',
 					t_detail_pembelian_part.qty AS 'qty_tambah',
 					t_detail_pembelian_part.harga_beli,
-					t_detail_pembelian_part.qty * t_detail_pembelian_part.harga_beli AS 'subtotal'
+					t_detail_pembelian_part.qty * t_detail_pembelian_part.harga_beli AS 'subtotal',
+					t_part_jasa.stok_part
 				FROM
 					t_pembelian_part
 					INNER JOIN t_detail_pembelian_part ON t_detail_pembelian_part.id_pembelian_part = t_pembelian_part.id_pembelian_part
