@@ -1,20 +1,5 @@
 <div class="container">
   <center> <h2>Edit Transaksi Part</h2> </center><br>
-  <!-- <legend>Data Transaksi</legend>
-    <form class="" action="<?php echo site_url();?>TransaksiPart/tambahTempEditTransPart" method="post">
-      <input type="text" name="id_trans_part" value="<?php echo $id; ?>" hidden>
-      <div class="form-group row">
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="part" id="search_part" placeholder="Cari Part">
-        </div>
-
-        <div class="col-sm-1">
-          <input name="jumlah" class="form-control" type="text" placeholder="Qty" value="1">
-        </div>
-
-        <button type="submit" name="tambah" class="btn btn-primary">Tambah</button>
-      </div>
-    </form> -->
 
     <form class="" action="<?php echo site_url(); ?>TransaksiPart/editTransPart/<?php echo $id; ?>" method="post">
 

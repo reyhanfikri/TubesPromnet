@@ -9,8 +9,6 @@
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Id Part/Id Jasa</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Nama Part/Id Jasa</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Qty</th>
-          <!-- <th align="center" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Harga(Rp)</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Sub Total(Rp)</th> -->
           <th align="center" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Action</th>
         </tr>
       </thead>
@@ -21,22 +19,14 @@
           <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->no_part_jasa; ?></td>
           <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part_jasa; ?></td>
 
-          <td align="right" width="150px" style="padding-top: 4px; padding-bottom: 4px;">
-            <div class="form-group row">
-              <div class="col-sm-6">
-                <input class="form-control" type="text" name="jumlah[]" value="<?php echo $val->jumlah; $totalJumlah = $totalJumlah + $val->jumlah; ?>"
-                <?php if (substr($val->no_part_jasa, 0, 2) == "JS")
-                {
-                  echo "readonly";
-                } ?>>
-              </div>
-            </div>
+          <td align="" width="150" style="padding-top: 4px; padding-bottom: 4px;">
+            <input style="padding-left: 5px; width: 50px; border-radius: 5px;" type="number" min="1" name="jumlah[]" value="<?php echo $val->jumlah; $totalJumlah = $totalJumlah + $val->jumlah; ?>"
+            <?php if (substr($val->no_part_jasa, 0, 2) == "JS")
+            {
+              echo "readonly";
+            } ?>>
           </td>
 
-          <!-- <td align="right" width="200px" style="padding-top: 4px; padding-bottom: 4px;">
-            <?php echo number_format($val->harga_jual_part_jasa); ?></td> -->
-          <!-- <td align="right" width="150px" style="padding-top: 4px; padding-bottom: 4px;">
-            <?php echo number_format($val->harga_jual_part_jasa*$val->jumlah); $totalHarga = $totalHarga + ($val->harga_jual_part_jasa*$val->jumlah); ?></td> -->
           <td align="center" style="padding-top: 4px; padding-bottom: 4px;">
             <a href="<?php echo site_url(); ?>TransaksiService/hapusTempTransService/<?php echo $val->id_temp_trans_service; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
           </td>
