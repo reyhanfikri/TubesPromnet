@@ -1,5 +1,21 @@
 <div class="container">
   <center> <h2>Edit Transaksi Part</h2> </center><br>
+  <!-- <legend>Data Transaksi</legend>
+    <form class="" action="<?php echo site_url();?>TransaksiPart/tambahTempEditTransPart" method="post">
+      <input type="text" name="id_trans_part" value="<?php echo $id; ?>" hidden>
+      <div class="form-group row">
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="part" id="search_part" placeholder="Cari Part">
+        </div>
+
+        <div class="col-sm-1">
+          <input name="jumlah" class="form-control" type="text" placeholder="Qty" value="1">
+        </div>
+
+        <button type="submit" name="tambah" class="btn btn-primary">Tambah</button>
+      </div>
+    </form> -->
+
     <form class="" action="<?php echo site_url(); ?>TransaksiPart/editTransPart/<?php echo $id; ?>" method="post">
 
     <table class="table table-hover">
@@ -9,8 +25,6 @@
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Id Part</th>
           <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Nama Barang</th>
           <th width="30px" scope="col" style="width: 30px; padding-top: 4px; padding-bottom: 4px;">Qty</th>
-          <!-- <th align="center" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Harga(Rp)</th>
-          <th scope="col" style="padding-top: 4px; padding-bottom: 4px;">Sub Total(Rp)</th> -->
           <th align="center" scope="col" style="padding-top: 4px; padding-bottom: 4px;">Action</th>
         </tr>
       </thead>
@@ -20,19 +34,9 @@
           <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $i++; ?></td>
           <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->no_part_jasa; ?></td>
           <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part_jasa; ?></td>
-
-          <td align="right" style="width: 30px; padding-top: 4px; padding-bottom: 4px;">
-            <div class="form-group row">
-              <div class="col-sm-1">
-                <input class="" type="number" min="1" name="jumlah[]" value="<?php echo $val->jumlah; $totalJumlah = $totalJumlah + $val->jumlah; ?>">
-              </div>
-            </div>
+          <td align="" width="150" style="padding-top: 4px; padding-bottom: 4px;">
+            <input style="padding-left: 5px; width: 50px; border-radius: 5px;" type="number" min="1" name="jumlah[]" value="<?php echo $val->jumlah; $totalJumlah = $totalJumlah + $val->jumlah; ?>">
           </td>
-
-          <!-- <td align="right" width="200px" style="padding-top: 4px; padding-bottom: 4px;">
-            <?php echo number_format($val->harga_jual_part_jasa); ?></td> -->
-          <!-- <td align="right" width="150px" style="padding-top: 4px; padding-bottom: 4px;">
-            <?php echo number_format($val->harga_jual_part_jasa*$val->jumlah); $totalHarga = $totalHarga + ($val->harga_jual_part_jasa*$val->jumlah); ?></td> -->
           <td align="center" style="padding-top: 4px; padding-bottom: 4px;">
             <a href="<?php echo site_url(); ?>TransaksiPart/hapusTempTransPart/<?php echo $val->id_temp_trans_part; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
           </td>
@@ -43,8 +47,6 @@
           <td style="padding-top: 4px; padding-bottom: 4px;"></td>
           <td style="padding-top: 4px; padding-bottom: 4px;">Total Qty</td>
           <td style="padding-top: 4px; padding-bottom: 4px;"> &emsp;<?php echo $totalJumlah; ?></td>
-          <!-- <td style="padding-top: 4px; padding-bottom: 4px;">Grand Total Belanja(Rp.):</td>
-          <td align="right" style="padding-top: 4px; padding-bottom: 4px;"><?php echo number_format($totalHarga); ?></td> -->
           <td align="center" style="padding-top: 4px; padding-bottom: 4px;"></td>
         </tr>
       </tbody>
@@ -53,7 +55,7 @@
     <center>
     <div class="">
       <a href="<?php echo site_url(); ?>TransaksiPart/detailTransPart/<?php echo $id; ?>" class="btn btn-danger">Batal</a>
-      <button type="submit" class="btn btn-primary">Selesai</button>
+      <button type="submit" name="selesai" class="btn btn-primary">Selesai</button>
     </div>
     </center>
   </form>
