@@ -18,6 +18,11 @@ class MTransService extends CI_Model
     return $this->db->get('t_trans_service');
   }
 
+  public function getTransServiceByNoKwitansi($where)
+  {
+    return $this->db->get_where('t_trans_service', $where);
+  }
+
   public function getAllTempTableTransService()
   {
     $query = "SELECT
@@ -57,6 +62,12 @@ class MTransService extends CI_Model
   {
     $this->db->where($where);
     $this->db->update('t_temp_trans_service', $data);
+  }
+
+  public function updateTransServiceDetail($where, $data)
+  {
+    $this->db->where($where);
+    $this->db->update('t_detail_trans_service', $data);
   }
 
   public function deleteTempTransService($where)

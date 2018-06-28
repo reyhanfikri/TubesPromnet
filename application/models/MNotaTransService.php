@@ -12,8 +12,10 @@ class MNotaTransService extends CI_Model
   {
 		$query = "SELECT
 				DATE_FORMAT(t_trans_service.tanggal_trans_service, '%d/%m/%Y %H:%i:%s') AS 'tanggal_jam',
+				t_trans_service.id_pelanggan,
 				t_trans_service.nomor_kwitansi AS 'no_kuitansi',
 				t_part_jasa.no_part_jasa AS 'id_part_jasa',
+				t_part_jasa.id_part_jasa AS 'no_part_jasa',
 				t_part_jasa.nama_part_jasa,
 				t_detail_trans_service.qty,
 				t_detail_trans_service.harga,

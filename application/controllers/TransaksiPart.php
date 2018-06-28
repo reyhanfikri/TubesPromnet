@@ -178,6 +178,27 @@ class TransaksiPart extends CI_Controller
 				'jumlah_part' => $post['jumlah'][$key],
 				'harga' => $value->harga
 			);
+
+			$dataPart = $this->MPart->editPart(array('id_part_jasa' => $value->id_part_jasa ))->result();
+			foreach ($dataPart as $value1)
+			{
+				if ($value->jumlah <= $post['jumlah'][$key])
+				{
+					$dataPart = array(
+						'id_part_jasa' => $value->id_part_jasa,
+						'stok_part' => $value1->stok_part + ($post['jumlah'][$key] - $value->jumlah)
+					);
+				}
+				else
+				{
+					$dataPart = array(
+						'id_part_jasa' => $value->id_part_jasa,
+						'stok_part' => $value1->stok_part - ($post['jumlah'][$key] - $value->jumlah)
+					);
+				}
+				$this->MPart->updateStokPart($dataPart);
+			}
+
 			$this->MTransPart->updateTransPartDetail($where, $data);
 		}
 		$this->MTransPart->truncatTempTransPart();

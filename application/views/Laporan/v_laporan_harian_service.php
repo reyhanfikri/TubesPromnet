@@ -21,7 +21,7 @@
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $i++; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->tanggal_jam; ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;">
-              <a target="_blank" href="<?php echo site_url(); ?>NotaTransService/nota/<?php echo $val->no_kuitansi; ?>" class=""><?php echo $val->no_kuitansi; $total_transaksi[] = $val->no_kuitansi; ?></a>
+              <a target="_blank" href="<?php echo site_url(); ?>TransaksiService/detailTransService/<?php echo $val->no_kuitansi; ?>" class=""><?php echo $val->no_kuitansi; $total_transaksi[] = $val->no_kuitansi; ?></a>
             </td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->id_part_jasa; if ($val->tipe == "Sparepart") { $total_item++; } else if ($val->tipe == "Jasa") { $total_service++; } ?></td>
             <td style="padding-top: 4px; padding-bottom: 4px;"><?php echo $val->nama_part_jasa; ?></td>

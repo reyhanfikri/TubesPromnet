@@ -11,6 +11,7 @@ class TransaksiService extends CI_Controller
 		$this->load->model('MJasa');
 		$this->load->model('MPart');
 		$this->load->model('MTransService');
+		$this->load->model('MNotaTransService');
 	}
 
 	public function service($id)
@@ -156,6 +157,7 @@ class TransaksiService extends CI_Controller
 						'qty' => $value2->jumlah,
 						'harga' => $value2->harga
 					);
+					$id = $value1->id_trans_service;
 					$this->MTransService->insertTransServiceDetail($dataDetail);
 				}
 			}
@@ -173,6 +175,100 @@ class TransaksiService extends CI_Controller
 				}
 			}
 		}
-		redirect('TransaksiService/cancelTempTransService');
+		$this->MTransService->truncatTempTransService();
+		redirect('NotaTransService/nota/'.$id);
 	}
+
+	function detailTransService($noKwitansi)
+	{
+		$data['transServiceMain'] = $this->MNotaTransService->getNota($noKwitansi)->last_row();
+		$data['transService'] = $this->MNotaTransService->getNota($noKwitansi)->result();
+
+		if (isset($data['transServiceMain']))
+		{
+			$id_pelanggan = array('id_pelanggan' => $data['transServiceMain']->id_pelanggan);
+		}
+		$data['pelanggan'] = $this->MPelanggan->getById($id_pelanggan)->result();
+
+		$this->load->view('v_header');
+		$this->load->view('Transaksi/v_detail_trans_service', $data);
+		$this->load->view('v_footer');
+	}
+
+	function formEditTransService($noKwitansi)
+	{
+		$this->MTransService->truncatTempTransService();
+		$dataTransService = $this->MNotaTransService->getNota($noKwitansi)->result();
+
+		foreach ($dataTransService as $value1)
+		{
+			if ($value1->no_kuitansi == $noKwitansi)
+			{
+				$data = array(
+					'nomor_kwitansi' => $value1->no_kuitansi,
+					'id_pelanggan' => $value1->id_pelanggan,
+					'tanggal' => date('Y-m-d H:i:s'),
+					'id_part_jasa' => $value1->no_part_jasa,
+					'jumlah' => $value1->qty,
+					'harga' => $value1->harga
+			 	);
+
+				$this->MTransService->insertTempTransService($data);
+			}
+		}
+		$data['noKwitansi'] = $noKwitansi;
+
+		$data['transService'] = $this->MTransService->getAllTempTableTransService()->result();
+
+		$this->load->view('v_header');
+		$this->load->view('Transaksi/v_edit_trans_service', $data);
+		$this->load->view('v_footer');
+	}
+
+	function editTransService($noKwitansi)
+	{
+		$post = $this->input->post();
+		$no_kwitansi = array('nomor_kwitansi' => $noKwitansi);
+		$dataTransServiceMain = $this->MTransService->getTransServiceByNoKwitansi($no_kwitansi)->last_row();
+		$dataTransService = $this->MTransService->getAllTempTransService()->result();
+
+		foreach ($dataTransService as $key => $value)
+		{
+			if (isset($dataTransServiceMain))
+			{
+				$where = array('id_trans_service' => $dataTransServiceMain->id_trans_service, 'id_part_jasa' => $value->id_part_jasa);
+				$data = array(
+					'id_trans_service' => $dataTransServiceMain->id_trans_service,
+					'id_part_jasa' => $value->id_part_jasa,
+					'qty' => $post['jumlah'][$key],
+					'harga' => $value->harga
+				);
+
+				$dataPart = $this->MPart->editPart(array('id_part_jasa' => $value->id_part_jasa ))->result();
+				foreach ($dataPart as $value1)
+				{
+					if ($value->jumlah <= $post['jumlah'][$key])
+					{
+						$dataPart = array(
+							'id_part_jasa' => $value->id_part_jasa,
+							'stok_part' => $value1->stok_part + ($post['jumlah'][$key] - $value->jumlah)
+						);
+					}
+					else
+					{
+						$dataPart = array(
+							'id_part_jasa' => $value->id_part_jasa,
+							'stok_part' => $value1->stok_part - ($post['jumlah'][$key] - $value->jumlah)
+						);
+					}
+					$this->MPart->updateStokPart($dataPart);
+				}
+
+				$this->MTransService->updateTransServiceDetail($where, $data);
+			}
+		}
+		$this->MTransService->truncatTempTransService();
+		redirect('TransaksiService/detailTransService/'.$noKwitansi);
+	}
+
 }
